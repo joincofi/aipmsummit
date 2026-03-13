@@ -150,6 +150,23 @@
       z-index: 2;
     }
 
+    .tagline {
+      font-size: clamp(14px, 1.4vw, 20px);
+      font-weight: 500;
+      color: rgba(13,12,34,0.6);
+      letter-spacing: -0.01em;
+      margin-top: 20px;
+      max-width: 520px;
+      background: rgba(255,255,255,0.35);
+      backdrop-filter: blur(14px) saturate(1.4);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      border: 1px solid rgba(255,255,255,0.5);
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 100px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+    }
+
     /* ── BOTTOM ROW ───────────────────────────────── */
     .bottom-row {
       display: flex;
@@ -160,11 +177,15 @@
     }
 
     .location-box {
-      background: #0d0c22;
-      color: #fff;
+      background: rgba(255,255,255,0.25);
+      backdrop-filter: blur(20px) saturate(1.6);
+      -webkit-backdrop-filter: blur(20px) saturate(1.6);
+      border: 1px solid rgba(255,255,255,0.55);
+      color: #0d0c22;
       padding: 14px 20px 16px;
-      border-radius: 6px;
+      border-radius: 16px;
       max-width: 280px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
     }
 
     .location-label {
@@ -172,7 +193,7 @@
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.45);
+      color: rgba(0,0,0,0.4);
       margin-bottom: 6px;
     }
 
@@ -332,6 +353,7 @@
 <div class="hero">
   <div class="hero-top">
     <h1>The AI<br>PM Summit<br>April 22,<br>2026</h1>
+    <p class="tagline">The one-day summit for product managers building with AI.</p>
   </div>
 
   <div class="bottom-row">
