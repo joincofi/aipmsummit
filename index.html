@@ -60,42 +60,29 @@
 
     /* ── HEADLINE ───────────────────────────────────── */
     .event-name {
-      font-size: clamp(26px, 3vw, 48px);
+      font-size: clamp(32px, 4vw, 64px);
       font-weight: 900;
-      letter-spacing: 0.06em;
+      letter-spacing: -0.03em;
       text-transform: uppercase;
       color: #e8603a;
-      -webkit-text-stroke: 4px #f5f1e8;
-      paint-order: stroke fill;
-      filter: drop-shadow(3px 3px 0 rgba(0,0,0,0.10));
     }
 
     .event-date {
-      font-size: 12px;
+      font-size: clamp(13px, 1vw, 15px);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: rgba(26,15,10,0.45);
+      margin-top: 6px;
+    }
+
+    .description {
+      margin-top: 18px;
+      font-size: clamp(16px, 1.5vw, 22px);
       font-weight: 500;
-      letter-spacing: 0.06em;
-      color: rgba(26,15,10,0.28);
-      margin-top: 3px;
-    }
-
-    h1 {
-      font-size: clamp(20px, 2.4vw, 36px);
-      font-weight: 700;
-      line-height: 1.35;
-      letter-spacing: -0.02em;
-      color: #1a0f0a;
-      margin-top: 20px;
-    }
-
-    /* ── TAGLINE ─────────────────────────────────────── */
-    .tagline {
-      margin-top: 2px;
-      font-size: clamp(20px, 2.4vw, 36px);
-      font-weight: 700;
-      line-height: 1.35;
-      letter-spacing: -0.02em;
-      color: rgba(26,15,10,0.55);
-      max-width: none;
+      line-height: 1.55;
+      letter-spacing: -0.005em;
+      color: rgba(26,15,10,0.65);
+      max-width: 540px;
     }
 
     /* ── WAITLIST FORM ────────────────────────────── */
@@ -350,8 +337,8 @@
     @media (max-width: 768px) {
       html, body { overflow: auto; }
       .hero { position: relative; min-height: 100vh; padding: 60px 24px 140px; }
-      h1 { font-size: 5.5vw; }
-      .tagline { font-size: 5.5vw; }
+      .event-name { font-size: 9vw; }
+      .description { font-size: 16px; }
       .burst { width: 52px; height: 52px; }
 
       #wl-form {
@@ -407,8 +394,7 @@
   <div class="hero-top">
     <p class="event-name">The AI PM Summit</p>
     <p class="event-date">April 22, 2026 · Virtual</p>
-    <h1>When building software<br>costs nothing, deciding<br>what to build is everything.</h1>
-    <p class="tagline">Master the new era of Product Management.</p>
+    <p class="description">When building software costs nothing, deciding what to build is everything. Master the new era of Product Management.</p>
     <div class="waitlist-wrap">
       <form id="wl-form" onsubmit="joinList(event)">
         <div class="form-inputs">
