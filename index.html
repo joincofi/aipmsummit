@@ -268,6 +268,35 @@
       filter: brightness(0);
     }
 
+    /* ── FOOTER ───────────────────────────────────── */
+    .site-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      padding: 14px max(40px, 10vw);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      color: #86868b;
+      letter-spacing: 0.01em;
+    }
+
+    .footer-contact {
+      font-size: 11px;
+      color: #86868b;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-contact:hover { color: #1d1d1f; }
+
     /* ── RESPONSIVE ───────────────────────────────── */
     @media (max-width: 768px) {
       html, body { overflow: auto; }
@@ -348,6 +377,11 @@
   </div>
 
 </div>
+
+<footer class="site-footer">
+  <span class="footer-copy">© 2026 CoFi Labs Inc. · 2482 Yonge St #1135 · Toronto, ON M4P 2H5 · Canada</span>
+  <a href="https://form.typeform.com/to/HKG5aUgq" class="footer-contact">Contact</a>
+</footer>
 
 <script>
   async function joinList(e) {
