@@ -19,223 +19,117 @@
 
     body {
       font-family: 'Inter', system-ui, sans-serif;
-      background-color: #f9f9f9;
-      background-image:
-        linear-gradient(rgba(0,0,0,0.055) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,0,0,0.055) 1px, transparent 1px);
-      background-size: 52px 52px;
-      color: #0d0c22;
+      background-color: #f5f1e8;
+      color: #1a0f0a;
       -webkit-font-smoothing: antialiased;
-      position: relative;
     }
 
-    /* ── FLUID BLOB ───────────────────────────────── */
-    .blob-scene {
+    /* ── ARCH RINGS ─────────────────────────────────── */
+    .arch-group {
       position: fixed;
-      top: -10%;
-      right: -8%;
-      width: 68vw;
-      height: 115vh;
-      pointer-events: none;
+      top: 0; bottom: 0;
+      width: 0;
       z-index: 0;
-      filter: blur(0px);
+      pointer-events: none;
     }
 
-    .blob-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      filter: blur(1px);
-    }
+    .arch-left  { left: 0; }
+    .arch-right { right: 0; }
 
-    .b {
+    .ring {
       position: absolute;
+      top: 50%;
       border-radius: 50%;
-      mix-blend-mode: multiply;
-      filter: blur(52px);
-      animation: drift var(--dur) ease-in-out infinite alternate;
+      border-style: solid;
+      border-width: 22px;
     }
 
-    @keyframes drift {
-      from { transform: translate(0, 0) scale(1)   rotate(0deg); }
-      to   { transform: translate(var(--tx), var(--ty)) scale(var(--s)) rotate(var(--r)); }
-    }
+    /* Left rings — circles whose centers sit off-screen left */
+    .arch-left .r1 { width: 500px; height: 500px; left: -390px; margin-top: -250px; border-color: #e8739a; }
+    .arch-left .r2 { width: 400px; height: 400px; left: -315px; margin-top: -200px; border-color: #e8603a; }
+    .arch-left .r3 { width: 300px; height: 300px; left: -240px; margin-top: -150px; border-color: #f0b030; }
+    .arch-left .r4 { width: 200px; height: 200px; left: -165px; margin-top: -100px; border-color: #f5ce3a; }
 
-    .b1 { width: 72%; height: 68%; background: #c084fc; top: 2%;  left: 8%;  --dur:9s;  --tx:3%  ; --ty:6%;  --s:1.08; --r:8deg;  opacity:.9; }
-    .b2 { width: 60%; height: 58%; background: #e879f9; top: 18%; left: 28%; --dur:11s; --tx:-4% ; --ty:-5%; --s:1.05; --r:-6deg; opacity:.85; }
-    .b3 { width: 55%; height: 60%; background: #f472b6; top: 10%; left: 16%; --dur:13s; --tx:5%  ; --ty:8%;  --s:.95;  --r:12deg; opacity:.8; }
-    .b4 { width: 50%; height: 52%; background: #fb923c; top: 42%; left: 36%; --dur:10s; --tx:-3% ; --ty:-7%; --s:1.1;  --r:-9deg; opacity:.75; }
-    .b5 { width: 65%; height: 50%; background: #a855f7; top: 28%; left: 2%;  --dur:14s; --tx:6%  ; --ty:4%;  --s:1.03; --r:5deg;  opacity:.8; }
-    .b6 { width: 40%; height: 44%; background: #7dd3fc; top: 55%; left: 44%; --dur:8s;  --tx:-5% ; --ty:-4%; --s:.97;  --r:-11deg;opacity:.7; }
-    .b7 { width: 48%; height: 40%; background: #f0abfc; top: 0%;  left: 44%; --dur:12s; --tx:4%  ; --ty:7%;  --s:1.06; --r:7deg;  opacity:.85; }
-    .b8 { width: 36%; height: 36%; background: #fde68a; top: 60%; left: 18%; --dur:15s; --tx:-2% ; --ty:-6%; --s:1.04; --r:-4deg; opacity:.65; }
+    /* Right rings — circles whose centers sit off-screen right */
+    .arch-right .r1 { width: 500px; height: 500px; right: -390px; margin-top: -250px; border-color: #e8739a; }
+    .arch-right .r2 { width: 400px; height: 400px; right: -315px; margin-top: -200px; border-color: #e8603a; }
+    .arch-right .r3 { width: 300px; height: 300px; right: -240px; margin-top: -150px; border-color: #f0b030; }
+    .arch-right .r4 { width: 200px; height: 200px; right: -165px; margin-top: -100px; border-color: #f5ce3a; }
 
-    /* ── NAV ──────────────────────────────────────── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 10;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 36px;
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-    }
-
-    .nav-logo {
-      font-size: 14px;
-      font-weight: 700;
-      color: #0d0c22;
-      letter-spacing: -0.01em;
-    }
-
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .nav-pill {
-      background: #0d0c22;
-      color: #fff;
-      border-radius: 100px;
-      padding: 8px 20px;
-      font-size: 13px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      cursor: pointer;
-      border: none;
-      font-family: 'Inter', sans-serif;
-      transition: opacity 0.15s;
-    }
-
-    .nav-pill:hover { opacity: 0.8; }
-
-    .nav-arrow {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: #0d0c22;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      font-size: 14px;
-    }
-
-    /* ── HERO TYPE ────────────────────────────────── */
+    /* ── HERO ───────────────────────────────────────── */
     .hero {
       position: fixed;
       inset: 0;
       z-index: 1;
-      padding: 36px 36px 32px;
+      padding: 40px;
       display: flex;
       flex-direction: column;
+      align-items: center;
       justify-content: center;
+      text-align: center;
     }
 
     .hero-top {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       position: relative;
       z-index: 2;
     }
 
+    /* ── HEADLINE ───────────────────────────────────── */
     h1 {
-      font-size: clamp(52px, 8vw, 130px);
+      font-size: clamp(48px, 8vw, 124px);
       font-weight: 900;
-      line-height: 0.88;
+      line-height: 0.9;
       letter-spacing: -0.04em;
-      color: #0d0c22;
-      position: relative;
-      z-index: 2;
+      color: #1a0f0a;
+      /* Sticker effect: cream border + drop shadow */
+      -webkit-text-stroke: 10px #f5f1e8;
+      paint-order: stroke fill;
+      filter: drop-shadow(5px 5px 0 rgba(0,0,0,0.13));
     }
 
+    /* ── TAGLINE ─────────────────────────────────────── */
     .tagline {
-      font-size: clamp(13px, 1.25vw, 18px);
-      font-weight: 500;
-      color: rgba(13,12,34,0.65);
-      letter-spacing: -0.01em;
-      line-height: 1.5;
-      margin-top: 20px;
-      max-width: 520px;
-      background: rgba(255,255,255,0.35);
-      backdrop-filter: blur(14px) saturate(1.4);
-      -webkit-backdrop-filter: blur(14px) saturate(1.4);
-      border: 1px solid rgba(255,255,255,0.5);
+      margin-top: 28px;
       display: inline-block;
-      padding: 14px 20px;
-      border-radius: 16px;
-      box-shadow: 0 2px 16px rgba(0,0,0,0.06);
-    }
-
-    /* ── BOTTOM ROW ───────────────────────────────── */
-    .bottom-row {
-      position: absolute;
-      bottom: 32px;
-      left: 36px;
-      z-index: 2;
-    }
-
-    .location-box {
-      background: rgba(255,255,255,0.25);
-      backdrop-filter: blur(20px) saturate(1.6);
-      -webkit-backdrop-filter: blur(20px) saturate(1.6);
-      border: 1px solid rgba(255,255,255,0.55);
-      color: #0d0c22;
-      padding: 14px 20px 16px;
-      border-radius: 16px;
-      max-width: 280px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
-    }
-
-    .location-label {
-      font-size: 10px;
+      background: #e8603a;
+      color: #fff;
+      font-size: clamp(13px, 1.15vw, 16px);
       font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: rgba(0,0,0,0.4);
-      margin-bottom: 6px;
-    }
-
-    .location-val {
-      font-size: 22px;
-      font-weight: 900;
-      line-height: 1.1;
-      letter-spacing: -0.025em;
-    }
-
-    .location-val em {
-      font-style: italic;
-      font-weight: 900;
+      letter-spacing: -0.01em;
+      line-height: 1.45;
+      padding: 13px 26px;
+      border-radius: 100px;
+      border: 2.5px solid #1a0f0a;
+      box-shadow: 3px 3px 0 #1a0f0a;
+      max-width: 540px;
     }
 
     /* ── WAITLIST FORM ────────────────────────────── */
     .waitlist-wrap {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       gap: 10px;
-      margin-top: 20px;
+      margin-top: 28px;
     }
 
     #wl-form {
       display: flex;
       align-items: center;
       gap: 10px;
-      background: rgba(255,255,255,0.7);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(0,0,0,0.12);
+      background: #fff;
+      border: 2.5px solid #1a0f0a;
       border-radius: 100px;
-      padding: 8px 8px 8px 20px;
+      padding: 8px 8px 8px 22px;
+      box-shadow: 4px 4px 0 #1a0f0a;
     }
 
     .form-inputs {
       display: flex;
       align-items: center;
-      gap: 0;
     }
 
     #wl-form input {
@@ -244,117 +138,145 @@
       outline: none;
       font-family: 'Inter', sans-serif;
       font-size: 14px;
-      color: #0d0c22;
-      width: 150px;
+      color: #1a0f0a;
+      width: 148px;
       padding: 4px 0;
     }
 
-    #wl-form input::placeholder { color: #aaa; }
+    #wl-form input::placeholder { color: #b0a090; }
 
     .input-sep {
       width: 1px;
       height: 18px;
-      background: rgba(0,0,0,0.12);
+      background: rgba(26,15,10,0.18);
       margin: 0 12px;
     }
 
     .btn-arrow {
       display: flex;
       align-items: center;
-      gap: 10px;
-      background: #0d0c22;
+      gap: 8px;
+      background: #e8603a;
       color: #fff;
-      border: none;
+      border: 2.5px solid #1a0f0a;
       border-radius: 100px;
       padding: 10px 20px;
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 700;
       font-family: 'Inter', sans-serif;
       cursor: pointer;
       white-space: nowrap;
-      transition: opacity 0.15s;
+      transition: transform 0.1s, box-shadow 0.1s;
+      box-shadow: 2px 2px 0 #1a0f0a;
     }
 
-    .btn-arrow:hover { opacity: 0.8; }
+    .btn-arrow:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 3px 3px 0 #1a0f0a;
+    }
 
-    .arrow-circle {
-      width: 24px; height: 24px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.2);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 12px;
+    .btn-arrow:active {
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0 #1a0f0a;
     }
 
     .form-note {
       font-size: 11px;
-      color: rgba(0,0,0,0.35);
-      padding-right: 12px;
+      color: rgba(26,15,10,0.38);
+      font-weight: 500;
     }
 
     /* ── SUCCESS ──────────────────────────────────── */
     .wl-success {
       display: none;
-      background: rgba(255,255,255,0.75);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(0,0,0,0.1);
+      background: #fff;
+      border: 2.5px solid #1a0f0a;
       border-radius: 100px;
-      padding: 12px 28px;
+      padding: 13px 28px;
       font-size: 14px;
-      font-weight: 600;
-      color: #0d0c22;
+      font-weight: 700;
+      color: #1a0f0a;
+      box-shadow: 4px 4px 0 #1a0f0a;
+    }
+
+    /* ── BOTTOM INFO ─────────────────────────────────── */
+    .bottom-row {
+      position: absolute;
+      bottom: 32px;
+      left: 40px;
+      z-index: 2;
+    }
+
+    .location-box {
+      background: #fff;
+      border: 2.5px solid #1a0f0a;
+      color: #1a0f0a;
+      padding: 12px 18px 14px;
+      border-radius: 16px;
+      box-shadow: 3px 3px 0 #1a0f0a;
+    }
+
+    .location-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(26,15,10,0.4);
+      margin-bottom: 5px;
+    }
+
+    .location-val {
+      font-size: 18px;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+    }
+
+    .location-val em {
+      font-style: italic;
     }
 
     /* ── RESPONSIVE ───────────────────────────────── */
     @media (max-width: 768px) {
       html, body { overflow: auto; }
-
-      .hero { position: relative; min-height: 100vh; }
-
-      h1 { font-size: 14vw; }
-
-      .bottom-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
-      }
+      .hero { position: relative; min-height: 100vh; padding: 60px 24px 120px; }
+      h1 { font-size: 13vw; -webkit-text-stroke: 6px #f5f1e8; }
+      .tagline { border-radius: 16px; font-size: 14px; }
+      .arch-group { display: none; }
 
       #wl-form {
         flex-direction: column;
-        border-radius: 16px;
+        border-radius: 20px;
         padding: 16px;
         align-items: stretch;
         width: 100%;
+        max-width: 380px;
+        box-shadow: 3px 3px 0 #1a0f0a;
       }
 
       .form-inputs { flex-direction: column; gap: 10px; }
-
       #wl-form input { width: 100%; }
-
-      .input-sep { width: 100%; height: 1px; margin: 0; }
-
-      .btn-arrow { border-radius: 100px; justify-content: center; }
-
-      .waitlist-wrap { width: 100%; }
+      .input-sep { width: 100%; height: 1px; margin: 4px 0; }
+      .btn-arrow { justify-content: center; }
+      .waitlist-wrap { width: 100%; align-items: center; }
     }
   </style>
 </head>
 <body>
 
-<!-- Fluid blob -->
-<div class="blob-scene">
-  <div class="blob-inner">
-    <div class="b b1"></div>
-    <div class="b b2"></div>
-    <div class="b b3"></div>
-    <div class="b b4"></div>
-    <div class="b b5"></div>
-    <div class="b b6"></div>
-    <div class="b b7"></div>
-    <div class="b b8"></div>
-  </div>
+<!-- Arch rings -->
+<div class="arch-group arch-left">
+  <div class="ring r1"></div>
+  <div class="ring r2"></div>
+  <div class="ring r3"></div>
+  <div class="ring r4"></div>
 </div>
-
+<div class="arch-group arch-right">
+  <div class="ring r1"></div>
+  <div class="ring r2"></div>
+  <div class="ring r3"></div>
+  <div class="ring r4"></div>
+</div>
 
 <!-- Hero -->
 <div class="hero">
@@ -364,13 +286,13 @@
     <div class="waitlist-wrap">
       <form id="wl-form" onsubmit="joinList(event)">
         <div class="form-inputs">
-          <input type="text"  id="wl-name"  placeholder="First name"       required autocomplete="given-name" />
+          <input type="text"  id="wl-name"  placeholder="First name"   required autocomplete="given-name" />
           <div class="input-sep"></div>
-          <input type="email" id="wl-email" placeholder="Email address"     required autocomplete="email" />
+          <input type="email" id="wl-email" placeholder="Email address" required autocomplete="email" />
         </div>
         <button type="submit" class="btn-arrow">Join the waitlist</button>
       </form>
-      <div class="wl-success" id="wl-success">You are on the list. We will be in touch. ✓</div>
+      <div class="wl-success" id="wl-success">You're on the list ✓</div>
       <p class="form-note">No spam, ever</p>
     </div>
   </div>
@@ -390,7 +312,7 @@
     btn.textContent = 'Joining...';
     btn.disabled = true;
 
-    const name = document.getElementById('wl-name').value.trim();
+    const name  = document.getElementById('wl-name').value.trim();
     const email = document.getElementById('wl-email').value.trim();
 
     try {
