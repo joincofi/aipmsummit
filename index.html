@@ -64,7 +64,7 @@
       font-weight: 900;
       letter-spacing: -0.03em;
       text-transform: uppercase;
-      color: #e8603a;
+      color: #2563eb;
     }
 
     .event-date {
@@ -134,7 +134,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      background: #e8603a;
+      background: #2563eb;
       color: #fff;
       border: 2.5px solid #1a0f0a;
       border-radius: 100px;
@@ -261,7 +261,7 @@
       box-shadow: 1px 1px 0 #1a0f0a;
     }
 
-    .tv-knob:nth-child(1) { background: #e8603a; }
+    .tv-knob:nth-child(1) { background: #2563eb; }
     .tv-knob:nth-child(2) { background: #e8739a; }
 
     .tv-legs {
@@ -279,37 +279,36 @@
 
     /* ── SCROLLING LOGOS ─────────────────────────── */
     .logos-section {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 10;
-      padding: 24px 0 20px;
-      background: linear-gradient(to top, #f5f1e8 55%, transparent);
-      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 2;
+      flex-shrink: 0;
     }
 
     .logos-label {
       text-align: center;
-      font-size: 10px;
+      font-size: 9px;
       font-weight: 600;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(26,15,10,0.32);
-      margin-bottom: 11px;
+      color: rgba(26,15,10,0.28);
+      margin-bottom: 10px;
     }
 
     .logos-track-wrap {
+      width: 420px;
+      max-width: 100%;
       overflow: hidden;
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
     }
 
     .logos-track {
       display: inline-flex;
       align-items: center;
       gap: 0;
-      animation: scroll-logos 26s linear infinite;
+      animation: scroll-logos 20s linear infinite;
       white-space: nowrap;
     }
 
@@ -319,17 +318,23 @@
     }
 
     .logo-item {
-      font-size: 15px;
-      font-weight: 700;
-      color: rgba(26,15,10,0.30);
-      letter-spacing: -0.01em;
       flex-shrink: 0;
-      padding: 0 32px;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .logo-item img {
+      height: 18px;
+      width: auto;
+      opacity: 0.32;
+      filter: grayscale(100%) brightness(0);
+      display: block;
     }
 
     .logo-sep {
-      font-size: 9px;
-      color: rgba(26,15,10,0.18);
+      font-size: 7px;
+      color: rgba(26,15,10,0.15);
       flex-shrink: 0;
     }
 
@@ -356,7 +361,7 @@
       .input-sep { width: 100%; height: 1px; margin: 4px 0; }
       .btn-arrow { justify-content: center; }
       .waitlist-wrap { width: 100%; align-items: center; }
-      .logos-section { position: relative; margin-top: 32px; }
+      .logos-track-wrap { width: 300px; }
     }
   </style>
 </head>
@@ -373,7 +378,7 @@
 <svg class="burst burst-tr" viewBox="-50 -50 100 100" xmlns="http://www.w3.org/2000/svg">
   <g transform="rotate(-14)">
     <polygon points="0,-40 6.9,-16.6 28.3,-28.3 16.6,-6.9 40,0 16.6,6.9 28.3,28.3 6.9,16.6 0,40 -6.9,16.6 -28.3,28.3 -16.6,6.9 -40,0 -16.6,-6.9 -28.3,-28.3 -6.9,-16.6"
-          fill="#e8603a" stroke="#1a0f0a" stroke-width="3" stroke-linejoin="round"/>
+          fill="#2563eb" stroke="#1a0f0a" stroke-width="3" stroke-linejoin="round"/>
   </g>
 </svg>
 <svg class="burst burst-bl" viewBox="-50 -50 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -392,7 +397,7 @@
 <!-- Hero -->
 <div class="hero">
   <div class="hero-top">
-    <p class="event-name">The AI PM Summit</p>
+    <p class="event-name">AI PM Summit</p>
     <p class="event-date">April 22, 2026 · Virtual</p>
     <p class="description">When building software costs nothing, deciding what to build is everything. Master the new era of Product Management.</p>
     <div class="waitlist-wrap">
@@ -428,29 +433,26 @@
       <div class="tv-leg"></div>
       <div class="tv-leg"></div>
     </div>
-  </div>
-</div>
-
-<!-- Scrolling logos -->
-<div class="logos-section">
-  <p class="logos-label">Participants from</p>
-  <div class="logos-track-wrap">
-    <div class="logos-track">
-      <span class="logo-item">Google</span><span class="logo-sep">✦</span>
-      <span class="logo-item">Netflix</span><span class="logo-sep">✦</span>
-      <span class="logo-item">Spotify</span><span class="logo-sep">✦</span>
-      <span class="logo-item">Meta</span><span class="logo-sep">✦</span>
-      <span class="logo-item">Airbnb</span><span class="logo-sep">✦</span>
-      <span class="logo-item">Amazon</span><span class="logo-sep">✦</span>
-      <span class="logo-item">HubSpot</span><span class="logo-sep">✦</span>
-      <!-- duplicate for seamless loop -->
-      <span class="logo-item">Google</span><span class="logo-sep">✦</span>
-      <span class="logo-item">Netflix</span><span class="logo-sep">✦</span>
-      <span class="logo-item">Spotify</span><span class="logo-sep">✦</span>
-      <span class="logo-item">Meta</span><span class="logo-sep">✦</span>
-      <span class="logo-item">Airbnb</span><span class="logo-sep">✦</span>
-      <span class="logo-item">Amazon</span><span class="logo-sep">✦</span>
-      <span class="logo-item">HubSpot</span><span class="logo-sep">✦</span>
+  <div class="logos-section">
+    <p class="logos-label">Participants from</p>
+    <div class="logos-track-wrap">
+      <div class="logos-track">
+        <span class="logo-item"><img src="https://cdn.simpleicons.org/google/1a0f0a" alt="Google" /></span><span class="logo-sep">✦</span>
+        <span class="logo-item"><img src="https://cdn.simpleicons.org/netflix/1a0f0a" alt="Netflix" /></span><span class="logo-sep">✦</span>
+        <span class="logo-item"><img src="https://cdn.simpleicons.org/spotify/1a0f0a" alt="Spotify" /></span><span class="logo-sep">✦</span>
+        <span class="logo-item"><img src="https://cdn.simpleicons.org/meta/1a0f0a" alt="Meta" /></span><span class="logo-sep">✦</span>
+        <span class="logo-item"><img src="https://cdn.simpleicons.org/airbnb/1a0f0a" alt="Airbnb" /></span><span class="logo-sep">✦</span>
+        <span class="logo-item"><img src="https://cdn.simpleicons.org/amazon/1a0f0a" alt="Amazon" /></span><span class="logo-sep">✦</span>
+        <span class="logo-item"><img src="https://cdn.simpleicons.org/hubspot/1a0f0a" alt="HubSpot" /></span><span class="logo-sep">✦</span>
+        <!-- duplicate for seamless loop -->
+        <span class="logo-item"><img src="https://cdn.simpleicons.org/google/1a0f0a" alt="Google" /></span><span class="logo-sep">✦</span>
+        <span class="logo-item"><img src="https://cdn.simpleicons.org/netflix/1a0f0a" alt="Netflix" /></span><span class="logo-sep">✦</span>
+        <span class="logo-item"><img src="https://cdn.simpleicons.org/spotify/1a0f0a" alt="Spotify" /></span><span class="logo-sep">✦</span>
+        <span class="logo-item"><img src="https://cdn.simpleicons.org/meta/1a0f0a" alt="Meta" /></span><span class="logo-sep">✦</span>
+        <span class="logo-item"><img src="https://cdn.simpleicons.org/airbnb/1a0f0a" alt="Airbnb" /></span><span class="logo-sep">✦</span>
+        <span class="logo-item"><img src="https://cdn.simpleicons.org/amazon/1a0f0a" alt="Amazon" /></span><span class="logo-sep">✦</span>
+        <span class="logo-item"><img src="https://cdn.simpleicons.org/hubspot/1a0f0a" alt="HubSpot" /></span><span class="logo-sep">✦</span>
+      </div>
     </div>
   </div>
 </div>
