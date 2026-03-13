@@ -151,10 +151,11 @@
     }
 
     .tagline {
-      font-size: clamp(14px, 1.4vw, 20px);
+      font-size: clamp(13px, 1.25vw, 18px);
       font-weight: 500;
-      color: rgba(13,12,34,0.6);
+      color: rgba(13,12,34,0.65);
       letter-spacing: -0.01em;
+      line-height: 1.5;
       margin-top: 20px;
       max-width: 520px;
       background: rgba(255,255,255,0.35);
@@ -162,8 +163,8 @@
       -webkit-backdrop-filter: blur(14px) saturate(1.4);
       border: 1px solid rgba(255,255,255,0.5);
       display: inline-block;
-      padding: 10px 18px;
-      border-radius: 100px;
+      padding: 14px 20px;
+      border-radius: 16px;
       box-shadow: 0 2px 16px rgba(0,0,0,0.06);
     }
 
@@ -213,8 +214,9 @@
     .waitlist-wrap {
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
+      align-items: flex-start;
       gap: 10px;
+      margin-top: 20px;
     }
 
     #wl-form {
@@ -304,6 +306,10 @@
 
     /* ── RESPONSIVE ───────────────────────────────── */
     @media (max-width: 768px) {
+      html, body { overflow: auto; }
+
+      .hero { position: relative; min-height: 100vh; }
+
       h1 { font-size: 14vw; }
 
       .bottom-row {
@@ -328,7 +334,7 @@
 
       .btn-arrow { border-radius: 100px; justify-content: center; }
 
-      .waitlist-wrap { align-items: flex-start; width: 100%; }
+      .waitlist-wrap { width: 100%; }
     }
   </style>
 </head>
@@ -353,15 +359,7 @@
 <div class="hero">
   <div class="hero-top">
     <h1>The AI<br>PM Summit<br>April 22,<br>2026</h1>
-    <p class="tagline">The one-day summit for product managers building with AI.</p>
-  </div>
-
-  <div class="bottom-row">
-    <div class="location-box">
-      <div class="location-label">Format</div>
-      <div class="location-val">Virtual,<br><em>Live &amp; On-Demand</em></div>
-    </div>
-
+    <p class="tagline">When building software costs nothing, deciding what to build is everything. Master the new era of Product Management.</p>
     <div class="waitlist-wrap">
       <form id="wl-form" onsubmit="joinList(event)">
         <div class="form-inputs">
@@ -373,6 +371,13 @@
       </form>
       <div class="wl-success" id="wl-success">You are on the list. We will be in touch. ✓</div>
       <p class="form-note">No spam, ever</p>
+    </div>
+  </div>
+
+  <div class="bottom-row">
+    <div class="location-box">
+      <div class="location-label">Format</div>
+      <div class="location-val">Virtual,<br><em>Live &amp; On-Demand</em></div>
     </div>
   </div>
 </div>
