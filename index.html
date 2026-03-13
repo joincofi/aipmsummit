@@ -131,21 +131,23 @@
       position: fixed;
       inset: 0;
       z-index: 1;
-      padding: 0 36px 32px;
+      padding: 36px 36px 32px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
     }
 
-    .hero-top {}
+    .hero-top {
+      position: relative;
+      z-index: 2;
+    }
 
     h1 {
-      font-size: clamp(72px, 12.5vw, 188px);
+      font-size: clamp(52px, 8vw, 130px);
       font-weight: 900;
       line-height: 0.88;
       letter-spacing: -0.04em;
       color: #0d0c22;
-      margin-top: 24px;
       position: relative;
       z-index: 2;
     }
@@ -170,10 +172,9 @@
 
     /* ── BOTTOM ROW ───────────────────────────────── */
     .bottom-row {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      position: relative;
+      position: absolute;
+      bottom: 32px;
+      left: 36px;
       z-index: 2;
     }
 
@@ -358,7 +359,7 @@
 <!-- Hero -->
 <div class="hero">
   <div class="hero-top">
-    <h1>The AI<br>PM Summit<br>April 22,<br>2026</h1>
+    <h1>The AI PM Summit<br>April 22, 2026</h1>
     <p class="tagline">When building software costs nothing, deciding what to build is everything. Master the new era of Product Management.</p>
     <div class="waitlist-wrap">
       <form id="wl-form" onsubmit="joinList(event)">
