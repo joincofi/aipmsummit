@@ -79,28 +79,23 @@
     }
 
     h1 {
-      font-size: clamp(40px, 7vw, 108px);
-      font-weight: 900;
-      line-height: 0.88;
-      letter-spacing: -0.04em;
+      font-size: clamp(20px, 2.4vw, 36px);
+      font-weight: 700;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
       color: #1a0f0a;
-      margin-top: 18px;
-      -webkit-text-stroke: 8px #f5f1e8;
-      paint-order: stroke fill;
-      filter: drop-shadow(4px 4px 0 rgba(0,0,0,0.11));
+      margin-top: 20px;
     }
 
     /* ── TAGLINE ─────────────────────────────────────── */
     .tagline {
-      margin-top: 0;
-      font-size: clamp(40px, 7vw, 108px);
-      font-weight: 900;
-      line-height: 0.88;
-      letter-spacing: -0.04em;
-      color: #1a0f0a;
-      -webkit-text-stroke: 8px #f5f1e8;
-      paint-order: stroke fill;
-      filter: drop-shadow(4px 4px 0 rgba(0,0,0,0.11));
+      margin-top: 2px;
+      font-size: clamp(20px, 2.4vw, 36px);
+      font-weight: 700;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+      color: rgba(26,15,10,0.55);
+      max-width: none;
     }
 
     /* ── WAITLIST FORM ────────────────────────────── */
@@ -355,8 +350,8 @@
     @media (max-width: 768px) {
       html, body { overflow: auto; }
       .hero { position: relative; min-height: 100vh; padding: 60px 24px 140px; }
-      h1 { font-size: 9vw; -webkit-text-stroke: 5px #f5f1e8; }
-      .tagline { font-size: 18px; }
+      h1 { font-size: 5.5vw; }
+      .tagline { font-size: 5.5vw; }
       .burst { width: 52px; height: 52px; }
 
       #wl-form {
