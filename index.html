@@ -24,37 +24,46 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── ARCH RINGS ─────────────────────────────────── */
-    .arch-group {
+    /* ── HALFTONE DOTS ──────────────────────────────── */
+    .dots {
       position: fixed;
-      top: 0; bottom: 0;
-      width: 0;
+      width: 340px;
+      height: 340px;
       z-index: 0;
       pointer-events: none;
+      background-size: 20px 20px;
     }
 
-    .arch-left  { left: 0; }
-    .arch-right { right: 0; }
-
-    .ring {
-      position: absolute;
-      top: 50%;
-      border-radius: 50%;
-      border-style: solid;
-      border-width: 22px;
+    .dots-tl {
+      top: 0; left: 0;
+      background-image: radial-gradient(circle, #e8739a 3px, transparent 3px);
+      -webkit-mask-image: radial-gradient(ellipse 300px 300px at 0% 0%, black, transparent 78%);
+      mask-image: radial-gradient(ellipse 300px 300px at 0% 0%, black, transparent 78%);
     }
 
-    /* Left rings — circles whose centers sit off-screen left */
-    .arch-left .r1 { width: 500px; height: 500px; left: -390px; margin-top: -250px; border-color: #e8739a; }
-    .arch-left .r2 { width: 400px; height: 400px; left: -315px; margin-top: -200px; border-color: #e8603a; }
-    .arch-left .r3 { width: 300px; height: 300px; left: -240px; margin-top: -150px; border-color: #f0b030; }
-    .arch-left .r4 { width: 200px; height: 200px; left: -165px; margin-top: -100px; border-color: #f5ce3a; }
+    .dots-tr {
+      top: 0; right: 0;
+      background-image: radial-gradient(circle, #e8603a 3px, transparent 3px);
+      background-position: 10px 0;
+      -webkit-mask-image: radial-gradient(ellipse 300px 300px at 100% 0%, black, transparent 78%);
+      mask-image: radial-gradient(ellipse 300px 300px at 100% 0%, black, transparent 78%);
+    }
 
-    /* Right rings — circles whose centers sit off-screen right */
-    .arch-right .r1 { width: 500px; height: 500px; right: -390px; margin-top: -250px; border-color: #e8739a; }
-    .arch-right .r2 { width: 400px; height: 400px; right: -315px; margin-top: -200px; border-color: #e8603a; }
-    .arch-right .r3 { width: 300px; height: 300px; right: -240px; margin-top: -150px; border-color: #f0b030; }
-    .arch-right .r4 { width: 200px; height: 200px; right: -165px; margin-top: -100px; border-color: #f5ce3a; }
+    .dots-bl {
+      bottom: 0; left: 0;
+      background-image: radial-gradient(circle, #f0b030 3px, transparent 3px);
+      background-position: 0 10px;
+      -webkit-mask-image: radial-gradient(ellipse 300px 300px at 0% 100%, black, transparent 78%);
+      mask-image: radial-gradient(ellipse 300px 300px at 0% 100%, black, transparent 78%);
+    }
+
+    .dots-br {
+      bottom: 0; right: 0;
+      background-image: radial-gradient(circle, #e8739a 3px, transparent 3px);
+      background-position: 10px 10px;
+      -webkit-mask-image: radial-gradient(ellipse 300px 300px at 100% 100%, black, transparent 78%);
+      mask-image: radial-gradient(ellipse 300px 300px at 100% 100%, black, transparent 78%);
+    }
 
     /* ── HERO ───────────────────────────────────────── */
     .hero {
@@ -242,7 +251,7 @@
       .hero { position: relative; min-height: 100vh; padding: 60px 24px 120px; }
       h1 { font-size: 13vw; -webkit-text-stroke: 6px #f5f1e8; }
       .tagline { border-radius: 16px; font-size: 14px; }
-      .arch-group { display: none; }
+      .dots { width: 200px; height: 200px; }
 
       #wl-form {
         flex-direction: column;
@@ -264,19 +273,11 @@
 </head>
 <body>
 
-<!-- Arch rings -->
-<div class="arch-group arch-left">
-  <div class="ring r1"></div>
-  <div class="ring r2"></div>
-  <div class="ring r3"></div>
-  <div class="ring r4"></div>
-</div>
-<div class="arch-group arch-right">
-  <div class="ring r1"></div>
-  <div class="ring r2"></div>
-  <div class="ring r3"></div>
-  <div class="ring r4"></div>
-</div>
+<!-- Halftone dots -->
+<div class="dots dots-tl"></div>
+<div class="dots dots-tr"></div>
+<div class="dots dots-bl"></div>
+<div class="dots dots-br"></div>
 
 <!-- Hero -->
 <div class="hero">
