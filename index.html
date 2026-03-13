@@ -295,10 +295,66 @@
       border-radius: 0 0 5px 5px;
     }
 
+    /* ── SCROLLING LOGOS ─────────────────────────── */
+    .logos-section {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      padding: 24px 0 20px;
+      background: linear-gradient(to top, #f5f1e8 55%, transparent);
+      pointer-events: none;
+    }
+
+    .logos-label {
+      text-align: center;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(26,15,10,0.32);
+      margin-bottom: 11px;
+    }
+
+    .logos-track-wrap {
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    }
+
+    .logos-track {
+      display: inline-flex;
+      align-items: center;
+      gap: 0;
+      animation: scroll-logos 26s linear infinite;
+      white-space: nowrap;
+    }
+
+    @keyframes scroll-logos {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    .logo-item {
+      font-size: 15px;
+      font-weight: 700;
+      color: rgba(26,15,10,0.30);
+      letter-spacing: -0.01em;
+      flex-shrink: 0;
+      padding: 0 32px;
+    }
+
+    .logo-sep {
+      font-size: 9px;
+      color: rgba(26,15,10,0.18);
+      flex-shrink: 0;
+    }
+
     /* ── RESPONSIVE ───────────────────────────────── */
     @media (max-width: 768px) {
       html, body { overflow: auto; }
-      .hero { position: relative; min-height: 100vh; padding: 60px 24px 120px; }
+      .hero { position: relative; min-height: 100vh; padding: 60px 24px 140px; }
       h1 { font-size: 9vw; -webkit-text-stroke: 5px #f5f1e8; }
       .tagline { font-size: 18px; }
       .burst { width: 52px; height: 52px; }
@@ -318,6 +374,7 @@
       .input-sep { width: 100%; height: 1px; margin: 4px 0; }
       .btn-arrow { justify-content: center; }
       .waitlist-wrap { width: 100%; align-items: center; }
+      .logos-section { position: relative; margin-top: 32px; }
     }
   </style>
 </head>
@@ -389,6 +446,30 @@
     <div class="tv-legs">
       <div class="tv-leg"></div>
       <div class="tv-leg"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Scrolling logos -->
+<div class="logos-section">
+  <p class="logos-label">Participants from</p>
+  <div class="logos-track-wrap">
+    <div class="logos-track">
+      <span class="logo-item">Google</span><span class="logo-sep">✦</span>
+      <span class="logo-item">Netflix</span><span class="logo-sep">✦</span>
+      <span class="logo-item">Spotify</span><span class="logo-sep">✦</span>
+      <span class="logo-item">Meta</span><span class="logo-sep">✦</span>
+      <span class="logo-item">Airbnb</span><span class="logo-sep">✦</span>
+      <span class="logo-item">Amazon</span><span class="logo-sep">✦</span>
+      <span class="logo-item">HubSpot</span><span class="logo-sep">✦</span>
+      <!-- duplicate for seamless loop -->
+      <span class="logo-item">Google</span><span class="logo-sep">✦</span>
+      <span class="logo-item">Netflix</span><span class="logo-sep">✦</span>
+      <span class="logo-item">Spotify</span><span class="logo-sep">✦</span>
+      <span class="logo-item">Meta</span><span class="logo-sep">✦</span>
+      <span class="logo-item">Airbnb</span><span class="logo-sep">✦</span>
+      <span class="logo-item">Amazon</span><span class="logo-sep">✦</span>
+      <span class="logo-item">HubSpot</span><span class="logo-sep">✦</span>
     </div>
   </div>
 </div>
