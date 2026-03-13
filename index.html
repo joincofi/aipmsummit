@@ -32,17 +32,14 @@
       inset: 0;
       z-index: 0;
       background:
-        radial-gradient(ellipse 80% 55% at 15% 70%, rgba(124, 58, 237, 0.75) 0%, transparent 65%),
-        radial-gradient(ellipse 65% 50% at 85% 65%, rgba(79, 27, 158, 0.7) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 40% at 50% 5%, rgba(0, 212, 255, 0.2) 0%, transparent 55%),
-        linear-gradient(175deg,
-          #03001a 0%,
-          #0d0050 18%,
-          #1a0080 32%,
-          #4a1ab8 52%,
-          #7b2ff7 70%,
-          #4361ee 88%,
-          #3a56e8 100%
+        radial-gradient(ellipse 70% 55% at 8% 18%, rgba(251, 200, 130, 0.45) 0%, transparent 60%),
+        radial-gradient(ellipse 55% 45% at 92% 85%, rgba(236, 175, 110, 0.32) 0%, transparent 55%),
+        radial-gradient(ellipse 45% 38% at 55% 5%, rgba(210, 195, 255, 0.18) 0%, transparent 50%),
+        linear-gradient(158deg,
+          #faf9f5 0%,
+          #f7f2ea 30%,
+          #f2eadb 58%,
+          #ece0c8 100%
         );
     }
 
@@ -52,8 +49,8 @@
       inset: 0;
       z-index: 1;
       pointer-events: none;
-      mix-blend-mode: overlay;
-      opacity: 0.22;
+      mix-blend-mode: multiply;
+      opacity: 0.28;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)'/%3E%3C/svg%3E");
       background-size: 250px 250px;
     }
@@ -69,7 +66,7 @@
       align-items: center;
       text-align: center;
       padding: 40px max(40px, 8vw);
-      color: #fff;
+      color: #1c160e;
     }
 
     /* ── DATE BADGE ───────────────────────────────── */
@@ -77,24 +74,22 @@
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(28, 22, 14, 0.07);
+      border: 1px solid rgba(28, 22, 14, 0.14);
       border-radius: 100px;
       padding: 6px 18px;
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.13em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.88);
+      color: rgba(28, 22, 14, 0.65);
       margin-bottom: 22px;
     }
 
     .badge-sep {
       width: 1px;
       height: 10px;
-      background: rgba(255, 255, 255, 0.35);
+      background: rgba(28, 22, 14, 0.2);
     }
 
     /* ── TITLE ───────────────────────────────────── */
@@ -104,7 +99,7 @@
       font-weight: 400;
       line-height: 0.9;
       letter-spacing: 0.03em;
-      color: #ffffff;
+      color: #1c160e;
       margin-bottom: 22px;
     }
 
@@ -113,7 +108,7 @@
       font-size: clamp(14px, 1.1vw, 17px);
       font-weight: 400;
       line-height: 1.6;
-      color: rgba(255, 255, 255, 0.72);
+      color: rgba(28, 22, 14, 0.62);
       max-width: 400px;
       margin-bottom: 28px;
     }
@@ -131,18 +126,17 @@
       display: flex;
       align-items: center;
       gap: 0;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border: 1.5px solid rgba(255, 255, 255, 0.28);
+      background: rgba(255, 255, 255, 0.7);
+      border: 1.5px solid rgba(28, 22, 14, 0.14);
       border-radius: 100px;
       padding: 5px 5px 5px 20px;
+      box-shadow: 0 1px 4px rgba(28, 22, 14, 0.06);
       transition: border-color 0.2s, box-shadow 0.2s;
     }
 
     #wl-form:focus-within {
-      border-color: rgba(255, 255, 255, 0.6);
-      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
+      border-color: rgba(28, 22, 14, 0.35);
+      box-shadow: 0 0 0 3px rgba(28, 22, 14, 0.06);
     }
 
     .form-inputs {
@@ -156,23 +150,23 @@
       outline: none;
       font-family: 'Space Grotesk', sans-serif;
       font-size: 14px;
-      color: #fff;
+      color: #1c160e;
       width: 130px;
       padding: 8px 0;
     }
 
-    #wl-form input::placeholder { color: rgba(255, 255, 255, 0.45); }
+    #wl-form input::placeholder { color: rgba(28, 22, 14, 0.35); }
 
     .input-sep {
       width: 1px;
       height: 18px;
-      background: rgba(255, 255, 255, 0.22);
+      background: rgba(28, 22, 14, 0.14);
       margin: 0 14px;
     }
 
     .btn-submit {
-      background: #fff;
-      color: #0f172a;
+      background: #1c160e;
+      color: #faf9f5;
       border: none;
       border-radius: 100px;
       padding: 10px 22px;
@@ -189,22 +183,20 @@
 
     .form-note {
       font-size: 12px;
-      color: rgba(255, 255, 255, 0.45);
+      color: rgba(28, 22, 14, 0.4);
       font-weight: 500;
     }
 
     /* ── SUCCESS ──────────────────────────────────── */
     .wl-success {
       display: none;
-      background: rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1.5px solid rgba(255, 255, 255, 0.28);
+      background: rgba(255, 255, 255, 0.7);
+      border: 1.5px solid rgba(28, 22, 14, 0.14);
       border-radius: 100px;
       padding: 13px 28px;
       font-size: 14px;
       font-weight: 600;
-      color: #fff;
+      color: #1c160e;
     }
 
     /* ── SCROLLING LOGOS ──────────────────────────── */
@@ -220,7 +212,7 @@
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.45);
+      color: rgba(28, 22, 14, 0.4);
     }
 
     .logos-track-wrap {
@@ -258,8 +250,8 @@
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
-      opacity: 0.65;
-      filter: brightness(0) invert(1);
+      opacity: 0.5;
+      filter: grayscale(100%);
     }
 
     /* ── RESPONSIVE ───────────────────────────────── */
