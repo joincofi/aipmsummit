@@ -7,11 +7,7 @@
   <meta name="description" content="AI PM Summit — April 22, 2026. Virtual. When building software costs nothing, deciding what to build is everything." />
 
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%230d3a96'/%3E%3Cstop offset='1' stop-color='%23e8520d'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='7' fill='url(%23g)'/%3E%3Ctext x='16' y='22' font-family='system-ui%2Csans-serif' font-weight='900' font-size='13' fill='white' text-anchor='middle'%3EAI%3C/text%3E%3C/svg%3E" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23000'/%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2364d2ff'/%3E%3Cstop offset='1' stop-color='%23bf5af2'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctext x='16' y='22' font-family='system-ui%2Csans-serif' font-weight='800' font-size='13' fill='url(%23g)' text-anchor='middle'%3EAI%3C/text%3E%3C/svg%3E" />
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -22,95 +18,76 @@
     }
 
     body {
-      font-family: 'Space Grotesk', system-ui, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background: #000;
+      color: #f5f5f7;
       -webkit-font-smoothing: antialiased;
-    }
-
-    /* ── GRADIENT BACKGROUND ──────────────────────── */
-    .bg {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      background:
-        radial-gradient(ellipse 70% 55% at 8% 18%, rgba(251, 200, 130, 0.45) 0%, transparent 60%),
-        radial-gradient(ellipse 55% 45% at 92% 85%, rgba(236, 175, 110, 0.32) 0%, transparent 55%),
-        radial-gradient(ellipse 45% 38% at 55% 5%, rgba(210, 195, 255, 0.18) 0%, transparent 50%),
-        linear-gradient(158deg,
-          #faf9f5 0%,
-          #f7f2ea 30%,
-          #f2eadb 58%,
-          #ece0c8 100%
-        );
-    }
-
-    /* ── GRAIN OVERLAY ────────────────────────────── */
-    .grain {
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      mix-blend-mode: multiply;
-      opacity: 0.28;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)'/%3E%3C/svg%3E");
-      background-size: 250px 250px;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     /* ── CONTENT ──────────────────────────────────── */
     .content {
       position: fixed;
       inset: 0;
-      z-index: 2;
+      z-index: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 40px max(40px, 8vw);
-      color: #1c160e;
+      padding: 40px max(40px, 10vw);
     }
 
-    /* ── DATE BADGE ───────────────────────────────── */
-    .date-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: rgba(28, 22, 14, 0.07);
-      border: 1px solid rgba(28, 22, 14, 0.14);
-      border-radius: 100px;
-      padding: 6px 18px;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: rgba(28, 22, 14, 0.65);
-      margin-bottom: 22px;
+    /* ── ENTRANCE ANIMATION ──────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    .badge-sep {
-      width: 1px;
-      height: 10px;
-      background: rgba(28, 22, 14, 0.2);
+    .content > * {
+      animation: fadeUp 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .content > :nth-child(1) { animation-delay: 0.1s; }
+    .content > :nth-child(2) { animation-delay: 0.2s; }
+    .content > :nth-child(3) { animation-delay: 0.35s; }
+    .content > :nth-child(4) { animation-delay: 0.5s; }
+    .content > :nth-child(5) { animation-delay: 0.65s; }
+
+    /* ── DATE LINE ───────────────────────────────── */
+    .date-line {
+      font-size: 17px;
+      font-weight: 400;
+      color: #86868b;
+      letter-spacing: -0.005em;
+      margin-bottom: 18px;
+    }
+
+    .date-line span {
+      color: #86868b;
     }
 
     /* ── TITLE ───────────────────────────────────── */
     h1 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(88px, 16vw, 220px);
-      font-weight: 400;
-      line-height: 0.9;
-      letter-spacing: 0.03em;
-      color: #1c160e;
-      margin-bottom: 22px;
+      font-size: clamp(56px, 9vw, 96px);
+      font-weight: 700;
+      line-height: 1.04;
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, #64d2ff 0%, #5e5ce6 28%, #bf5af2 52%, #ff375f 78%, #ff9f0a 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     /* ── DESCRIPTION ─────────────────────────────── */
     .description {
-      font-size: clamp(14px, 1.1vw, 17px);
+      font-size: clamp(17px, 1.35vw, 21px);
       font-weight: 400;
-      line-height: 1.6;
-      color: rgba(28, 22, 14, 0.62);
-      max-width: 400px;
-      margin-bottom: 28px;
+      line-height: 1.47;
+      color: #86868b;
+      max-width: 460px;
+      margin-bottom: 34px;
+      letter-spacing: 0.011em;
     }
 
     /* ── WAITLIST FORM ───────────────────────────── */
@@ -118,25 +95,24 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 36px;
+      gap: 12px;
+      margin-bottom: 48px;
     }
 
     #wl-form {
       display: flex;
       align-items: center;
       gap: 0;
-      background: rgba(255, 255, 255, 0.7);
-      border: 1.5px solid rgba(28, 22, 14, 0.14);
-      border-radius: 100px;
-      padding: 5px 5px 5px 20px;
-      box-shadow: 0 1px 4px rgba(28, 22, 14, 0.06);
-      transition: border-color 0.2s, box-shadow 0.2s;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 980px;
+      padding: 4px 4px 4px 22px;
+      transition: border-color 0.25s, box-shadow 0.25s;
     }
 
     #wl-form:focus-within {
-      border-color: rgba(28, 22, 14, 0.35);
-      box-shadow: 0 0 0 3px rgba(28, 22, 14, 0.06);
+      border-color: rgba(94, 92, 230, 0.55);
+      box-shadow: 0 0 0 4px rgba(94, 92, 230, 0.12);
     }
 
     .form-inputs {
@@ -148,55 +124,59 @@
       background: none;
       border: none;
       outline: none;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 14px;
-      color: #1c160e;
-      width: 130px;
-      padding: 8px 0;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 400;
+      color: #f5f5f7;
+      width: 140px;
+      padding: 10px 0;
+      letter-spacing: 0.01em;
     }
 
-    #wl-form input::placeholder { color: rgba(28, 22, 14, 0.35); }
+    #wl-form input::placeholder { color: rgba(255, 255, 255, 0.28); }
 
     .input-sep {
       width: 1px;
       height: 18px;
-      background: rgba(28, 22, 14, 0.14);
-      margin: 0 14px;
+      background: rgba(255, 255, 255, 0.12);
+      margin: 0 16px;
     }
 
     .btn-submit {
-      background: #1c160e;
-      color: #faf9f5;
+      background: #0071e3;
+      color: #fff;
       border: none;
-      border-radius: 100px;
-      padding: 10px 22px;
-      font-size: 14px;
-      font-weight: 700;
-      font-family: 'Space Grotesk', sans-serif;
+      border-radius: 980px;
+      padding: 11px 22px;
+      font-size: 15px;
+      font-weight: 400;
+      font-family: inherit;
+      letter-spacing: 0.01em;
       cursor: pointer;
       white-space: nowrap;
-      transition: opacity 0.15s;
+      transition: background 0.2s;
     }
 
-    .btn-submit:hover  { opacity: 0.88; }
-    .btn-submit:active { opacity: 0.76; }
+    .btn-submit:hover  { background: #0077ed; }
+    .btn-submit:active { background: #0068d6; }
 
     .form-note {
       font-size: 12px;
-      color: rgba(28, 22, 14, 0.4);
-      font-weight: 500;
+      color: #6e6e73;
+      font-weight: 400;
+      letter-spacing: 0.01em;
     }
 
     /* ── SUCCESS ──────────────────────────────────── */
     .wl-success {
       display: none;
-      background: rgba(255, 255, 255, 0.7);
-      border: 1.5px solid rgba(28, 22, 14, 0.14);
-      border-radius: 100px;
-      padding: 13px 28px;
-      font-size: 14px;
-      font-weight: 600;
-      color: #1c160e;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 980px;
+      padding: 14px 28px;
+      font-size: 15px;
+      font-weight: 400;
+      color: #f5f5f7;
     }
 
     /* ── SCROLLING LOGOS ──────────────────────────── */
@@ -204,30 +184,30 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
     .logos-label {
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: 0.18em;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
-      color: rgba(28, 22, 14, 0.4);
+      color: #6e6e73;
     }
 
     .logos-track-wrap {
-      width: 560px;
+      width: 540px;
       max-width: 100%;
       overflow: hidden;
-      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-      mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%);
     }
 
     .logos-track {
       display: inline-flex;
       align-items: center;
       gap: 0;
-      animation: scroll-logos 22s linear infinite;
+      animation: scroll-logos 24s linear infinite;
       white-space: nowrap;
     }
 
@@ -238,9 +218,9 @@
 
     .logo-item {
       flex-shrink: 0;
-      width: 120px;
-      height: 28px;
-      margin: 0 8px;
+      width: 110px;
+      height: 24px;
+      margin: 0 10px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -250,8 +230,8 @@
       max-width: 100%;
       max-height: 100%;
       object-fit: contain;
-      opacity: 0.5;
-      filter: grayscale(100%);
+      opacity: 0.35;
+      filter: brightness(0) invert(1);
     }
 
     /* ── RESPONSIVE ───────────────────────────────── */
@@ -261,15 +241,17 @@
       .content {
         position: relative;
         min-height: 100vh;
-        padding: 60px 24px 36px;
+        padding: 60px 28px 40px;
         justify-content: center;
       }
 
-      h1 { font-size: 17vw; }
+      h1 { font-size: 14vw; }
+
+      .description { font-size: 17px; }
 
       #wl-form {
         flex-direction: column;
-        border-radius: 20px;
+        border-radius: 16px;
         padding: 14px;
         width: 100%;
         max-width: 360px;
@@ -279,26 +261,15 @@
       #wl-form input { width: 100%; }
       .input-sep { width: 100%; height: 1px; margin: 2px 0; }
       .btn-submit { width: 100%; text-align: center; }
-      .logo-item { width: 100px; height: 24px; }
+      .logo-item { width: 96px; height: 22px; }
     }
   </style>
 </head>
 <body>
 
-<!-- Gradient background -->
-<div class="bg"></div>
-
-<!-- Grain texture -->
-<div class="grain"></div>
-
-<!-- Content -->
 <div class="content">
 
-  <div class="date-badge">
-    <span>April 22, 2026</span>
-    <span class="badge-sep"></span>
-    <span>Virtual · Live &amp; On-Demand</span>
-  </div>
+  <p class="date-line">April 22, 2026 <span>·</span> Virtual</p>
 
   <h1>AI PM<br>Summit</h1>
 
