@@ -170,13 +170,28 @@
     /* ── SUCCESS ──────────────────────────────────── */
     .wl-success {
       display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 980px;
-      padding: 14px 28px;
+      border-radius: 20px;
+      padding: 18px 32px;
+      max-width: 360px;
+    }
+
+    .success-title {
       font-size: 15px;
-      font-weight: 400;
+      font-weight: 600;
       color: #f5f5f7;
+    }
+
+    .success-sub {
+      font-size: 13px;
+      font-weight: 400;
+      color: #86868b;
+      line-height: 1.45;
+      text-align: center;
     }
 
     /* ── SCROLLING LOGOS ──────────────────────────── */
@@ -284,7 +299,10 @@
       </div>
       <button type="submit" class="btn-submit">Join the waitlist</button>
     </form>
-    <div class="wl-success" id="wl-success">You're on the list ✓</div>
+    <div class="wl-success" id="wl-success">
+      <span class="success-title">Check your inbox</span>
+      <span class="success-sub">We sent you a confirmation email — click the link to secure your spot.</span>
+    </div>
     <p class="form-note">No spam, ever</p>
   </div>
 
@@ -334,7 +352,7 @@
 
       if (res.ok) {
         document.getElementById('wl-form').style.display = 'none';
-        document.getElementById('wl-success').style.display = 'block';
+        document.getElementById('wl-success').style.display = 'flex';
       } else {
         btn.textContent = 'Try again';
         btn.disabled = false;
