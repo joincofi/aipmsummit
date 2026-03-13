@@ -67,24 +67,16 @@
     }
 
     /* ── TITLE ───────────────────────────────────── */
-    @keyframes gradientFlow {
-      0%   { background-position: 0% 50%; }
-      50%  { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
     h1 {
       font-size: clamp(88px, 16vw, 180px);
       font-weight: 700;
       line-height: 1.0;
       letter-spacing: -0.03em;
       margin-bottom: 10px;
-      background: linear-gradient(135deg, #64d2ff, #5e5ce6, #bf5af2, #ff375f, #ff9f0a, #30d158, #64d2ff);
-      background-size: 300% 300%;
+      background: linear-gradient(135deg, #64d2ff 0%, #5e5ce6 28%, #bf5af2 52%, #ff375f 78%, #ff9f0a 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: gradientFlow 6s ease infinite;
     }
 
     /* ── DESCRIPTION ─────────────────────────────── */
