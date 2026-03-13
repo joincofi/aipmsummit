@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI PM Summit · April 22, 2026</title>
+  <meta name="description" content="The AI PM Summit — April 22, 2026. Virtual. Join the waitlist." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,900;1,900&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: #f9f9f9;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.055) 1px, transparent 1px);
+      background-size: 52px 52px;
+      color: #0d0c22;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    /* ── FLUID BLOB ───────────────────────────────── */
+    .blob-scene {
+      position: fixed;
+      top: -10%;
+      right: -8%;
+      width: 68vw;
+      height: 115vh;
+      pointer-events: none;
+      z-index: 0;
+      filter: blur(0px);
+    }
+
+    .blob-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      filter: blur(1px);
+    }
+
+    .b {
+      position: absolute;
+      border-radius: 50%;
+      mix-blend-mode: multiply;
+      filter: blur(52px);
+      animation: drift var(--dur) ease-in-out infinite alternate;
+    }
+
+    @keyframes drift {
+      from { transform: translate(0, 0) scale(1)   rotate(0deg); }
+      to   { transform: translate(var(--tx), var(--ty)) scale(var(--s)) rotate(var(--r)); }
+    }
+
+    .b1 { width: 72%; height: 68%; background: #c084fc; top: 2%;  left: 8%;  --dur:9s;  --tx:3%  ; --ty:6%;  --s:1.08; --r:8deg;  opacity:.9; }
+    .b2 { width: 60%; height: 58%; background: #e879f9; top: 18%; left: 28%; --dur:11s; --tx:-4% ; --ty:-5%; --s:1.05; --r:-6deg; opacity:.85; }
+    .b3 { width: 55%; height: 60%; background: #f472b6; top: 10%; left: 16%; --dur:13s; --tx:5%  ; --ty:8%;  --s:.95;  --r:12deg; opacity:.8; }
+    .b4 { width: 50%; height: 52%; background: #fb923c; top: 42%; left: 36%; --dur:10s; --tx:-3% ; --ty:-7%; --s:1.1;  --r:-9deg; opacity:.75; }
+    .b5 { width: 65%; height: 50%; background: #a855f7; top: 28%; left: 2%;  --dur:14s; --tx:6%  ; --ty:4%;  --s:1.03; --r:5deg;  opacity:.8; }
+    .b6 { width: 40%; height: 44%; background: #7dd3fc; top: 55%; left: 44%; --dur:8s;  --tx:-5% ; --ty:-4%; --s:.97;  --r:-11deg;opacity:.7; }
+    .b7 { width: 48%; height: 40%; background: #f0abfc; top: 0%;  left: 44%; --dur:12s; --tx:4%  ; --ty:7%;  --s:1.06; --r:7deg;  opacity:.85; }
+    .b8 { width: 36%; height: 36%; background: #fde68a; top: 60%; left: 18%; --dur:15s; --tx:-2% ; --ty:-6%; --s:1.04; --r:-4deg; opacity:.65; }
+
+    /* ── NAV ──────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 10;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 36px;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .nav-logo {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0d0c22;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-pill {
+      background: #0d0c22;
+      color: #fff;
+      border-radius: 100px;
+      padding: 8px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      border: none;
+      font-family: 'Inter', sans-serif;
+      transition: opacity 0.15s;
+    }
+
+    .nav-pill:hover { opacity: 0.8; }
+
+    .nav-arrow {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #0d0c22;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    /* ── HERO TYPE ────────────────────────────────── */
+    .hero {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      padding: 0 36px 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hero-top {}
+
+    h1 {
+      font-size: clamp(72px, 12.5vw, 188px);
+      font-weight: 900;
+      line-height: 0.88;
+      letter-spacing: -0.04em;
+      color: #0d0c22;
+      margin-top: 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ── BOTTOM ROW ───────────────────────────────── */
+    .bottom-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      position: relative;
+      z-index: 2;
+    }
+
+    .location-box {
+      background: #0d0c22;
+      color: #fff;
+      padding: 14px 20px 16px;
+      border-radius: 6px;
+      max-width: 280px;
+    }
+
+    .location-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 6px;
+    }
+
+    .location-val {
+      font-size: 22px;
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+    }
+
+    .location-val em {
+      font-style: italic;
+      font-weight: 900;
+    }
+
+    /* ── WAITLIST FORM ────────────────────────────── */
+    .waitlist-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    #wl-form {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 100px;
+      padding: 8px 8px 8px 20px;
+    }
+
+    .form-inputs {
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+
+    #wl-form input {
+      background: none;
+      border: none;
+      outline: none;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #0d0c22;
+      width: 150px;
+      padding: 4px 0;
+    }
+
+    #wl-form input::placeholder { color: #aaa; }
+
+    .input-sep {
+      width: 1px;
+      height: 18px;
+      background: rgba(0,0,0,0.12);
+      margin: 0 12px;
+    }
+
+    .btn-arrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #0d0c22;
+      color: #fff;
+      border: none;
+      border-radius: 100px;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 0.15s;
+    }
+
+    .btn-arrow:hover { opacity: 0.8; }
+
+    .arrow-circle {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px;
+    }
+
+    .form-note {
+      font-size: 11px;
+      color: rgba(0,0,0,0.35);
+      padding-right: 12px;
+    }
+
+    /* ── SUCCESS ──────────────────────────────────── */
+    .wl-success {
+      display: none;
+      background: rgba(255,255,255,0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 100px;
+      padding: 12px 28px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #0d0c22;
+    }
+
+    /* ── RESPONSIVE ───────────────────────────────── */
+    @media (max-width: 768px) {
+      h1 { font-size: 14vw; }
+
+      .bottom-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+
+      #wl-form {
+        flex-direction: column;
+        border-radius: 16px;
+        padding: 16px;
+        align-items: stretch;
+        width: 100%;
+      }
+
+      .form-inputs { flex-direction: column; gap: 10px; }
+
+      #wl-form input { width: 100%; }
+
+      .input-sep { width: 100%; height: 1px; margin: 0; }
+
+      .btn-arrow { border-radius: 100px; justify-content: center; }
+
+      .waitlist-wrap { align-items: flex-start; width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Fluid blob -->
+<div class="blob-scene">
+  <div class="blob-inner">
+    <div class="b b1"></div>
+    <div class="b b2"></div>
+    <div class="b b3"></div>
+    <div class="b b4"></div>
+    <div class="b b5"></div>
+    <div class="b b6"></div>
+    <div class="b b7"></div>
+    <div class="b b8"></div>
+  </div>
+</div>
+
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-top">
+    <h1>The AI<br>PM Summit<br>April 22,<br>2026</h1>
+  </div>
+
+  <div class="bottom-row">
+    <div class="location-box">
+      <div class="location-label">Format</div>
+      <div class="location-val">Virtual,<br><em>Live &amp; On-Demand</em></div>
+    </div>
+
+    <div class="waitlist-wrap">
+      <form id="wl-form" onsubmit="joinList(event)">
+        <div class="form-inputs">
+          <input type="text"  id="wl-name"  placeholder="First name"       required autocomplete="given-name" />
+          <div class="input-sep"></div>
+          <input type="email" id="wl-email" placeholder="Email address"     required autocomplete="email" />
+        </div>
+        <button type="submit" class="btn-arrow">Join the waitlist</button>
+      </form>
+      <div class="wl-success" id="wl-success">You are on the list. We will be in touch. ✓</div>
+      <p class="form-note">No spam, ever</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  async function joinList(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button');
+    btn.textContent = 'Joining...';
+    btn.disabled = true;
+
+    const name = document.getElementById('wl-name').value.trim();
+    const email = document.getElementById('wl-email').value.trim();
+
+    try {
+      const res = await fetch('https://api.convertkit.com/v3/forms/9201239/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          api_key: 'WFicEfSL4QrstYEfcsffxA',
+          email: email,
+          first_name: name
+        })
+      });
+
+      if (res.ok) {
+        document.getElementById('wl-form').style.display = 'none';
+        document.getElementById('wl-success').style.display = 'block';
+      } else {
+        btn.textContent = 'Try again';
+        btn.disabled = false;
+      }
+    } catch {
+      btn.textContent = 'Try again';
+      btn.disabled = false;
+    }
+  }
+</script>
+
+</body>
+</html>
