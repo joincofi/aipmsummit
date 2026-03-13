@@ -60,11 +60,14 @@
 
     /* ── HEADLINE ───────────────────────────────────── */
     .event-name {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.22em;
+      font-size: clamp(26px, 3vw, 48px);
+      font-weight: 900;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: rgba(26,15,10,0.38);
+      color: #e8603a;
+      -webkit-text-stroke: 4px #f5f1e8;
+      paint-order: stroke fill;
+      filter: drop-shadow(3px 3px 0 rgba(0,0,0,0.10));
     }
 
     .event-date {
@@ -89,13 +92,15 @@
 
     /* ── TAGLINE ─────────────────────────────────────── */
     .tagline {
-      margin-top: 18px;
-      font-size: clamp(14px, 1.35vw, 19px);
-      font-weight: 500;
-      color: rgba(26,15,10,0.5);
-      letter-spacing: -0.01em;
-      line-height: 1.45;
-      max-width: 520px;
+      margin-top: 0;
+      font-size: clamp(40px, 7vw, 108px);
+      font-weight: 900;
+      line-height: 0.88;
+      letter-spacing: -0.04em;
+      color: #1a0f0a;
+      -webkit-text-stroke: 8px #f5f1e8;
+      paint-order: stroke fill;
+      filter: drop-shadow(4px 4px 0 rgba(0,0,0,0.11));
     }
 
     /* ── WAITLIST FORM ────────────────────────────── */
