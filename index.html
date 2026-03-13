@@ -41,12 +41,13 @@
       position: fixed;
       inset: 0;
       z-index: 1;
-      padding: 40px 40px 28px;
+      padding: 40px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       text-align: center;
+      gap: 28px;
     }
 
     .hero-top {
@@ -59,43 +60,42 @@
 
     /* ── HEADLINE ───────────────────────────────────── */
     .event-name {
-      font-size: clamp(13px, 1.2vw, 17px);
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(26,15,10,0.45);
+      color: rgba(26,15,10,0.38);
     }
 
     .event-date {
-      font-size: clamp(13px, 1.1vw, 16px);
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      color: rgba(26,15,10,0.38);
-      margin-top: 4px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: rgba(26,15,10,0.28);
+      margin-top: 3px;
     }
 
     h1 {
-      font-size: clamp(36px, 6.5vw, 96px);
+      font-size: clamp(40px, 7vw, 108px);
       font-weight: 900;
-      line-height: 0.9;
+      line-height: 0.88;
       letter-spacing: -0.04em;
       color: #1a0f0a;
-      margin-top: 16px;
-      /* Sticker effect */
+      margin-top: 18px;
       -webkit-text-stroke: 8px #f5f1e8;
       paint-order: stroke fill;
-      filter: drop-shadow(4px 4px 0 rgba(0,0,0,0.12));
+      filter: drop-shadow(4px 4px 0 rgba(0,0,0,0.11));
     }
 
     /* ── TAGLINE ─────────────────────────────────────── */
     .tagline {
-      margin-top: 28px;
-      font-size: clamp(22px, 3vw, 42px);
-      font-weight: 800;
-      color: #1a0f0a;
-      letter-spacing: -0.03em;
-      line-height: 1.2;
-      max-width: 680px;
+      margin-top: 18px;
+      font-size: clamp(14px, 1.35vw, 19px);
+      font-weight: 500;
+      color: rgba(26,15,10,0.5);
+      letter-spacing: -0.01em;
+      line-height: 1.45;
+      max-width: 520px;
     }
 
     /* ── WAITLIST FORM ────────────────────────────── */
@@ -104,7 +104,7 @@
       flex-direction: column;
       align-items: center;
       gap: 10px;
-      margin-top: 28px;
+      margin-top: 22px;
     }
 
     #wl-form {
@@ -197,6 +197,7 @@
       flex-direction: column;
       align-items: center;
       flex-shrink: 0;
+      margin-top: 0;
     }
 
     .tv-antennas {
