@@ -24,45 +24,34 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── HALFTONE DOTS ──────────────────────────────── */
-    .dots {
+    /* ── WAVY LINES ─────────────────────────────────── */
+    .waves {
       position: fixed;
-      width: 340px;
-      height: 340px;
+      top: 0;
+      bottom: 0;
+      width: 240px;
       z-index: 0;
       pointer-events: none;
-      background-size: 20px 20px;
+      overflow: visible;
     }
 
-    .dots-tl {
-      top: 0; left: 0;
-      background-image: radial-gradient(circle, #e8739a 3px, transparent 3px);
-      -webkit-mask-image: radial-gradient(ellipse 300px 300px at 0% 0%, black, transparent 78%);
-      mask-image: radial-gradient(ellipse 300px 300px at 0% 0%, black, transparent 78%);
+    .waves-left {
+      left: 0;
+      -webkit-mask-image: linear-gradient(to right, black 25%, transparent 100%);
+      mask-image: linear-gradient(to right, black 25%, transparent 100%);
     }
 
-    .dots-tr {
-      top: 0; right: 0;
-      background-image: radial-gradient(circle, #e8603a 3px, transparent 3px);
-      background-position: 10px 0;
-      -webkit-mask-image: radial-gradient(ellipse 300px 300px at 100% 0%, black, transparent 78%);
-      mask-image: radial-gradient(ellipse 300px 300px at 100% 0%, black, transparent 78%);
+    .waves-right {
+      right: 0;
+      transform: scaleX(-1);
+      -webkit-mask-image: linear-gradient(to right, black 25%, transparent 100%);
+      mask-image: linear-gradient(to right, black 25%, transparent 100%);
     }
 
-    .dots-bl {
-      bottom: 0; left: 0;
-      background-image: radial-gradient(circle, #f0b030 3px, transparent 3px);
-      background-position: 0 10px;
-      -webkit-mask-image: radial-gradient(ellipse 300px 300px at 0% 100%, black, transparent 78%);
-      mask-image: radial-gradient(ellipse 300px 300px at 0% 100%, black, transparent 78%);
-    }
-
-    .dots-br {
-      bottom: 0; right: 0;
-      background-image: radial-gradient(circle, #e8739a 3px, transparent 3px);
-      background-position: 10px 10px;
-      -webkit-mask-image: radial-gradient(ellipse 300px 300px at 100% 100%, black, transparent 78%);
-      mask-image: radial-gradient(ellipse 300px 300px at 100% 100%, black, transparent 78%);
+    .waves svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
     }
 
     /* ── HERO ───────────────────────────────────────── */
@@ -101,19 +90,14 @@
 
     /* ── TAGLINE ─────────────────────────────────────── */
     .tagline {
-      margin-top: 28px;
-      display: inline-block;
-      background: #e8603a;
-      color: #fff;
-      font-size: clamp(13px, 1.15vw, 16px);
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      line-height: 1.45;
-      padding: 13px 26px;
-      border-radius: 100px;
-      border: 2.5px solid #1a0f0a;
-      box-shadow: 3px 3px 0 #1a0f0a;
-      max-width: 540px;
+      margin-top: 22px;
+      font-size: clamp(16px, 1.6vw, 22px);
+      font-weight: 600;
+      color: #1a0f0a;
+      letter-spacing: -0.02em;
+      line-height: 1.4;
+      max-width: 600px;
+      opacity: 0.75;
     }
 
     /* ── WAITLIST FORM ────────────────────────────── */
@@ -208,41 +192,106 @@
       box-shadow: 4px 4px 0 #1a0f0a;
     }
 
-    /* ── BOTTOM INFO ─────────────────────────────────── */
-    .bottom-row {
+    /* ── RETRO TV ────────────────────────────────────── */
+    .tv {
       position: absolute;
-      bottom: 32px;
-      left: 40px;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
       z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .location-box {
-      background: #fff;
-      border: 2.5px solid #1a0f0a;
-      color: #1a0f0a;
-      padding: 12px 18px 14px;
+    .tv-antennas {
+      display: flex;
+      justify-content: center;
+      gap: 22px;
+      align-items: flex-end;
+      height: 34px;
+      margin-bottom: -1px;
+    }
+
+    .antenna {
+      width: 3px;
+      height: 32px;
+      background: #1a0f0a;
+      border-radius: 2px 2px 0 0;
+    }
+
+    .antenna-l { transform: rotate(-18deg); transform-origin: bottom center; }
+    .antenna-r { transform: rotate(18deg);  transform-origin: bottom center; }
+
+    .tv-body {
+      background: #fff8ee;
+      border: 3px solid #1a0f0a;
+      border-radius: 32px 32px 22px 22px;
+      box-shadow: 4px 4px 0 #1a0f0a;
+      padding: 14px 14px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tv-screen {
+      background: #f0e6d0;
+      border: 2px solid #1a0f0a;
       border-radius: 16px;
-      box-shadow: 3px 3px 0 #1a0f0a;
+      padding: 11px 18px 13px;
+      text-align: center;
+      min-width: 148px;
+      box-shadow: inset 2px 2px 3px rgba(0,0,0,0.07);
     }
 
     .location-label {
-      font-size: 10px;
+      font-size: 9px;
       font-weight: 700;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: rgba(26,15,10,0.4);
-      margin-bottom: 5px;
+      margin-bottom: 4px;
     }
 
     .location-val {
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 900;
-      line-height: 1.15;
+      line-height: 1.2;
       letter-spacing: -0.025em;
+      color: #1a0f0a;
     }
 
-    .location-val em {
-      font-style: italic;
+    .location-val em { font-style: italic; }
+
+    .tv-knobs {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      padding-right: 4px;
+    }
+
+    .tv-knob {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      border: 2px solid #1a0f0a;
+      box-shadow: 1px 1px 0 #1a0f0a;
+    }
+
+    .tv-knob:nth-child(1) { background: #e8603a; }
+    .tv-knob:nth-child(2) { background: #e8739a; }
+
+    .tv-legs {
+      display: flex;
+      justify-content: space-around;
+      width: 70%;
+    }
+
+    .tv-leg {
+      width: 11px;
+      height: 12px;
+      background: #1a0f0a;
+      border-radius: 0 0 5px 5px;
     }
 
     /* ── RESPONSIVE ───────────────────────────────── */
@@ -251,7 +300,7 @@
       .hero { position: relative; min-height: 100vh; padding: 60px 24px 120px; }
       h1 { font-size: 13vw; -webkit-text-stroke: 6px #f5f1e8; }
       .tagline { border-radius: 16px; font-size: 14px; }
-      .dots { width: 200px; height: 200px; }
+      .waves { display: none; }
 
       #wl-form {
         flex-direction: column;
@@ -273,11 +322,41 @@
 </head>
 <body>
 
-<!-- Halftone dots -->
-<div class="dots dots-tl"></div>
-<div class="dots dots-tr"></div>
-<div class="dots dots-bl"></div>
-<div class="dots dots-br"></div>
+<!-- Wavy lines -->
+<div class="waves waves-left">
+  <svg viewBox="0 0 240 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 50 C 30,28 90,72 130,50 C 170,28 230,72 250,50"   stroke="#e8739a" stroke-width="2.5" fill="none" opacity="0.85"/>
+    <path d="M0 110 C 30,88 90,132 130,110 C 170,88 230,132 250,110" stroke="#e8603a" stroke-width="2.5" fill="none" opacity="0.85"/>
+    <path d="M0 170 C 30,148 90,192 130,170 C 170,148 230,192 250,170" stroke="#f0b030" stroke-width="2.5" fill="none" opacity="0.85"/>
+    <path d="M0 230 C 30,208 90,252 130,230 C 170,208 230,252 250,230" stroke="#e8739a" stroke-width="2.5" fill="none" opacity="0.85"/>
+    <path d="M0 290 C 30,268 90,312 130,290 C 170,268 230,312 250,290" stroke="#e8603a" stroke-width="2.5" fill="none" opacity="0.85"/>
+    <path d="M0 350 C 30,328 90,372 130,350 C 170,328 230,372 250,350" stroke="#f0b030" stroke-width="2.5" fill="none" opacity="0.85"/>
+    <path d="M0 410 C 30,388 90,432 130,410 C 170,388 230,432 250,410" stroke="#e8739a" stroke-width="2.5" fill="none" opacity="0.85"/>
+    <path d="M0 470 C 30,448 90,492 130,470 C 170,448 230,492 250,470" stroke="#e8603a" stroke-width="2.5" fill="none" opacity="0.85"/>
+    <path d="M0 530 C 30,508 90,552 130,530 C 170,508 230,552 250,530" stroke="#f0b030" stroke-width="2.5" fill="none" opacity="0.85"/>
+    <path d="M0 590 C 30,568 90,612 130,590 C 170,568 230,612 250,590" stroke="#e8739a" stroke-width="2.5" fill="none" opacity="0.85"/>
+    <path d="M0 650 C 30,628 90,672 130,650 C 170,628 230,672 250,650" stroke="#e8603a" stroke-width="2.5" fill="none" opacity="0.85"/>
+    <path d="M0 710 C 30,688 90,732 130,710 C 170,688 230,732 250,710" stroke="#f0b030" stroke-width="2.5" fill="none" opacity="0.85"/>
+    <path d="M0 770 C 30,748 90,792 130,770 C 170,748 230,792 250,770" stroke="#e8739a" stroke-width="2.5" fill="none" opacity="0.85"/>
+  </svg>
+</div>
+<div class="waves waves-right">
+  <svg viewBox="0 0 240 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 50 C 30,28 90,72 130,50 C 170,28 230,72 250,50"   stroke="#e8739a" stroke-width="2.5" fill="none" opacity="0.85"/>
+    <path d="M0 110 C 30,88 90,132 130,110 C 170,88 230,132 250,110" stroke="#e8603a" stroke-width="2.5" fill="none" opacity="0.85"/>
+    <path d="M0 170 C 30,148 90,192 130,170 C 170,148 230,192 250,170" stroke="#f0b030" stroke-width="2.5" fill="none" opacity="0.85"/>
+    <path d="M0 230 C 30,208 90,252 130,230 C 170,208 230,252 250,230" stroke="#e8739a" stroke-width="2.5" fill="none" opacity="0.85"/>
+    <path d="M0 290 C 30,268 90,312 130,290 C 170,268 230,312 250,290" stroke="#e8603a" stroke-width="2.5" fill="none" opacity="0.85"/>
+    <path d="M0 350 C 30,328 90,372 130,350 C 170,328 230,372 250,350" stroke="#f0b030" stroke-width="2.5" fill="none" opacity="0.85"/>
+    <path d="M0 410 C 30,388 90,432 130,410 C 170,388 230,432 250,410" stroke="#e8739a" stroke-width="2.5" fill="none" opacity="0.85"/>
+    <path d="M0 470 C 30,448 90,492 130,470 C 170,448 230,492 250,470" stroke="#e8603a" stroke-width="2.5" fill="none" opacity="0.85"/>
+    <path d="M0 530 C 30,508 90,552 130,530 C 170,508 230,552 250,530" stroke="#f0b030" stroke-width="2.5" fill="none" opacity="0.85"/>
+    <path d="M0 590 C 30,568 90,612 130,590 C 170,568 230,612 250,590" stroke="#e8739a" stroke-width="2.5" fill="none" opacity="0.85"/>
+    <path d="M0 650 C 30,628 90,672 130,650 C 170,628 230,672 250,650" stroke="#e8603a" stroke-width="2.5" fill="none" opacity="0.85"/>
+    <path d="M0 710 C 30,688 90,732 130,710 C 170,688 230,732 250,710" stroke="#f0b030" stroke-width="2.5" fill="none" opacity="0.85"/>
+    <path d="M0 770 C 30,748 90,792 130,770 C 170,748 230,792 250,770" stroke="#e8739a" stroke-width="2.5" fill="none" opacity="0.85"/>
+  </svg>
+</div>
 
 <!-- Hero -->
 <div class="hero">
@@ -298,10 +377,24 @@
     </div>
   </div>
 
-  <div class="bottom-row">
-    <div class="location-box">
-      <div class="location-label">Format</div>
-      <div class="location-val">Virtual,<br><em>Live &amp; On-Demand</em></div>
+  <div class="tv">
+    <div class="tv-antennas">
+      <div class="antenna antenna-l"></div>
+      <div class="antenna antenna-r"></div>
+    </div>
+    <div class="tv-body">
+      <div class="tv-screen">
+        <div class="location-label">Format</div>
+        <div class="location-val">Virtual,<br><em>Live &amp; On-Demand</em></div>
+      </div>
+      <div class="tv-knobs">
+        <div class="tv-knob"></div>
+        <div class="tv-knob"></div>
+      </div>
+    </div>
+    <div class="tv-legs">
+      <div class="tv-leg"></div>
+      <div class="tv-leg"></div>
     </div>
   </div>
 </div>
