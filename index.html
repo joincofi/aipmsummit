@@ -69,41 +69,23 @@
     .hero {
       padding: 100px 0 120px;
       border-bottom: 2px solid var(--text);
-      position: relative; overflow: hidden;
-      background:
-        radial-gradient(ellipse at 10% 55%, rgba(255, 130, 80, 0.55) 0%, transparent 48%),
-        radial-gradient(ellipse at 90% 10%, rgba(255, 150, 170, 0.5) 0%, transparent 45%),
-        radial-gradient(ellipse at 70% 90%, rgba(255, 190, 120, 0.35) 0%, transparent 40%),
-        #fdf5ef;
-    }
-    .hero-orb {
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: min(700px, 80vw);
-      height: min(700px, 80vw);
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.95);
-      box-shadow: 0 0 120px 80px rgba(255,255,255,0.85);
-      animation: orb-drift 9s ease-in-out infinite;
-      pointer-events: none;
-      z-index: 0;
-    }
-    @keyframes orb-drift {
-      0%, 100% { transform: translate(-50%, -50%) scale(1); }
-      50%       { transform: translate(-50%, -52%) scale(1.03); }
-    }
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      background: rgba(255, 255, 255, 0.2);
-      z-index: 0;
+      position: relative;
+      background: #FEC858;
     }
     .hero .wrap {
-      display: flex; flex-direction: column; align-items: center; text-align: center;
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center; gap: 60px;
       position: relative; z-index: 1;
+    }
+    .hero-content { text-align: left; }
+    .hero-visual img {
+      width: 100%; border-radius: 24px;
+      display: block;
+    }
+    @media (max-width: 860px) {
+      .hero .wrap { grid-template-columns: 1fr; }
+      .hero-content { text-align: center; }
+      .hero-visual { max-width: 360px; margin: 0 auto; }
     }
     .hero-badge {
       display: inline-block; background: var(--yellow); border: 2px solid var(--text);
@@ -115,8 +97,9 @@
       font-size: clamp(56px, 7vw, 88px);
       font-weight: 900; line-height: 1.15;
       letter-spacing: -0.04em; margin-bottom: 24px;
+      color: #000;
     }
-    .hero-title span { color: var(--blue); }
+    .hero-title span { color: #000; }
     .hero-sub {
       font-size: 20px; font-weight: 600; color: var(--text);
       max-width: 600px; margin: 0 auto 40px; line-height: 1.5;
@@ -124,7 +107,7 @@
 
     /* High-Converting Hero Form */
     .optin-form {
-      display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: 480px; margin: 0 auto;
+      display: flex; flex-direction: column; align-items: flex-start; gap: 12px; max-width: 480px;
     }
     .optin-input-group {
       display: flex; gap: 8px;
@@ -144,7 +127,7 @@
     .optin-btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--text); }
     .optin-btn:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0 var(--text); }
     .optin-guarantee {
-      font-size: 13px; font-weight: 600; opacity: 0.6; display: flex; align-items: center; gap: 6px; justify-content: center;
+      font-size: 13px; font-weight: 600; opacity: 0.6; display: flex; align-items: center; gap: 6px;
     }
 
     /* ━━━ SOCIAL PROOF BAR ━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -352,7 +335,6 @@
 </nav>
 
 <section class="hero">
-  <div class="hero-orb"></div>
   <div class="wrap">
     <div class="hero-content">
       <div class="hero-badge">April 22 &middot; Live Virtual Event</div>
@@ -371,6 +353,9 @@
           Early bird pricing available &middot; Includes recordings
         </div>
       </div>
+    </div>
+    <div class="hero-visual">
+      <img src="images/hero-visual.png" alt="AI PM Summit">
     </div>
   </div>
 </section>
