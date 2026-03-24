@@ -130,6 +130,17 @@
       font-size: 13px; font-weight: 600; opacity: 0.6; display: flex; align-items: center; gap: 6px;
     }
 
+    /* ━━━ COUNTDOWN TIMER ━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .countdown {
+      display: inline-flex; gap: 8px; align-items: center;
+      background: rgba(0,0,0,0.08); border: 2px solid rgba(0,0,0,0.15);
+      border-radius: 10px; padding: 10px 16px; margin-bottom: 20px;
+    }
+    .countdown-unit { display: flex; flex-direction: column; align-items: center; min-width: 40px; }
+    .countdown-num { font-size: 28px; font-weight: 900; line-height: 1; letter-spacing: -0.02em; }
+    .countdown-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.6; margin-top: 2px; }
+    .countdown-sep { font-size: 24px; font-weight: 900; opacity: 0.4; margin-bottom: 8px; }
+
     /* ━━━ SOCIAL PROOF BAR ━━━━━━━━━━━━━━━━━━━━━━━ */
     .social-proof {
       border-bottom: 2px solid var(--text); padding: 0; background: #fff;
@@ -329,7 +340,7 @@
       AI PM Summit
     </a>
     <div class="nav-links">
-      <a href="https://luma.com/dxnkd9rl" target="_blank" class="nav-cta">Register</a>
+      <a href="https://lu.ma/aipmsummit" target="_blank" class="nav-cta">Register</a>
     </div>
   </div>
 </nav>
@@ -344,9 +355,18 @@
       </p>
       
       <div class="optin-form" style="display: block;">
-        <a href="https://luma.com/dxnkd9rl" target="_blank" class="optin-btn" style="flex-direction:column; gap:2px; line-height:1.2;">
+        <div class="countdown" id="hero-countdown">
+          <div class="countdown-unit"><span class="countdown-num" id="h-days">--</span><span class="countdown-label">Days</span></div>
+          <span class="countdown-sep">:</span>
+          <div class="countdown-unit"><span class="countdown-num" id="h-hours">--</span><span class="countdown-label">Hrs</span></div>
+          <span class="countdown-sep">:</span>
+          <div class="countdown-unit"><span class="countdown-num" id="h-mins">--</span><span class="countdown-label">Min</span></div>
+          <span class="countdown-sep">:</span>
+          <div class="countdown-unit"><span class="countdown-num" id="h-secs">--</span><span class="countdown-label">Sec</span></div>
+        </div>
+        <a href="https://lu.ma/aipmsummit" target="_blank" class="optin-btn" style="flex-direction:column; gap:2px; line-height:1.2;">
           <span>Register &rarr;</span>
-          <span style="font-size:11px; font-weight:700; opacity:0.75; text-transform:uppercase; letter-spacing:0.05em;">2-for-1 while supplies last</span>
+          <span style="font-size:11px; font-weight:700; opacity:0.75; text-transform:uppercase; letter-spacing:0.05em;">Early Bird 2-for-1 &mdash; Available until Apr 10</span>
         </a>
         <div class="optin-guarantee" style="margin-top: 16px;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
@@ -495,7 +515,7 @@
 
 <section class="section agenda-section" id="agenda">
   <div class="wrap">
-    <h2 class="section-title" style="text-align: center; margin-bottom: 16px;">The full agenda.</h2>
+    <h2 class="section-title" style="text-align: center; margin-bottom: 16px;">Agenda</h2>
     <div class="agenda-list">
       <div class="agenda-row">
         <img src="images/speakers/rishit.jpg" alt="Rishit Bhatia" class="agenda-avatar">
@@ -593,7 +613,7 @@
 
 <section class="faq-section" id="faq">
   <div class="wrap">
-    <h2 class="faq-title">Questions? Answers.</h2>
+    <h2 class="faq-title">Questions?</h2>
     <div class="faq-list">
 
       <div class="faq-item">
@@ -660,11 +680,21 @@
   <div class="wrap">
     <h2 class="reg-title">See you April 22</h2>
     <p class="reg-sub">Starting 12 PM EST &middot; Live online &middot; Recordings included</p>
+
+    <div class="countdown" id="reg-countdown" style="margin: 32px auto 0; justify-content: center;">
+      <div class="countdown-unit"><span class="countdown-num" id="r-days">--</span><span class="countdown-label">Days</span></div>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-unit"><span class="countdown-num" id="r-hours">--</span><span class="countdown-label">Hrs</span></div>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-unit"><span class="countdown-num" id="r-mins">--</span><span class="countdown-label">Min</span></div>
+      <span class="countdown-sep">:</span>
+      <div class="countdown-unit"><span class="countdown-num" id="r-secs">--</span><span class="countdown-label">Sec</span></div>
+    </div>
     
-    <div style="margin-top: 40px;">
-      <a href="https://luma.com/dxnkd9rl" target="_blank" class="btn-reg" style="flex-direction:column; gap:2px; line-height:1.2;">
+    <div style="margin-top: 24px;">
+      <a href="https://lu.ma/aipmsummit" target="_blank" class="btn-reg" style="flex-direction:column; gap:2px; line-height:1.2;">
         <span>Register &rarr;</span>
-        <span style="font-size:11px; font-weight:700; opacity:0.75; text-transform:uppercase; letter-spacing:0.05em;">2-for-1 while supplies last</span>
+        <span style="font-size:11px; font-weight:700; opacity:0.75; text-transform:uppercase; letter-spacing:0.05em;">Early Bird 2-for-1 &mdash; Available until Apr 10</span>
       </a>
     </div>
   </div>
@@ -684,6 +714,41 @@
     </div>
   </div>
 </footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.querySelector('.faq-q').addEventListener('click', () => {
+      item.classList.toggle('open');
+    });
+  });
+
+  // Countdown to April 10, 2026 11:59 PM local time
+  const deadline = new Date('2026-04-10T23:59:00');
+  function updateCountdown() {
+    const now = new Date();
+    const diff = deadline - now;
+    if (diff <= 0) {
+      ['h-days','h-hours','h-mins','h-secs','r-days','r-hours','r-mins','r-secs'].forEach(id => {
+        const el = document.getElementById(id); if (el) el.textContent = '00';
+      });
+      return;
+    }
+    const days  = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins  = Math.floor((diff % 3600000) / 60000);
+    const secs  = Math.floor((diff % 60000) / 1000);
+    const pad = n => String(n).padStart(2,'0');
+    ['h','r'].forEach(p => {
+      const d = document.getElementById(p+'-days');   if(d) d.textContent = pad(days);
+      const h = document.getElementById(p+'-hours');  if(h) h.textContent = pad(hours);
+      const m = document.getElementById(p+'-mins');   if(m) m.textContent = pad(mins);
+      const s = document.getElementById(p+'-secs');   if(s) s.textContent = pad(secs);
+    });
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
 
 </body>
 </html>
