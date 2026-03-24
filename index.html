@@ -75,14 +75,13 @@
     .hero-bubble {
       position: absolute; border-radius: 8px;
       border: 3px solid rgba(0,0,0,0.12);
-      pointer-events: none;
+      pointer-events: none; z-index: 2;
     }
-    .hero-bubble:nth-child(1) { width: 120px; height: 120px; top: 10%; left: 5%; background: rgba(255,255,255,0.25); animation: float1 8s ease-in-out infinite; }
-    .hero-bubble:nth-child(2) { width: 60px;  height: 60px;  top: 60%; left: 12%; background: rgba(255,100,80,0.2); animation: float2 6s ease-in-out infinite; }
-    .hero-bubble:nth-child(3) { width: 200px; height: 200px; top: -40px; right: 8%; background: rgba(255,255,255,0.15); animation: float3 10s ease-in-out infinite; }
-    .hero-bubble:nth-child(4) { width: 80px;  height: 80px;  bottom: 10%; right: 20%; background: rgba(80,80,255,0.15); animation: float1 7s ease-in-out infinite 1s; }
-    .hero-bubble:nth-child(5) { width: 40px;  height: 40px;  top: 40%; right: 5%;  background: rgba(255,180,0,0.3); animation: float2 5s ease-in-out infinite 2s; }
-    .hero-bubble:nth-child(6) { width: 150px; height: 150px; bottom: -30px; left: 30%; background: rgba(255,255,255,0.2); animation: float3 9s ease-in-out infinite 0.5s; }
+    .hero-bubble:nth-child(1) { width: 120px; height: 120px; top: 10%; left: 5%; background: linear-gradient(135deg, rgba(139,92,246,0.4), rgba(59,130,246,0.3)); border-color: rgba(139,92,246,0.5); animation: float1 8s ease-in-out infinite; }
+    .hero-bubble:nth-child(2) { width: 60px;  height: 60px;  top: 60%; left: 12%; background: linear-gradient(135deg, rgba(236,72,153,0.4), rgba(239,68,68,0.3)); border-color: rgba(236,72,153,0.5); animation: float2 6s ease-in-out infinite; }
+    .hero-bubble:nth-child(3) { width: 200px; height: 200px; top: -40px; right: 8%; background: linear-gradient(135deg, rgba(6,182,212,0.35), rgba(16,185,129,0.25)); border-color: rgba(6,182,212,0.5); animation: float3 10s ease-in-out infinite; }
+    .hero-bubble:nth-child(4) { width: 80px;  height: 80px;  bottom: 12%; right: 18%; background: linear-gradient(135deg, rgba(245,158,11,0.4), rgba(239,68,68,0.3)); border-color: rgba(245,158,11,0.5); animation: float1 7s ease-in-out infinite 1s; }
+    .hero-bubble:nth-child(5) { width: 50px;  height: 50px;  top: 38%; right: 6%;  background: linear-gradient(135deg, rgba(217,70,239,0.4), rgba(139,92,246,0.3)); border-color: rgba(217,70,239,0.5); animation: float2 5s ease-in-out infinite 2s; }
     @keyframes float1 {
       0%, 100% { transform: translateY(0) scale(1); }
       50%       { transform: translateY(-24px) scale(1.04); }
@@ -110,6 +109,7 @@
       .hero .wrap { grid-template-columns: 1fr; }
       .hero-content { text-align: center; }
       .hero-visual { max-width: 360px; margin: 0 auto; }
+      .hero-bubble { display: none; }
     }
     .hero-badge {
       display: inline-block; background: rgba(255,255,255,0.35); border: 2px solid rgba(255,255,255,0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
@@ -384,6 +384,8 @@
 </nav>
 
 <section class="hero">
+  <div class="hero-bubble"></div>
+  <div class="hero-bubble"></div>
   <div class="hero-bubble"></div>
   <div class="hero-bubble"></div>
   <div class="hero-bubble"></div>
