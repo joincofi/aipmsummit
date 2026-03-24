@@ -80,31 +80,40 @@
       position: absolute;
       top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      width: min(860px, 88vw);
-      height: min(860px, 88vw);
+      width: min(700px, 80vw);
+      height: min(700px, 80vw);
       border-radius: 50%;
-      background: #ffffff;
-      box-shadow: 0 0 100px 60px rgba(255,255,255,0.9);
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 0 120px 80px rgba(255,255,255,0.85);
       animation: orb-drift 9s ease-in-out infinite;
       pointer-events: none;
+      z-index: 0;
     }
     @keyframes orb-drift {
       0%, 100% { transform: translate(-50%, -50%) scale(1); }
       50%       { transform: translate(-50%, -52%) scale(1.03); }
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      background: rgba(255, 255, 255, 0.2);
+      z-index: 0;
     }
     .hero .wrap {
       display: flex; flex-direction: column; align-items: center; text-align: center;
       position: relative; z-index: 1;
     }
     .hero-badge {
-      display: inline-block; background: var(--pink); border: 2px solid var(--text);
+      display: inline-block; background: var(--yellow); border: 2px solid var(--text);
       padding: 6px 16px; border-radius: 6px; font-size: 14px; font-weight: 800;
       text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px;
       box-shadow: 3px 3px 0 var(--text);
     }
     .hero-title {
       font-size: clamp(56px, 7vw, 88px);
-      font-weight: 900; line-height: 0.95;
+      font-weight: 900; line-height: 1.15;
       letter-spacing: -0.04em; margin-bottom: 24px;
     }
     .hero-title span { color: var(--blue); }
@@ -146,7 +155,7 @@
     .proof-label {
       text-align: center; padding: 28px 0 0;
       font-size: 13px; font-weight: 800; text-transform: uppercase;
-      letter-spacing: 0.1em; opacity: 0.4;
+      letter-spacing: 0.1em; opacity: 1; color: #000;
     }
     .proof-scroll-wrap {
       position: relative; overflow: hidden;
@@ -171,7 +180,7 @@
     .proof-logo-item img {
       width: auto;
       height: 90px;
-      filter: brightness(0) opacity(0.45);
+      filter: brightness(0);
     }
 
     /* ━━━ VALUE PROPS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
@@ -184,6 +193,21 @@
     .vp-icon { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--text); margin-bottom: 24px; }
     .vp-title { font-size: 24px; font-weight: 900; margin-bottom: 12px; }
     .vp-desc { font-size: 16px; font-weight: 500; line-height: 1.5; opacity: 0.8; }
+
+    /* ━━━ TESTIMONIALS ━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .testimonials { padding: 120px 0; border-bottom: 2px solid var(--text); background: var(--bg); }
+    .testi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .testi-card {
+      border: 2px solid var(--text); border-radius: 16px; padding: 32px 28px;
+      background: #fff; box-shadow: 4px 4px 0 var(--text);
+      display: flex; flex-direction: column; gap: 20px;
+    }
+    .testi-card-text { font-size: 16px; font-weight: 600; line-height: 1.6; opacity: 0.85; }
+    .testi-card-name { font-size: 16px; font-weight: 900; margin-bottom: 3px; }
+    .testi-card-company { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--blue); }
+    @media (max-width: 800px) {
+      .testi-grid { grid-template-columns: 1fr; }
+    }
 
     /* ━━━ SPEAKERS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
     .section { padding: 120px 0; }
@@ -198,7 +222,7 @@
       background: #fff; box-shadow: 4px 4px 0 var(--text);
     }
     .spk-card:hover { transform: translate(-3px, -3px); box-shadow: 7px 7px 0 var(--text); }
-    .spk-img-wrap { width: 60%; aspect-ratio: 1; background: var(--pink); overflow: hidden; border: 2px solid var(--text); border-radius: 6px; }
+    .spk-img-wrap { width: 60%; aspect-ratio: 1; background: var(--pink); overflow: hidden; border: 2px solid var(--text); border-radius: 50%; }
     .spk-img { width: 100%; height: 100%; object-fit: cover; }
     .spk-name { font-size: 20px; font-weight: 900; line-height: 1.1; }
     .spk-role { font-size: 14px; font-weight: 700; color: var(--blue); }
@@ -208,7 +232,7 @@
     .agenda-section { background: #fff; border-top: 2px solid var(--text); }
     .agenda-list { max-width: 900px; margin: 0 auto; border: 2px solid var(--text); border-radius: 16px; box-shadow: 8px 8px 0 var(--text); background: var(--bg); overflow: hidden; }
     .agenda-row {
-      display: grid; grid-template-columns: 160px 1fr auto;
+      display: grid; grid-template-columns: auto 160px 1fr;
       align-items: center;
       padding: 28px 40px; border-bottom: 2px solid var(--text);
       background: #fff; transition: background 0.2s; gap: 24px;
@@ -219,7 +243,8 @@
     .agenda-time .est { font-size: 18px; color: var(--blue); }
     .agenda-time span { opacity: 0.75; font-weight: 700; font-size: 12px; }
     .agenda-title { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
-    .agenda-spk { font-size: 15px; font-weight: 600; color: var(--red); }
+    .agenda-spk { font-size: 15px; font-weight: 700; color: var(--text); }
+    .agenda-role { font-size: 13px; font-weight: 600; color: var(--red); margin-top: 2px; }
     .agenda-avatar {
       width: 64px; height: 64px; border-radius: 50%;
       border: 2px solid var(--text); object-fit: cover;
@@ -299,10 +324,10 @@
       .section-sub { text-align: left; }
       .spk-grid { grid-template-columns: 1fr; }
       
-      .agenda-row { grid-template-columns: 1fr auto; gap: 12px; padding: 20px 24px; }
-      .agenda-time { grid-column: 1 / -1; flex-direction: row; align-items: baseline; gap: 12px; }
-      .agenda-content { grid-column: 1; }
-      .agenda-avatar { grid-column: 2; grid-row: 2; align-self: start; }
+      .agenda-row { grid-template-columns: auto 1fr; gap: 12px; padding: 20px 24px; }
+      .agenda-avatar { grid-column: 1; grid-row: 1 / 3; align-self: center; }
+      .agenda-time { grid-column: 2; flex-direction: row; align-items: baseline; gap: 12px; }
+      .agenda-content { grid-column: 2; }
       
       .reg-form { flex-direction: column; }
       .btn-reg { padding: 20px; }
@@ -318,11 +343,10 @@
 <nav class="nav">
   <div class="wrap">
     <a href="#" class="nav-logo">
-      <div class="nav-logo-mark"></div>
       AI PM Summit
     </a>
     <div class="nav-links">
-      <a href="https://luma.com/dxnkd9rl" target="_blank" class="nav-cta">Get Your Ticket</a>
+      <a href="https://luma.com/dxnkd9rl" target="_blank" class="nav-cta">Register</a>
     </div>
   </div>
 </nav>
@@ -332,13 +356,16 @@
   <div class="wrap">
     <div class="hero-content">
       <div class="hero-badge">April 22 &middot; Live Virtual Event</div>
-      <h1 class="hero-title">Built for PMs navigating <span>the AI shift.</span></h1>
+      <h1 class="hero-title">Where <span>AI PMs</span> gather</h1>
       <p class="hero-sub">
         How do you write requirements for an agent? What does good AI product taste look like? How do you evaluate what you can't fully spec? Get answers directly from the people figuring it out.
       </p>
       
       <div class="optin-form" style="display: block;">
-        <a href="https://luma.com/dxnkd9rl" target="_blank" class="optin-btn">Get Your Ticket &rarr;</a>
+        <a href="https://luma.com/dxnkd9rl" target="_blank" class="optin-btn" style="flex-direction:column; gap:2px; line-height:1.2;">
+          <span>Register &rarr;</span>
+          <span style="font-size:11px; font-weight:700; opacity:0.75; text-transform:uppercase; letter-spacing:0.05em;">2-for-1 while supplies last</span>
+        </a>
         <div class="optin-guarantee" style="margin-top: 16px;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
           Early bird pricing available &middot; Includes recordings
@@ -375,6 +402,90 @@
   </div>
 </div>
 
+<section class="section" id="speakers">
+  <div class="wrap">
+    <div class="section-header">
+      <h2 class="section-title">Speakers</h2>
+    </div>
+    
+    <div class="spk-grid">
+      <!-- Speaker 1 -->
+      <div class="spk-card">
+        <div class="spk-img-wrap"><img src="images/speakers/pavan.jpg" alt="Pavan Bandarupalli" class="spk-img"></div>
+        <div class="spk-name">Pavan Bandarupalli</div>
+        <div class="spk-role">Principal Product Manager · Gusto</div>
+      </div>
+      <!-- Speaker 2 -->
+      <div class="spk-card">
+        <div class="spk-img-wrap" style="background: var(--yellow);"><img src="images/speakers/amy.jpg" alt="Amy Mitchell" class="spk-img"></div>
+        <div class="spk-name">Amy Mitchell</div>
+        <div class="spk-role">Senior Product Manager · Dell Technologies</div>
+      </div>
+      <!-- Speaker 3 -->
+      <div class="spk-card">
+        <div class="spk-img-wrap" style="background: var(--blue);"><img src="images/speakers/rishit.jpg" alt="Rishit Bhatia" class="spk-img"></div>
+        <div class="spk-name">Rishit Bhatia</div>
+        <div class="spk-role">Senior Product Manager · MongoDB</div>
+      </div>
+      <!-- Speaker 4 -->
+      <div class="spk-card">
+        <div class="spk-img-wrap" style="background: var(--green);"><img src="images/speakers/arun.jpg" alt="Arun Janakiraman" class="spk-img"></div>
+        <div class="spk-name">Arun Janakiraman</div>
+        <div class="spk-role">GPM, Head of Zoom Apps &amp; Marketplace · Zoom</div>
+      </div>
+      <!-- Speaker 5 -->
+      <div class="spk-card">
+        <div class="spk-img-wrap" style="background: var(--red);"><img src="images/speakers/arpit.jpg" alt="Arpit Guglani" class="spk-img"></div>
+        <div class="spk-name">Arpit Guglani</div>
+        <div class="spk-role">Senior Product Manager · Google</div>
+      </div>
+      <!-- Speaker 6 -->
+      <div class="spk-card">
+        <div class="spk-img-wrap" style="background: var(--bg);"><img src="images/speakers/srividya.jpg" alt="Srividya Ramamoorthy" class="spk-img"></div>
+        <div class="spk-name">Srividya Ramamoorthy</div>
+        <div class="spk-role">Staff PM, AI/ML Systems · Airbnb</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="wrap">
+    <h2 class="section-title" style="margin-bottom: 40px; text-align: center;">What attendees are saying</h2>
+
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p class="testi-card-text">"These talks reframed my perspective from 'AI will take my job' to 'How can I use AI to improve my work?', with tangible takeaways I could share with my team immediately."</p>
+        <div>
+          <div class="testi-card-name">Andrew Haglund</div>
+          <div class="testi-card-company">John Deere</div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-card-text">"The talks gave fresh ideas on how AI can shape more human-centered experiences."</p>
+        <div>
+          <div class="testi-card-name">Livia Biondino</div>
+          <div class="testi-card-company">Charlotte Tilbury</div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-card-text">"I walked away with insights on designing AI products and incorporating AI tools into my workflows."</p>
+        <div>
+          <div class="testi-card-name">Thomas Tr&#7847;n</div>
+          <div class="testi-card-company">MongoDB</div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-card-text">"Each speaker brought a unique perspective and shared their practices."</p>
+        <div>
+          <div class="testi-card-name">Sofiia Kukhar</div>
+          <div class="testi-card-company">Stanford University</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="value-props">
   <div class="wrap">
     <div class="vp-grid">
@@ -397,64 +508,12 @@
   </div>
 </section>
 
-<section class="section" id="speakers">
-  <div class="wrap">
-    <div class="section-header">
-      <h2 class="section-title">Your speakers<br>are practitioners.</h2>
-    </div>
-    
-    <div class="spk-grid">
-      <!-- Speaker 1 -->
-      <div class="spk-card">
-        <div class="spk-img-wrap"><img src="images/speakers/pavan.jpg" alt="Pavan Bandarupalli" class="spk-img"></div>
-        <div class="spk-name">Pavan Bandarupalli</div>
-        <div class="spk-role">Principal Product Manager · Gusto</div>
-        <p class="spk-topic">"AI Ate the PM Playbook. Now What?"</p>
-      </div>
-      <!-- Speaker 2 -->
-      <div class="spk-card">
-        <div class="spk-img-wrap" style="background: var(--yellow);"><img src="images/speakers/amy.jpg" alt="Amy Mitchell" class="spk-img"></div>
-        <div class="spk-name">Amy Mitchell</div>
-        <div class="spk-role">Senior Product Manager · Dell Technologies</div>
-        <p class="spk-topic">"How to Build a Context Engineering System That Scales Your Product and Your AI Capabilities"</p>
-      </div>
-      <!-- Speaker 3 -->
-      <div class="spk-card">
-        <div class="spk-img-wrap" style="background: var(--blue);"><img src="images/speakers/rishit.jpg" alt="Rishit Bhatia" class="spk-img"></div>
-        <div class="spk-name">Rishit Bhatia</div>
-        <div class="spk-role">Senior Product Manager · MongoDB</div>
-        <p class="spk-topic">"From Developers to Agents: Redefining DX for a Non-Human Future"</p>
-      </div>
-      <!-- Speaker 4 -->
-      <div class="spk-card">
-        <div class="spk-img-wrap" style="background: var(--green);"><img src="images/speakers/arun.jpg" alt="Arun Janakiraman" class="spk-img"></div>
-        <div class="spk-name">Arun Janakiraman</div>
-        <div class="spk-role">GPM, Head of Zoom Apps &amp; Marketplace · Zoom</div>
-        <p class="spk-topic">"Is Design Dead When API Is the New UI?"</p>
-      </div>
-      <!-- Speaker 5 -->
-      <div class="spk-card">
-        <div class="spk-img-wrap" style="background: var(--red);"><img src="images/speakers/arpit.jpg" alt="Arpit Guglani" class="spk-img"></div>
-        <div class="spk-name">Arpit Guglani</div>
-        <div class="spk-role">Senior Product Manager · Google</div>
-        <p class="spk-topic">"The AI Native PM"</p>
-      </div>
-      <!-- Speaker 6 -->
-      <div class="spk-card">
-        <div class="spk-img-wrap" style="background: var(--bg);"><img src="images/speakers/srividya.jpg" alt="Srividya Ramamoorthy" class="spk-img"></div>
-        <div class="spk-name">Srividya Ramamoorthy</div>
-        <div class="spk-role">Staff PM, AI/ML Systems · Airbnb</div>
-        <p class="spk-topic">Topic to be announced</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="section agenda-section" id="agenda">
   <div class="wrap">
     <h2 class="section-title" style="text-align: center; margin-bottom: 16px;">The full agenda.</h2>
     <div class="agenda-list">
       <div class="agenda-row">
+        <img src="images/speakers/rishit.jpg" alt="Rishit Bhatia" class="agenda-avatar">
         <div class="agenda-time">
           <span class="est">12:00 PM EST</span>
           <span>09:00 AM PST</span>
@@ -462,11 +521,12 @@
         </div>
         <div class="agenda-content">
           <div class="agenda-title">"From Developers to Agents: Redefining DX for a Non-Human Future"</div>
-          <div class="agenda-spk">Rishit Bhatia &middot; MongoDB</div>
+          <div class="agenda-spk">Rishit Bhatia</div>
+          <div class="agenda-role">Senior Product Manager &middot; MongoDB</div>
         </div>
-        <img src="images/speakers/rishit.jpg" alt="Rishit Bhatia" class="agenda-avatar">
       </div>
       <div class="agenda-row">
+        <img src="images/speakers/arpit.jpg" alt="Arpit Guglani" class="agenda-avatar">
         <div class="agenda-time">
           <span class="est">12:20 PM EST</span>
           <span>09:20 AM PST</span>
@@ -474,11 +534,12 @@
         </div>
         <div class="agenda-content">
           <div class="agenda-title">"The AI Native PM"</div>
-          <div class="agenda-spk">Arpit Guglani &middot; Google</div>
+          <div class="agenda-spk">Arpit Guglani</div>
+          <div class="agenda-role">Senior Product Manager &middot; Google</div>
         </div>
-        <img src="images/speakers/arpit.jpg" alt="Arpit Guglani" class="agenda-avatar">
       </div>
       <div class="agenda-row">
+        <img src="images/speakers/pavan.jpg" alt="Pavan Bandarupalli" class="agenda-avatar">
         <div class="agenda-time">
           <span class="est">12:40 PM EST</span>
           <span>09:40 AM PST</span>
@@ -486,11 +547,12 @@
         </div>
         <div class="agenda-content">
           <div class="agenda-title">"AI Ate the PM Playbook. Now What?"</div>
-          <div class="agenda-spk">Pavan Bandarupalli &middot; Gusto</div>
+          <div class="agenda-spk">Pavan Bandarupalli</div>
+          <div class="agenda-role">Principal Product Manager &middot; Gusto</div>
         </div>
-        <img src="images/speakers/pavan.jpg" alt="Pavan Bandarupalli" class="agenda-avatar">
       </div>
       <div class="agenda-row">
+        <img src="images/speakers/amy.jpg" alt="Amy Mitchell" class="agenda-avatar">
         <div class="agenda-time">
           <span class="est">01:00 PM EST</span>
           <span>10:00 AM PST</span>
@@ -498,11 +560,12 @@
         </div>
         <div class="agenda-content">
           <div class="agenda-title">"How to Build a Context Engineering System That Scales Your Product and Your AI Capabilities"</div>
-          <div class="agenda-spk">Amy Mitchell &middot; Dell Technologies</div>
+          <div class="agenda-spk">Amy Mitchell</div>
+          <div class="agenda-role">Senior Product Manager &middot; Dell Technologies</div>
         </div>
-        <img src="images/speakers/amy.jpg" alt="Amy Mitchell" class="agenda-avatar">
       </div>
       <div class="agenda-row">
+        <img src="images/speakers/arun.jpg" alt="Arun Janakiraman" class="agenda-avatar">
         <div class="agenda-time">
           <span class="est">01:20 PM EST</span>
           <span>10:20 AM PST</span>
@@ -510,11 +573,12 @@
         </div>
         <div class="agenda-content">
           <div class="agenda-title">"Is Design Dead When API Is the New UI?"</div>
-          <div class="agenda-spk">Arun Janakiraman &middot; Zoom Apps &amp; Marketplace</div>
+          <div class="agenda-spk">Arun Janakiraman</div>
+          <div class="agenda-role">GPM, Head of Zoom Apps &amp; Marketplace &middot; Zoom</div>
         </div>
-        <img src="images/speakers/arun.jpg" alt="Arun Janakiraman" class="agenda-avatar">
       </div>
       <div class="agenda-row">
+        <img src="images/speakers/srividya.jpg" alt="Srividya Ramamoorthy" class="agenda-avatar">
         <div class="agenda-time">
           <span class="est">01:40 PM EST</span>
           <span>10:40 AM PST</span>
@@ -522,11 +586,12 @@
         </div>
         <div class="agenda-content">
           <div class="agenda-title">Session TBA</div>
-          <div class="agenda-spk">Srividya Ramamoorthy &middot; Airbnb</div>
+          <div class="agenda-spk">Srividya Ramamoorthy</div>
+          <div class="agenda-role">Staff PM, AI/ML Systems &middot; Airbnb</div>
         </div>
-        <img src="images/speakers/srividya.jpg" alt="Srividya Ramamoorthy" class="agenda-avatar">
       </div>
       <div class="agenda-row">
+        <div class="agenda-avatar" style="display:flex;align-items:center;justify-content:center;font-size:36px;background:var(--yellow);">☕</div>
         <div class="agenda-time">
           <span class="est">02:00 PM EST</span>
           <span>11:00 AM PST</span>
@@ -536,7 +601,6 @@
           <div class="agenda-title">Breakout Rooms</div>
           <div class="agenda-spk">Meet other product folks</div>
         </div>
-        <div class="agenda-avatar" style="display:flex;align-items:center;justify-content:center;font-size:36px;background:var(--yellow);">☕</div>
       </div>
     </div>
   </div>
@@ -560,7 +624,7 @@
           <span>How does a virtual summit work?</span>
           <div class="faq-icon">+</div>
         </div>
-        <div class="faq-a"><div class="faq-a-inner">After registering, you will receive a link to the live stream. All sessions are broadcast online. You can watch from anywhere with an internet connection. No travel required.</div></div>
+        <div class="faq-a"><div class="faq-a-inner">After registering, you will get access to our community where the event will be live streamed on Zoom. All sessions are broadcast online and you can watch from anywhere. No travel required.</div></div>
       </div>
 
       <div class="faq-item">
@@ -609,13 +673,15 @@
 
 <section class="register" id="register">
   <div class="wrap">
-    <h2 class="reg-title">Made for PMs who want to stay ahead.</h2>
-    <p class="reg-sub">April 22 &middot; Starting 12 PM EST &middot; Live online &middot; Recordings included</p>
+    <h2 class="reg-title">See you April 22</h2>
+    <p class="reg-sub">Starting 12 PM EST &middot; Live online &middot; Recordings included</p>
     
     <div style="margin-top: 40px;">
-      <a href="https://luma.com/dxnkd9rl" target="_blank" class="btn-reg">Get Your Ticket &rarr;</a>
+      <a href="https://luma.com/dxnkd9rl" target="_blank" class="btn-reg" style="flex-direction:column; gap:2px; line-height:1.2;">
+        <span>Register &rarr;</span>
+        <span style="font-size:11px; font-weight:700; opacity:0.75; text-transform:uppercase; letter-spacing:0.05em;">2-for-1 while supplies last</span>
+      </a>
     </div>
-    <p style="margin-top: 20px; font-size: 14px; font-weight: 700; opacity: 0.5;">Early bird pricing won't last forever.</p>
   </div>
 </section>
 
@@ -623,7 +689,6 @@
   <div class="wrap">
     <div class="footer-left">
       <div class="nav-logo" style="margin-bottom: 24px; color: #fff;">
-        <div class="nav-logo-mark" style="border-color: #fff;"></div>
         AI PM Summit
       </div>
       <div class="footer-links">
