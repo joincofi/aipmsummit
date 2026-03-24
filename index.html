@@ -69,8 +69,32 @@
     .hero {
       padding: 100px 0 120px;
       border-bottom: 2px solid var(--text);
-      position: relative;
+      position: relative; overflow: hidden;
       background: #FEC858;
+    }
+    .hero-bubble {
+      position: absolute; border-radius: 8px;
+      border: 3px solid rgba(0,0,0,0.12);
+      pointer-events: none;
+    }
+    .hero-bubble:nth-child(1) { width: 120px; height: 120px; top: 10%; left: 5%; background: rgba(255,255,255,0.25); animation: float1 8s ease-in-out infinite; }
+    .hero-bubble:nth-child(2) { width: 60px;  height: 60px;  top: 60%; left: 12%; background: rgba(255,100,80,0.2); animation: float2 6s ease-in-out infinite; }
+    .hero-bubble:nth-child(3) { width: 200px; height: 200px; top: -40px; right: 8%; background: rgba(255,255,255,0.15); animation: float3 10s ease-in-out infinite; }
+    .hero-bubble:nth-child(4) { width: 80px;  height: 80px;  bottom: 10%; right: 20%; background: rgba(80,80,255,0.15); animation: float1 7s ease-in-out infinite 1s; }
+    .hero-bubble:nth-child(5) { width: 40px;  height: 40px;  top: 40%; right: 5%;  background: rgba(255,180,0,0.3); animation: float2 5s ease-in-out infinite 2s; }
+    .hero-bubble:nth-child(6) { width: 150px; height: 150px; bottom: -30px; left: 30%; background: rgba(255,255,255,0.2); animation: float3 9s ease-in-out infinite 0.5s; }
+    @keyframes float1 {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50%       { transform: translateY(-24px) scale(1.04); }
+    }
+    @keyframes float2 {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50%       { transform: translateY(-16px) rotate(10deg); }
+    }
+    @keyframes float3 {
+      0%, 100% { transform: translateY(0) scale(1); }
+      33%       { transform: translateY(-18px) scale(1.02); }
+      66%       { transform: translateY(10px) scale(0.98); }
     }
     .hero .wrap {
       display: grid; grid-template-columns: 1fr 1fr;
@@ -93,14 +117,12 @@
       text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px;
     }
     .hero-title {
-      font-size: clamp(56px, 7vw, 88px);
-      font-weight: 900; line-height: 1.15;
-      letter-spacing: -0.04em; margin-bottom: 24px;
+      font-size: clamp(48px, 6vw, 80px);
+      font-weight: 900; line-height: 1.05;
+      letter-spacing: -0.03em; margin-bottom: 24px;
       color: #000;
-      -webkit-text-stroke: 0;
-      font-weight: 300;
     }
-    .hero-title span { color: #000; font-weight: 300; }
+    .hero-title span { color: #000; }
     .hero-sub {
       font-size: 20px; font-weight: 600; color: var(--text);
       max-width: 600px; margin: 0 auto 40px; line-height: 1.5;
@@ -352,21 +374,24 @@
 
 <nav class="nav">
   <div class="wrap">
-    <a href="#" class="nav-logo">
-      AI PM Summit
-    </a>
-    <div class="nav-links">
+  <a href="#" class="nav-logo">
+    AI PM Summit
+  </a>
+  <div class="nav-links">
       <a href="https://lu.ma/aipmsummit" target="_blank" class="nav-cta">Register</a>
     </div>
   </div>
 </nav>
 
 <section class="hero">
+  <div class="hero-bubble"></div>
+  <div class="hero-bubble"></div>
+  <div class="hero-bubble"></div>
   <div class="wrap">
     <div class="hero-content">
       <div class="hero-badge">April 22 &middot; Live Virtual Event</div>
       <h1 class="hero-title">Where <span>AI PMs</span> gather</h1>
-      <p class="hero-sub">
+    <p class="hero-sub">
         How do you write requirements for an agent? What does good AI product taste look like? How do you evaluate what you can't fully spec? Get answers directly from the people figuring it out.
       </p>
       
@@ -388,9 +413,9 @@
         <div class="optin-guarantee" style="margin-top: 16px;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
           Early bird pricing available &middot; Includes recordings
-        </div>
       </div>
     </div>
+  </div>
     <div class="hero-visual">
       <img src="images/hero-visual.png" alt="AI PM Summit">
     </div>
@@ -428,7 +453,7 @@
   <div class="wrap">
     <div class="section-header">
       <h2 class="section-title">Speakers</h2>
-    </div>
+        </div>
     
     <div class="spk-grid">
       <!-- Speaker 1 -->
@@ -442,7 +467,7 @@
         <div class="spk-img-wrap" style="background: var(--yellow);"><img src="images/speakers/amy.jpg" alt="Amy Mitchell" class="spk-img"></div>
         <div class="spk-name">Amy Mitchell</div>
         <div class="spk-role">Senior Product Manager · Dell Technologies</div>
-      </div>
+    </div>
       <!-- Speaker 3 -->
       <div class="spk-card">
         <div class="spk-img-wrap" style="background: var(--blue);"><img src="images/speakers/rishit.jpg" alt="Rishit Bhatia" class="spk-img"></div>
@@ -481,30 +506,30 @@
         <div>
           <div class="testi-card-name">Andrew Haglund</div>
           <div class="testi-card-company">John Deere</div>
+          </div>
         </div>
-      </div>
       <div class="testi-card">
         <p class="testi-card-text">"The talks gave fresh ideas on how AI can shape more human-centered experiences."</p>
         <div>
           <div class="testi-card-name">Livia Biondino</div>
           <div class="testi-card-company">Charlotte Tilbury</div>
         </div>
-      </div>
+          </div>
       <div class="testi-card">
         <p class="testi-card-text">"I walked away with insights on designing AI products and incorporating AI tools into my workflows."</p>
         <div>
           <div class="testi-card-name">Thomas Tr&#7847;n</div>
           <div class="testi-card-company">MongoDB</div>
         </div>
-      </div>
+        </div>
       <div class="testi-card">
         <p class="testi-card-text">"Each speaker brought a unique perspective and shared their practices."</p>
         <div>
           <div class="testi-card-name">Sofiia Kukhar</div>
           <div class="testi-card-company">Stanford University</div>
+          </div>
         </div>
-      </div>
-    </div>
+        </div>
   </div>
 </section>
 
@@ -514,18 +539,18 @@
       <div class="vp-card">
         <div class="vp-icon" style="background: var(--pink);"></div>
         <h3 class="vp-title">Questions PMs actually have</h3>
-        <p class="vp-desc">Context engineering, agentic products, AI-native thinking — every session tackles the hard questions product teams are wrestling with right now.</p>
-      </div>
+        <p class="vp-desc">Context engineering, agentic products, AI-native thinking. Every session tackles the hard questions product teams are wrestling with right now.</p>
+          </div>
       <div class="vp-card">
         <div class="vp-icon" style="background: var(--yellow);"></div>
         <h3 class="vp-title">From people in the same seat as you</h3>
         <p class="vp-desc">Every speaker is a working PM or product leader. They're dealing with the same trade-offs, the same stakeholder pressure, and the same half-broken AI tooling you are.</p>
-      </div>
+        </div>
       <div class="vp-card">
         <div class="vp-icon" style="background: var(--green);"></div>
         <h3 class="vp-title">Watch live or on replay</h3>
         <p class="vp-desc">Join live from anywhere on April 22, or catch every session on replay. Your ticket includes full access to all recordings.</p>
-      </div>
+        </div>
     </div>
   </div>
 </section>
@@ -540,13 +565,13 @@
           <span class="est">12:00 PM EST</span>
           <span>09:00 AM PST</span>
           <span>05:00 PM GMT</span>
-        </div>
+          </div>
         <div class="agenda-content">
           <div class="agenda-title">"From Developers to Agents: Redefining DX for a Non-Human Future"</div>
           <div class="agenda-spk">Rishit Bhatia</div>
           <div class="agenda-role">Senior Product Manager &middot; MongoDB</div>
         </div>
-      </div>
+        </div>
       <div class="agenda-row">
         <img src="images/speakers/arpit.jpg" alt="Arpit Guglani" class="agenda-avatar">
         <div class="agenda-time">
@@ -637,9 +662,9 @@
         <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
           <span>When is the event?</span>
           <div class="faq-icon">+</div>
-        </div>
+          </div>
         <div class="faq-a"><div class="faq-a-inner">April 22, 2026. Sessions start at 12:00 PM EST (9:00 AM PST / 5:00 PM UK). The full schedule is listed above.</div></div>
-      </div>
+        </div>
 
       <div class="faq-item">
         <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
@@ -653,9 +678,9 @@
         <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
           <span>Will I get access to recordings?</span>
           <div class="faq-icon">+</div>
-        </div>
+    </div>
         <div class="faq-a"><div class="faq-a-inner">Yes. Every ticket includes full access to recordings of all sessions. If you can't attend live, you won't miss a thing.</div></div>
-      </div>
+  </div>
 
       <div class="faq-item">
         <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
@@ -679,7 +704,7 @@
           <div class="faq-icon">+</div>
         </div>
         <div class="faq-a"><div class="faq-a-inner">Ticket pricing and options are available on our registration page. Early bird pricing is available for a limited time.</div></div>
-      </div>
+    </div>
 
       <div class="faq-item">
         <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
@@ -708,7 +733,7 @@
       <span class="countdown-sep">:</span>
       <div class="countdown-unit"><span class="countdown-num" id="r-secs">--</span><span class="countdown-label">Sec</span></div>
     </div>
-    
+
     <div style="margin-top: 24px;">
       <a href="https://lu.ma/aipmsummit" target="_blank" class="btn-reg" style="flex-direction:column; gap:2px; line-height:1.2;">
         <span>Register &rarr;</span>
@@ -722,10 +747,10 @@
   <div class="wrap">
     <div class="footer-left">
       <div class="nav-logo" style="margin-bottom: 24px; color: #fff;">
-        AI PM Summit
-      </div>
-      <div class="footer-links">
-        <a href="https://form.typeform.com/to/HKG5aUgq">Contact</a>
+    AI PM Summit
+  </div>
+  <div class="footer-links">
+    <a href="https://form.typeform.com/to/HKG5aUgq">Contact</a>
         <a href="/privacy.html">Privacy</a>
       </div>
       <p class="footer-copy">© 2026 CoFi Labs Inc. · 2482 Yonge St #1135 · Toronto, ON M4P 2H5</p>
@@ -746,12 +771,6 @@
 </footer>
 
 <script>
-  // FAQ accordion
-  document.querySelectorAll('.faq-item').forEach(item => {
-    item.querySelector('.faq-q').addEventListener('click', () => {
-      item.classList.toggle('open');
-    });
-  });
 
   // Footer Kit form
   document.getElementById('footer-kit-form').addEventListener('submit', async function(e) {
@@ -760,7 +779,7 @@
     const firstName = document.getElementById('footer-kit-name').value;
     try {
       await fetch('https://api.convertkit.com/v3/forms/9201239/subscribe', {
-        method: 'POST',
+      method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ api_key: 'aFuHsDGfxOT6E1WkMpFxiA', email, first_name: firstName })
       });
