@@ -88,18 +88,19 @@
       .hero-visual { max-width: 360px; margin: 0 auto; }
     }
     .hero-badge {
-      display: inline-block; background: var(--yellow); border: 2px solid var(--text);
+      display: inline-block; background: rgba(255,255,255,0.35); border: 2px solid rgba(255,255,255,0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
       padding: 6px 16px; border-radius: 6px; font-size: 14px; font-weight: 800;
       text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px;
-      box-shadow: 3px 3px 0 var(--text);
     }
     .hero-title {
       font-size: clamp(56px, 7vw, 88px);
       font-weight: 900; line-height: 1.15;
       letter-spacing: -0.04em; margin-bottom: 24px;
       color: #000;
+      -webkit-text-stroke: 0;
+      font-weight: 300;
     }
-    .hero-title span { color: #000; }
+    .hero-title span { color: #000; font-weight: 300; }
     .hero-sub {
       font-size: 20px; font-weight: 600; color: var(--text);
       max-width: 600px; margin: 0 auto 40px; line-height: 1.5;
@@ -355,6 +356,7 @@
       </p>
       
       <div class="optin-form" style="display: block;">
+        <p style="font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; opacity:0.6; margin-bottom:6px;">Early Bird 2-for-1 ends April 10</p>
         <div class="countdown" id="hero-countdown">
           <div class="countdown-unit"><span class="countdown-num" id="h-days">--</span><span class="countdown-label">Days</span></div>
           <span class="countdown-sep">:</span>
@@ -366,7 +368,7 @@
         </div>
         <a href="https://lu.ma/aipmsummit" target="_blank" class="optin-btn" style="flex-direction:column; gap:2px; line-height:1.2;">
           <span>Register &rarr;</span>
-          <span style="font-size:11px; font-weight:700; opacity:0.75; text-transform:uppercase; letter-spacing:0.05em;">Early Bird 2-for-1 &mdash; Available until Apr 10</span>
+          <span style="font-size:11px; font-weight:700; opacity:0.75; text-transform:uppercase; letter-spacing:0.05em;">Early Bird: 2-for-1</span>
         </a>
         <div class="optin-guarantee" style="margin-top: 16px;">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
@@ -681,7 +683,8 @@
     <h2 class="reg-title">See you April 22</h2>
     <p class="reg-sub">Starting 12 PM EST &middot; Live online &middot; Recordings included</p>
 
-    <div class="countdown" id="reg-countdown" style="margin: 32px auto 0; justify-content: center;">
+    <p style="font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; opacity:0.6; margin-top:32px; margin-bottom:6px;">Early Bird 2-for-1 ends April 10</p>
+    <div class="countdown" id="reg-countdown" style="margin: 0 auto; justify-content: center;">
       <div class="countdown-unit"><span class="countdown-num" id="r-days">--</span><span class="countdown-label">Days</span></div>
       <span class="countdown-sep">:</span>
       <div class="countdown-unit"><span class="countdown-num" id="r-hours">--</span><span class="countdown-label">Hrs</span></div>
@@ -694,7 +697,7 @@
     <div style="margin-top: 24px;">
       <a href="https://lu.ma/aipmsummit" target="_blank" class="btn-reg" style="flex-direction:column; gap:2px; line-height:1.2;">
         <span>Register &rarr;</span>
-        <span style="font-size:11px; font-weight:700; opacity:0.75; text-transform:uppercase; letter-spacing:0.05em;">Early Bird 2-for-1 &mdash; Available until Apr 10</span>
+        <span style="font-size:11px; font-weight:700; opacity:0.75; text-transform:uppercase; letter-spacing:0.05em;">Early Bird: 2-for-1</span>
       </a>
     </div>
   </div>
