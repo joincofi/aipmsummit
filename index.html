@@ -1161,7 +1161,7 @@
 
     /* ─── FOOTER (Minimal grid) ─── */
     .footer {
-      padding: 80px 0;
+      padding: 48px 0 40px;
       border-top: 1px solid var(--border);
       background: var(--bg);
     }
@@ -1176,19 +1176,20 @@
     .footer-logo {
       font-size: 22px;
       font-weight: 800;
+      margin-bottom: 20px;
     }
 
     .footer-col-head {
       font-size: 15px;
       font-weight: 700;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
       color: var(--text);
     }
 
     .footer-links {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 12px;
       font-size: 15px;
       font-weight: 500;
       color: var(--text-muted);
@@ -1202,6 +1203,63 @@
       text-align: right;
       font-size: 13px;
       color: var(--text-muted);
+    }
+
+    .footer-signup {
+      max-width: 340px;
+    }
+
+    .footer-signup-desc {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+
+    .footer-signup-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .footer-signup-input {
+      flex: 1;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      font-family: var(--font);
+      outline: none;
+    }
+
+    .footer-signup-input:focus {
+      border-color: var(--accent);
+    }
+
+    .footer-signup-btn {
+      padding: 10px 20px;
+      background: var(--text);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: var(--font);
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+
+    .footer-signup-btn:hover { opacity: 0.8; }
+
+    .footer-signup-success {
+      font-size: 14px;
+      font-weight: 600;
+      color: #16a34a;
     }
 
     /* ─── RESPONSIVE ─── */
@@ -1794,24 +1852,34 @@
   <!-- FOOTER -->
   <footer class="footer">
     <div class="wrap footer-grid">
-      <div class="footer-logo">
-        AI PM Summit
-      </div>
 
       <div>
-        <div class="footer-col-head">Company</div>
+        <div class="footer-logo">AI PM Summit</div>
         <div class="footer-links">
           <a href="https://form.typeform.com/to/HKG5aUgq" target="_blank">Contact</a>
           <a href="/privacy.html">Legal</a>
         </div>
       </div>
 
+      <div class="footer-signup">
+        <div class="footer-col-head">Stay updated</div>
+        <p class="footer-signup-desc">Speaker announcements, schedule updates, and early bird deals.</p>
+        <form id="footer-kit-form">
+          <div class="footer-signup-row">
+            <input type="text" class="footer-signup-input" id="footer-kit-name" placeholder="First name">
+            <input type="email" class="footer-signup-input" id="footer-kit-email" placeholder="your@email.com" required>
+          </div>
+          <button type="submit" class="footer-signup-btn" style="width:100%;">Subscribe</button>
+        </form>
+        <p id="footer-kit-success" class="footer-signup-success" style="display:none; margin-top:10px;">You're in! Check your inbox.</p>
+      </div>
+
+    </div>
+    <div class="wrap" style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-muted);">
+      © 2026 CoFi Labs Inc. · 2482 Yonge St #1135, Toronto, ON M4P 2H5, Canada &nbsp;·&nbsp;
+      Produced by <a href="https://cofi.so" target="_blank" style="color: var(--text-muted); font-weight: 600;">CoFi</a>
     </div>
   </footer>
-  <div style="text-align: center; padding: 24px 0 32px; font-size: 12px; color: rgba(0,0,0,0.3); line-height: 1.8; background: var(--bg);">
-    © 2026 CoFi Labs Inc. · 2482 Yonge St #1135, Toronto, ON M4P 2H5, Canada<br>
-    Produced by <a href="https://cofi.so" target="_blank" style="color: rgba(0,0,0,0.4); font-weight: 600; text-decoration: none;">CoFi</a>
-  </div>
 
   <script>
     // --- FAQ ACCORDION ---
@@ -1879,6 +1947,24 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // --- KIT SUBSCRIBE FORM ---
+    document.getElementById('footer-kit-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const email = document.getElementById('footer-kit-email').value;
+      const firstName = document.getElementById('footer-kit-name').value;
+      try {
+        await fetch('https://api.convertkit.com/v3/forms/9201239/subscribe', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ api_key: 'aFuHsDGfxOT6E1WkMpFxiA', email, first_name: firstName })
+        });
+        document.getElementById('footer-kit-form').style.display = 'none';
+        document.getElementById('footer-kit-success').style.display = 'block';
+      } catch(err) {
+        alert('Something went wrong. Please try again.');
+      }
+    });
   </script>
 </body>
 
