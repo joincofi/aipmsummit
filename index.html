@@ -294,7 +294,7 @@
       width: 200px;
       height: 200px;
       background: rgba(255,160,0,0.12);
-      border-radius: 62% 38% 52% 48% / 56% 48% 52% 44%;
+      border-radius: 50%;
       top: 10%;
       left: 8%;
       animation: blob1 9s ease-in-out infinite;
@@ -304,7 +304,7 @@
       width: 130px;
       height: 130px;
       background: rgba(220,60,60,0.1);
-      border-radius: 54% 46% 42% 58% / 48% 58% 42% 52%;
+      border-radius: 28px;
       bottom: 18%;
       left: 18%;
       animation: blob2 11s ease-in-out infinite;
@@ -314,7 +314,7 @@
       width: 240px;
       height: 240px;
       background: rgba(160,80,240,0.1);
-      border-radius: 48% 52% 60% 40% / 54% 40% 60% 46%;
+      border-radius: 36px;
       top: 15%;
       right: 4%;
       animation: blob3 13s ease-in-out infinite;
@@ -324,7 +324,7 @@
       width: 110px;
       height: 110px;
       background: rgba(62,82,238,0.1);
-      border-radius: 56% 44% 50% 50% / 44% 56% 46% 54%;
+      border-radius: 50%;
       bottom: 28%;
       right: 22%;
       animation: blob4 10s ease-in-out infinite;
@@ -332,24 +332,24 @@
     }
 
     @keyframes blob1 {
-      0%, 100% { border-radius: 62% 38% 46% 54% / 58% 44% 56% 42%; transform: translateY(0) rotate(0deg); }
-      33%       { border-radius: 44% 56% 62% 38% / 52% 62% 38% 48%; transform: translateY(-14px) rotate(6deg); }
-      66%       { border-radius: 54% 46% 38% 62% / 40% 54% 46% 60%; transform: translateY(8px) rotate(-4deg); }
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      33%       { transform: translateY(-14px) rotate(6deg); }
+      66%       { transform: translateY(8px) rotate(-4deg); }
     }
     @keyframes blob2 {
-      0%, 100% { border-radius: 54% 46% 38% 62% / 46% 60% 40% 54%; transform: translateY(0) rotate(0deg); }
-      40%       { border-radius: 38% 62% 54% 46% / 62% 40% 60% 40%; transform: translateY(-10px) rotate(-8deg); }
-      70%       { border-radius: 62% 38% 46% 54% / 40% 56% 44% 60%; transform: translateY(12px) rotate(5deg); }
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      40%       { transform: translateY(-10px) rotate(-8deg); }
+      70%       { transform: translateY(12px) rotate(5deg); }
     }
     @keyframes blob3 {
-      0%, 100% { border-radius: 46% 54% 62% 38% / 52% 38% 62% 48%; transform: translateY(0) rotate(0deg); }
-      35%       { border-radius: 62% 38% 44% 56% / 44% 60% 40% 56%; transform: translateY(-18px) rotate(5deg); }
-      65%       { border-radius: 38% 62% 52% 48% / 60% 44% 56% 40%; transform: translateY(10px) rotate(-6deg); }
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      35%       { transform: translateY(-18px) rotate(5deg); }
+      65%       { transform: translateY(10px) rotate(-6deg); }
     }
     @keyframes blob4 {
-      0%, 100% { border-radius: 58% 42% 52% 48% / 42% 58% 44% 56%; transform: translateY(0) rotate(0deg); }
-      45%       { border-radius: 42% 58% 40% 60% / 56% 42% 60% 40%; transform: translateY(-12px) rotate(9deg); }
-      75%       { border-radius: 60% 40% 58% 42% / 40% 60% 42% 58%; transform: translateY(8px) rotate(-5deg); }
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      45%       { transform: translateY(-12px) rotate(9deg); }
+      75%       { transform: translateY(8px) rotate(-5deg); }
     }
 
     .pop-shape {
@@ -436,7 +436,7 @@
       width: 70px;
       height: 70px;
       background: rgba(255,140,0,0.1);
-      border-radius: 58% 42% 52% 48% / 44% 58% 42% 56%;
+      border-radius: 50%;
       top: 15%;
       right: 10%;
       animation-delay: -1s;
@@ -446,7 +446,7 @@
       width: 130px;
       height: 130px;
       background: rgba(220,40,70,0.1);
-      border-radius: 52% 48% 44% 56% / 56% 44% 58% 42%;
+      border-radius: 28px;
       bottom: 10%;
       left: 10%;
       animation-delay: -2s;
@@ -456,7 +456,7 @@
       width: 90px;
       height: 90px;
       background: rgba(88,86,214,0.1);
-      border-radius: 46% 54% 58% 42% / 54% 46% 52% 48%;
+      border-radius: 20px;
       top: 20%;
       left: 5%;
       animation-delay: -5s;
@@ -1842,11 +1842,11 @@
   <section class="cta-section" style="position: relative;">
     <div class="cta-glow"></div>
     <div class="pop-shape ps-3"></div>
-    <div class="pop-shape" style="width:140px;height:140px;top:15%;right:15%;animation-delay:-3s;background:rgba(62,82,238,0.1);border-radius:54% 46% 60% 40%/48% 56% 44% 52%;"></div>
-    <div class="pop-shape" style="width:65px;height:65px;bottom:20%;right:8%;animation-delay:-1s;background:rgba(255,149,0,0.1);border-radius:60% 40% 48% 52%/44% 60% 40% 56%;"></div>
-    <div class="pop-shape" style="width:90px;height:90px;top:10%;left:20%;animation-delay:-4s;background:rgba(220,40,70,0.1);border-radius:46% 54% 56% 44%/56% 44% 52% 48%;"></div>
-    <div class="pop-shape" style="width:50px;height:50px;bottom:15%;left:30%;animation-delay:-6s;background:rgba(160,80,240,0.1);border-radius:52% 48% 44% 56%/48% 54% 46% 52%;"></div>
-    <div class="pop-shape" style="width:75px;height:75px;top:50%;right:5%;animation-delay:-2s;background:rgba(255,200,0,0.1);border-radius:58% 42% 50% 50%/42% 58% 48% 52%;"></div>
+    <div class="pop-shape" style="width:140px;height:140px;top:15%;right:15%;animation-delay:-3s;background:rgba(62,82,238,0.1);border-radius:28px;"></div>
+    <div class="pop-shape" style="width:65px;height:65px;bottom:20%;right:8%;animation-delay:-1s;background:rgba(255,149,0,0.1);border-radius:50%;"></div>
+    <div class="pop-shape" style="width:90px;height:90px;top:10%;left:20%;animation-delay:-4s;background:rgba(220,40,70,0.1);border-radius:20px;"></div>
+    <div class="pop-shape" style="width:50px;height:50px;bottom:15%;left:30%;animation-delay:-6s;background:rgba(160,80,240,0.1);border-radius:50%;"></div>
+    <div class="pop-shape" style="width:75px;height:75px;top:50%;right:5%;animation-delay:-2s;background:rgba(255,200,0,0.1);border-radius:16px;"></div>
     <div class="wrap " style="position: relative; z-index: 1;">
       <h2 class="cta-title">The summit for PMs<br>building what's next.<br>April 22.</h2>
       <a href="https://lu.ma/aipmsummit" class="btn-solid"
