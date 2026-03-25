@@ -788,19 +788,34 @@
 
     .stack-tile {
       width: 100%;
-      background: #FFF8F2;
-      border: 1px solid rgba(0, 0, 0, 0.03);
+      background: rgba(255, 248, 242, 0.35);
+      backdrop-filter: blur(24px) saturate(2);
+      -webkit-backdrop-filter: blur(24px) saturate(2);
+      border: 1px solid rgba(255, 255, 255, 0.7);
       border-radius: 40px;
       padding: 32px;
       display: flex;
       align-items: center;
       gap: 28px;
       box-shadow:
-        0 4px 12px rgba(0, 0, 0, 0.02),
-        0 1px 2px rgba(0, 0, 0, 0.05);
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        0 2px 0 rgba(255, 255, 255, 0.9) inset,
+        0 -1px 0 rgba(0, 0, 0, 0.04) inset;
       position: relative;
       z-index: 2;
       overflow: hidden;
+    }
+
+    .stack-tile::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.28), transparent);
+      border-radius: 40px 40px 0 0;
+      pointer-events: none;
     }
 
     .tile-highlight {
@@ -1245,18 +1260,18 @@
     .footer-signup-btn {
       width: 100%;
       padding: 10px 20px;
-      background: var(--text);
-      color: #fff;
-      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
       border-radius: 10px;
-      font-size: 14px;
-      font-weight: 700;
+      font-size: 13px;
+      font-weight: 600;
       cursor: pointer;
       font-family: var(--font);
-      transition: opacity 0.2s;
+      transition: color 0.2s, border-color 0.2s;
     }
 
-    .footer-signup-btn:hover { opacity: 0.8; }
+    .footer-signup-btn:hover { color: var(--text); border-color: rgba(0,0,0,0.25); }
 
     .footer-signup-success {
       font-size: 14px;
@@ -1326,6 +1341,13 @@
 
       .hero-nav {
         display: none;
+      }
+
+      .hero-date {
+        font-size: 12px;
+        gap: 6px;
+        flex-wrap: wrap;
+        justify-content: center;
       }
 
       .footer-grid {
@@ -1508,13 +1530,26 @@
           <div class="spk-name">Srividya Ramamoorthy</div>
           <div class="spk-role">Staff Product Manager, AI/ML Systems, Airbnb</div>
         </div>
+
+        <div class="spk-card" style="grid-column: 2; align-items: center; justify-content: center; min-height: 200px;">
+          <div style="text-align: center;">
+            <div style="margin-bottom: 12px; color: var(--text-muted); opacity: 0.4;">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3c.3 3.5 2.5 5.7 6 6-3.5.3-5.7 2.5-6 6-.3-3.5-2.5-5.7-6-6 3.5-.3 5.7-2.5 6-6z"/>
+                <path d="M5 3c.15 1.5 1.1 2.4 2.5 2.5C6.1 5.65 5.15 6.6 5 8 4.85 6.5 3.9 5.6 2.5 5.5 3.9 5.35 4.85 4.4 5 3z"/>
+                <path d="M19 14c.15 1.5 1.1 2.4 2.5 2.5-1.4.15-2.35 1.1-2.5 2.5-.15-1.4-1.1-2.35-2.5-2.5 1.4-.1 2.35-1 2.5-2.5z"/>
+              </svg>
+            </div>
+            <div class="spk-name" style="font-size: 18px;">More speakers</div>
+            <div class="spk-role" style="color: var(--text-muted); margin-top: 4px;">Announced soon</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- SPLIT SECTION -->
   <section class="split-section" style="position: relative;">
-    <div class="split-glow"></div>
     <div class="wrap split-grid">
       <div class="split-text">
         <h2 class="sec-title" style="max-width: 600px;">One day of real playbooks from PMs actively shipping AI products
@@ -1601,7 +1636,6 @@
 
   <!-- TESTIMONIALS (Like "Friends of Family") -->
   <section class="testi-section" id="testimonials" style="position: relative;">
-    <div class="testi-glow"></div>
     <div class="pop-shape ps-1" style="top: 10%; right: 5%;"></div>
     <div class="pop-shape ps-2" style="bottom: 10%; left: 5%;"></div>
     <div class="wrap" style="position: relative; z-index: 1;">
@@ -1781,8 +1815,32 @@
           </div>
         </div>
 
-        <div class="agenda-row ">
+        <div class="agenda-row" style="opacity: 0.5;">
           <div class="agenda-time">2:00 PM EST<br>11:00 AM PST<br>7:00 PM GMT</div>
+          <div class="agenda-details">
+            <div class="agenda-title" style="color: var(--text-muted);">Speaker TBA</div>
+            <div class="agenda-spk" style="color: var(--text-muted);">Announced soon</div>
+          </div>
+        </div>
+
+        <div class="agenda-row" style="opacity: 0.5;">
+          <div class="agenda-time">2:20 PM EST<br>11:20 AM PST<br>7:20 PM GMT</div>
+          <div class="agenda-details">
+            <div class="agenda-title" style="color: var(--text-muted);">Speaker TBA</div>
+            <div class="agenda-spk" style="color: var(--text-muted);">Announced soon</div>
+          </div>
+        </div>
+
+        <div class="agenda-row" style="opacity: 0.5;">
+          <div class="agenda-time">2:40 PM EST<br>11:40 AM PST<br>7:40 PM GMT</div>
+          <div class="agenda-details">
+            <div class="agenda-title" style="color: var(--text-muted);">Speaker TBA</div>
+            <div class="agenda-spk" style="color: var(--text-muted);">Announced soon</div>
+          </div>
+        </div>
+
+        <div class="agenda-row ">
+          <div class="agenda-time">3:00 PM EST<br>12:00 PM PST<br>8:00 PM GMT</div>
           <div class="agenda-details">
             <div class="agenda-title">Networking Breakouts</div>
             <div class="agenda-spk">Connect live with peers.</div>
@@ -1841,7 +1899,6 @@
 
   <!-- BOTTOM CTA -->
   <section class="cta-section" style="position: relative;">
-    <div class="cta-glow"></div>
     <div class="pop-shape ps-3"></div>
     <div class="pop-shape" style="width:140px;height:140px;top:15%;right:15%;animation-delay:-3s;background:rgba(62,82,238,0.5);border-radius:28px;"></div>
     <div class="pop-shape" style="width:65px;height:65px;bottom:20%;right:8%;animation-delay:-1s;background:rgba(255,149,0,0.55);border-radius:50%;"></div>
