@@ -1,34 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="top">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AI PM Summit · April 22, 2026</title>
-  <meta name="description" content="Context engineering. Agentic products. The AI-native PM. Expert practitioners from Google, Airbnb, Zoom, Walmart & more. April 22, live online." />
+  <title>AI PM Summit<br>The Playbook for Product Managers</title>
+  <meta name="description"
+    content="One focused day. Actionable frameworks. Learn how Product Managers from Google, Airbnb, and Gusto are actually shipping AI products right now." />
 
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
-
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='0' fill='%230052ff'/%3E%3Ccircle cx='16' cy='16' r='8' fill='white'/%3E%3C/svg%3E" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
 
   <style>
-    /* ━━━ HIGH-CONVERTING GEOMETRIC DESIGN ━━━━━━ */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    img  { display: block; max-width: 100%; }
-    a    { text-decoration: none; color: inherit; }
+    /* ─── FAMILY.CO AESTHETIC RESET & BASE ─── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      border-radius: 12px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
     :root {
-      --bg: #fdfaf1; /* Warm cream background */
-      --text: #000000;
-      --blue: #0052ff;
-      --red: #ff4d00;
-      --yellow: #ffcc00;
-      --pink: #ffb8d1;
-      --green: #00e676;
-      --border: #000000;
-      --font: 'Inter', -apple-system, sans-serif;
+      /* Elegant Cream & Modern Slate Palette */
+      --bg: #FFF0E6;
+      --surface: #FFFFFF;
+      --text: #20023C;
+      --text-muted: #8E7C9A;
+      --accent: #3E52EE;
+      --accent-danger: #D0021B;
+      --border: rgba(0,0,0,0.1);
+
+      --r-pill: 999px;
+      --r-lg: 24px;
+      --r-md: 16px;
+
+      --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
     body {
@@ -36,788 +57,1693 @@
       color: var(--text);
       font-family: var(--font);
       -webkit-font-smoothing: antialiased;
-      line-height: 1.4;
+      -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
+      line-height: 1.5;
+      width: 100%;
+      margin: 0;
+      padding: 0;
     }
 
-    .wrap { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+    /* Massive horizontal containment */
+    .wrap {
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 40px;
+      width: 100%;
+      box-sizing: border-box;
+    }
 
-    /* ━━━ NAV ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .nav {
-      padding: 24px 0;
-      border-bottom: 2px solid var(--text);
-      background: var(--bg);
-      position: sticky;
+    ::selection {
+      background: #3E52EE;
+      color: #FFFFFF;
+    }
+
+    ::placeholder {
+      color: var(--text-muted);
+      opacity: 0.6;
+    }
+
+    /* ─── TYPOGRAPHY (Tightly tracked, heavy) ─── */
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+    }
+
+    p {
+      font-size: 20px;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: -0.015em;
+    }
+
+    /* ─── ANIMATIONS ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      /* NOTE: centering MUST NOT depend on .active class — layout is always CSS-driven */
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .delay-2 {
+      transition-delay: 0.2s;
+    }
+
+    /* ─── TOP ANNOUNCEMENT (Sticky & Minimal) ─── */
+    .announce {
+      position: fixed;
       top: 0;
-      z-index: 100;
-    }
-    .nav .wrap { display: flex; align-items: center; justify-content: space-between; }
-    .nav-logo { font-size: 20px; font-weight: 900; letter-spacing: -0.04em; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
-    .nav-logo-mark { width: 20px; height: 20px; background: var(--blue); border-radius: 50%; border: 2px solid var(--text); }
-    .nav-links { display: flex; gap: 32px; align-items: center; }
-    .nav-links a { font-size: 15px; font-weight: 700; color: var(--text); }
-    .nav-links a.nav-cta { color: #fff; }
-    .nav-cta {
-      background: var(--blue); color: #fff; border: 2px solid var(--text); padding: 10px 24px; border-radius: 100px;
-      font-weight: 800 !important; font-size: 15px; box-shadow: 4px 4px 0 var(--text);
-      transition: all 0.1s; display: inline-flex; align-items: center; text-decoration: none;
-    }
-    .nav-cta:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--text); }
-    .nav-cta:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0 var(--text); }
-
-    /* ━━━ HERO ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .hero {
-      padding: 100px 0 120px;
-      border-bottom: 2px solid var(--text);
-      position: relative; overflow: hidden;
-      background: #FEC858;
-    }
-    .hero-bubble {
-      position: absolute; border-radius: 8px;
-      border: 3px solid rgba(0,0,0,0.12);
-      pointer-events: none; z-index: 2;
-    }
-    .hero-bubble:nth-child(1) { width: 120px; height: 120px; top: 10%; left: 5%; background: linear-gradient(135deg, rgba(139,92,246,0.4), rgba(59,130,246,0.3)); border-color: rgba(139,92,246,0.5); animation: float1 8s ease-in-out infinite; }
-    .hero-bubble:nth-child(2) { width: 60px;  height: 60px;  top: 60%; left: 12%; background: linear-gradient(135deg, rgba(236,72,153,0.4), rgba(239,68,68,0.3)); border-color: rgba(236,72,153,0.5); animation: float2 6s ease-in-out infinite; }
-    .hero-bubble:nth-child(3) { width: 200px; height: 200px; top: -40px; right: 8%; background: linear-gradient(135deg, rgba(6,182,212,0.35), rgba(16,185,129,0.25)); border-color: rgba(6,182,212,0.5); animation: float3 10s ease-in-out infinite; }
-    .hero-bubble:nth-child(4) { width: 80px;  height: 80px;  bottom: 12%; right: 18%; background: linear-gradient(135deg, rgba(245,158,11,0.4), rgba(239,68,68,0.3)); border-color: rgba(245,158,11,0.5); animation: float1 7s ease-in-out infinite 1s; }
-    .hero-bubble:nth-child(5) { width: 50px;  height: 50px;  top: 38%; right: 6%;  background: linear-gradient(135deg, rgba(217,70,239,0.4), rgba(139,92,246,0.3)); border-color: rgba(217,70,239,0.5); animation: float2 5s ease-in-out infinite 2s; }
-    @keyframes float1 {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50%       { transform: translateY(-24px) scale(1.04); }
-    }
-    @keyframes float2 {
-      0%, 100% { transform: translateY(0) rotate(0deg); }
-      50%       { transform: translateY(-16px) rotate(10deg); }
-    }
-    @keyframes float3 {
-      0%, 100% { transform: translateY(0) scale(1); }
-      33%       { transform: translateY(-18px) scale(1.02); }
-      66%       { transform: translateY(10px) scale(0.98); }
-    }
-    .hero .wrap {
-      display: grid; grid-template-columns: 1fr 1fr;
-      align-items: center; gap: 60px;
-      position: relative; z-index: 1;
-    }
-    .hero-content { text-align: left; }
-    .hero-visual img {
-      width: 100%; border-radius: 24px;
-      display: block;
-    }
-    @media (max-width: 860px) {
-      .hero .wrap { grid-template-columns: 1fr; }
-      .hero-content { text-align: center; }
-      .hero-visual { max-width: 360px; margin: 0 auto; }
-      .hero-bubble { display: none; }
-    }
-    .hero-badge {
-      display: inline-block; background: rgba(255,255,255,0.35); border: 2px solid rgba(255,255,255,0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      padding: 6px 16px; border-radius: 6px; font-size: 14px; font-weight: 800;
-      text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 24px;
-    }
-    .hero-title {
-      font-size: clamp(48px, 6vw, 80px);
-      font-weight: 900; line-height: 1.05;
-      letter-spacing: -0.03em; margin-bottom: 24px;
-      color: #000;
-    }
-    .hero-title span { color: #000; }
-    .hero-sub {
-      font-size: 20px; font-weight: 600; color: var(--text);
-      max-width: 600px; margin: 0 auto 40px; line-height: 1.5;
+      left: 0;
+      right: 0;
+      z-index: 1100;
+      background: var(--text);
+      color: #FFFFFF;
+      display: flex;
+      justify-content: center;
+      padding: 12px 20px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      gap: 12px;
     }
 
-    /* High-Converting Hero Form */
-    .optin-form {
-      display: flex; flex-direction: column; align-items: flex-start; gap: 12px; max-width: 480px;
-    }
-    .optin-input-group {
-      display: flex; gap: 8px;
-    }
-    .optin-input {
-      flex: 1; padding: 18px 24px; border-radius: 12px; border: 2px solid var(--text);
-      font-size: 16px; font-weight: 600; outline: none; background: #fff;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
-    }
-    .optin-input:focus { border-color: var(--blue); }
-    .optin-btn {
-      background: var(--blue); color: #fff; border: 2px solid var(--text);
-      padding: 18px 40px; border-radius: 100px; font-weight: 900; font-size: 18px; cursor: pointer;
-      box-shadow: 4px 4px 0 var(--text); transition: all 0.1s; white-space: nowrap;
-      display: inline-flex; align-items: center; justify-content: center; text-decoration: none;
-    }
-    .optin-btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--text); }
-    .optin-btn:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0 var(--text); }
-    .optin-guarantee {
-      font-size: 13px; font-weight: 600; opacity: 0.6; display: flex; align-items: center; gap: 6px;
+    .announce a:hover {
+      opacity: 0.8;
     }
 
-    /* ━━━ COUNTDOWN TIMER ━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .countdown {
-      display: inline-flex; gap: 8px; align-items: center;
-      background: rgba(0,0,0,0.08); border: 2px solid rgba(0,0,0,0.15);
-      border-radius: 10px; padding: 10px 16px; margin-bottom: 20px;
-    }
-    .countdown-unit { display: flex; flex-direction: column; align-items: center; min-width: 40px; }
-    .countdown-num { font-size: 28px; font-weight: 900; line-height: 1; letter-spacing: -0.02em; }
-    .countdown-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.6; margin-top: 2px; }
-    .countdown-sep { font-size: 24px; font-weight: 900; opacity: 0.4; margin-bottom: 8px; }
-
-    /* ━━━ SOCIAL PROOF BAR ━━━━━━━━━━━━━━━━━━━━━━━ */
-    .social-proof {
-      border-bottom: 2px solid var(--text); padding: 0; background: #fff;
-      overflow: hidden;
-    }
-    .proof-label {
-      text-align: center; padding: 28px 0 0;
-      font-size: 13px; font-weight: 800; text-transform: uppercase;
-      letter-spacing: 0.1em; opacity: 1; color: #000;
-    }
-    .proof-scroll-wrap {
-      position: relative; overflow: hidden;
-      max-width: 600px; margin: 0 auto;
-      mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-      -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-    }
-    @keyframes infiniteScroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-    .proof-track {
-      display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center;
-      width: max-content;
-      animation: infiniteScroll 30s linear infinite;
-      height: 120px;
-    }
-    .proof-logo-item {
-      display: flex; align-items: center; justify-content: center;
-      padding: 0 32px;
-    }
-    .proof-logo-item img {
-      width: auto;
-      height: 90px;
-      filter: brightness(0);
+    /* ─── HEADER NAV ─── */
+    .nav-wrap {
+      position: fixed;
+      top: 52px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-20px);
+      width: calc(100% - 24px);
+      max-width: 1280px;
+      z-index: 1000;
+      background: rgba(255, 240, 230, 0.7);
+      backdrop-filter: blur(24px) saturate(1.8);
+      -webkit-backdrop-filter: blur(24px) saturate(1.8);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s;
+      opacity: 0;
     }
 
-    /* ━━━ VALUE PROPS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .value-props { padding: 100px 0; border-bottom: 2px solid var(--text); background: var(--bg); }
-    .vp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-    .vp-card {
-      background: #fff; border: 2px solid var(--text); padding: 40px 32px;
-      border-radius: 16px; box-shadow: 8px 8px 0 var(--text);
-    }
-    .vp-icon { width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--text); margin-bottom: 24px; }
-    .vp-title { font-size: 24px; font-weight: 900; margin-bottom: 12px; }
-    .vp-desc { font-size: 16px; font-weight: 500; line-height: 1.5; opacity: 0.8; }
-
-    /* ━━━ TESTIMONIALS ━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .testimonials { padding: 120px 0; border-bottom: 2px solid var(--text); background: var(--bg); }
-    .testi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-    .testi-card {
-      border: 2px solid var(--text); border-radius: 16px; padding: 32px 28px;
-      background: #fff; box-shadow: 4px 4px 0 var(--text);
-      display: flex; flex-direction: column; gap: 20px;
-    }
-    .testi-card-text { font-size: 16px; font-weight: 600; line-height: 1.6; opacity: 0.85; }
-    .testi-card-name { font-size: 16px; font-weight: 900; margin-bottom: 3px; }
-    .testi-card-company { font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--blue); }
-    @media (max-width: 800px) {
-      .testi-grid { grid-template-columns: 1fr; }
+    .nav-wrap.scrolled {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
     }
 
-    /* ━━━ SPEAKERS ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .section { padding: 120px 0; }
-    .section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 60px; }
-    .section-title { font-size: 56px; font-weight: 900; letter-spacing: -0.04em; line-height: 1; }
-    .section-sub { font-size: 18px; font-weight: 600; max-width: 400px; text-align: right; }
-    
-    .spk-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .spk-card {
-      border: 2px solid var(--text); border-radius: 12px; padding: 16px;
-      display: flex; flex-direction: column; gap: 10px; transition: transform 0.2s;
-      background: #fff; box-shadow: 4px 4px 0 var(--text);
-    }
-    .spk-card:hover { transform: translate(-3px, -3px); box-shadow: 7px 7px 0 var(--text); }
-    .spk-img-wrap { width: 60%; aspect-ratio: 1; background: var(--pink); overflow: hidden; border: 2px solid var(--text); border-radius: 50%; }
-    .spk-img { width: 100%; height: 100%; object-fit: cover; }
-    .spk-name { font-size: 20px; font-weight: 900; line-height: 1.1; }
-    .spk-role { font-size: 14px; font-weight: 700; color: var(--blue); }
-    .spk-topic { font-size: 15px; font-weight: 600; line-height: 1.4; margin-top: auto; padding-top: 10px; border-top: 2px dashed rgba(0,0,0,0.1); }
-
-    /* ━━━ AGENDA ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .agenda-section { background: #fff; border-top: 2px solid var(--text); }
-    .agenda-list { max-width: 900px; margin: 0 auto; border: 2px solid var(--text); border-radius: 16px; box-shadow: 8px 8px 0 var(--text); background: var(--bg); overflow: hidden; }
-    .agenda-row {
-      display: grid; grid-template-columns: auto 160px 1fr;
+    .nav {
+      height: 60px;
+      display: flex;
       align-items: center;
-      padding: 28px 40px; border-bottom: 2px solid var(--text);
-      background: #fff; transition: background 0.2s; gap: 24px;
+      justify-content: space-between;
+      padding: 0 20px;
     }
-    .agenda-row:hover { background: var(--surface); }
-    .agenda-row:last-child { border-bottom: none; }
-    .agenda-time { font-size: 14px; font-weight: 900; color: var(--text); display: flex; flex-direction: column; gap: 4px; }
-    .agenda-time .est { font-size: 18px; color: var(--blue); }
-    .agenda-time span { opacity: 0.75; font-weight: 700; font-size: 12px; }
-    .agenda-title { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
-    .agenda-spk { font-size: 15px; font-weight: 700; color: var(--text); }
-    .agenda-role { font-size: 13px; font-weight: 600; color: var(--red); margin-top: 2px; }
-    .agenda-avatar {
-      width: 64px; height: 64px; border-radius: 50%;
-      border: 2px solid var(--text); object-fit: cover;
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .nav-logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Completely clean logo */
+    .nav-logo::before {
+      display: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: -0.01em;
+      transition: color .2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--accent);
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* Classic Family.co Pill Buttons */
+    .btn-outline {
+      font-size: 16px;
+      font-weight: 600;
+      padding: 10px 24px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      transition: opacity 0.2s;
+      background: transparent;
+    }
+
+    .btn-outline:hover { opacity: 0.75; }
+
+    .btn-solid {
+      font-size: 16px;
+      font-weight: 600;
+      padding: 10px 24px;
+      background: #C53C01;
+      color: #FFFFFF;
+      border: 1px solid #C53C01;
+      border-radius: 10px;
+      transition: opacity 0.2s, gap 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0px;
+    }
+    .btn-solid:hover { opacity: 0.88; }
+
+    .hero {
+      padding: 220px 0 120px;
+      text-align: center;
+      position: relative;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .hero .wrap {
+      text-align: center;
+      width: 100%;
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 40px;
+      box-sizing: border-box;
+    }
+
+    /* ─── COLORFUL SHAPES ─── */
+    .shape {
+      position: absolute;
+      border-radius: 50%;
+      z-index: 0;
+      animation: float 8s ease-in-out infinite;
+      opacity: 0.35;
+    }
+
+    .shape-1 {
+      width: 140px;
+      height: 140px;
+      background: #FFCC00;
+      top: 10%;
+      left: 10%;
+      transform: rotate(15deg);
+      border-radius: 40px;
+    }
+
+    .shape-2 {
+      width: 80px;
+      height: 80px;
+      background: #FF3B30;
+      bottom: 20%;
+      left: 20%;
+      animation-delay: -2s;
+    }
+
+    .shape-3 {
+      width: 180px;
+      height: 180px;
+      background: #34C759;
+      top: 20%;
+      right: 5%;
+      animation-delay: -4s;
+    }
+
+    .shape-4 {
+      width: 60px;
+      height: 60px;
+      background: var(--accent);
+      bottom: 30%;
+      right: 25%;
+      animation-delay: -1s;
+    }
+
+    .pop-shape {
+      position: absolute;
+      border-radius: 50%;
+      z-index: 0;
+      animation: float 10s ease-in-out infinite;
+      opacity: 0.35;
+    }
+
+    /* ─── HERO GLOW (Mesh Background) ─── */
+    .hero-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: clamp(400px, 60vw, 800px);
+      height: clamp(400px, 60vw, 800px);
+      background: linear-gradient(135deg, rgba(255, 149, 0, 0.4) 0%, rgba(255, 45, 85, 0.4) 50%, rgba(88, 86, 214, 0.4) 100%);
+      filter: blur(80px);
+      border-radius: 50%;
+      z-index: 0;
+      transform: translate(-50%, -50%);
+      animation: glide 25s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes glide {
+      from {
+        transform: translate(-52%, -48%) rotate(0deg) scale(1);
+      }
+
+      to {
+        transform: translate(-48%, -52%) rotate(180deg) scale(1.1);
+      }
+    }
+
+    /* ─── AMBIENT GLOWS (Section Depth) ─── */
+    .split-glow {
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      width: clamp(300px, 40vw, 600px);
+      height: clamp(300px, 40vw, 600px);
+      background: radial-gradient(circle, rgba(62, 82, 238, 0.1) 0%, transparent 70%);
+      filter: blur(60px);
+      z-index: 0;
+      pointer-events: none;
+      animation: float 15s ease-in-out infinite alternate;
+    }
+
+    .testi-glow {
+      position: absolute;
+      bottom: 10%;
+      right: 5%;
+      width: clamp(300px, 40vw, 700px);
+      height: clamp(300px, 40vw, 700px);
+      background: radial-gradient(circle, rgba(85, 239, 196, 0.1) 0%, transparent 70%);
+      filter: blur(80px);
+      z-index: 0;
+      pointer-events: none;
+      animation: float 18s ease-in-out infinite alternate-reverse;
+    }
+
+    .cta-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(162, 155, 254, 0.15) 0%, transparent 70%);
+      filter: blur(100px);
+      z-index: 0;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      animation: float 12s ease-in-out infinite;
+    }
+
+    .ps-1 {
+      width: 50px;
+      height: 50px;
+      background: #FF9500;
+      top: 15%;
+      right: 10%;
+      border-radius: 12px;
+      transform: rotate(20deg);
+    }
+
+    .ps-2 {
+      width: 120px;
+      height: 120px;
+      background: #FF2D55;
+      bottom: 10%;
+      left: 10%;
+      transform: rotate(-15deg);
+      border-radius: 20%;
+      animation-delay: -2s;
+    }
+
+    .ps-3 {
+      width: 80px;
+      height: 80px;
+      background: #5856D6;
+      top: 20%;
+      left: 5%;
+      animation-delay: -5s;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0);
+      }
+
+      50% {
+        transform: translateY(-20px) rotate(10deg);
+      }
+    }
+
+    .hero-facepile {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 0 auto 32px;
+    }
+
+    .face-group {
+      display: flex;
+    }
+
+    .face {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 3px solid var(--bg);
+      margin-left: -12px;
+      background: var(--surface);
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .face:first-child {
+      margin-left: 0;
+    }
+
+    .face-wrap {
+      position: relative;
+      margin-left: -12px;
+    }
+
+    .face-wrap:first-child {
+      margin-left: 0;
+    }
+
+    .face-wrap .face {
+      margin-left: 0;
+    }
+
+    .face-tip {
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(32, 2, 60, 0.92);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+      padding: 5px 10px;
+      border-radius: 8px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s;
+      z-index: 10;
+      line-height: 1.4;
+      text-align: center;
+    }
+
+    .face-wrap:hover .face-tip {
+      opacity: 1;
+    }
+
+    .facepile-text {
+      font-size: 15px;
+      font-weight: 600;
+      color: #20023C;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-date {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin: 0 auto 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--text);
+    }
+
+    .hero-date .dot {
+      opacity: 0.3;
+    }
+
+    .hero-title {
+      font-size: clamp(52px, 8.5vw, 96px);
+      max-width: 900px;
+      margin: 0 auto 24px;
+      color: #20023C;
+      background: none;
+      -webkit-text-fill-color: #20023C;
+    }
+
+    .hero-sub {
+      font-size: clamp(20px, 3.2vw, 24px);
+      max-width: 800px;
+      margin: 0 auto 40px;
+      font-weight: 500;
+      color: #20023C;
+      line-height: 1.5;
+    }
+
+
+
+    .hero-cta {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .hero-cta .btn-solid {
+      font-size: 20px;
+      padding: 16px 36px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-link {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    /* ─── FLOATING LOGOS (Seamless infinite scroll) ─── */
+    .logos {
+      padding: 24px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow: hidden;
+      width: 100%;
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+
+    .logos-label {
+      font-size: 15px;
+      font-weight: 600;
+      color: #20023C;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .logos-marquee {
+      display: flex;
+      width: max-content;
+      animation: logoScroll 25s linear infinite;
+    }
+
+    .logos-track {
+      display: flex;
+      gap: 80px;
+      padding-right: 80px;
       flex-shrink: 0;
     }
 
-    /* ━━━ REGISTER (BOTTOM) ━━━━━━━━━━━━━━━━━━━━━━ */
-    .register { background: #FEC858; padding: 120px 0; text-align: center; border-top: 2px solid var(--text); }
-    .reg-title { font-size: clamp(48px, 6vw, 72px); font-weight: 900; letter-spacing: -0.04em; margin-bottom: 24px; }
-    .reg-sub { font-size: 20px; font-weight: 700; margin-bottom: 40px; }
-    .reg-form { display: flex; gap: 12px; max-width: 500px; margin: 0 auto; }
-    .reg-input {
-      flex: 1; padding: 20px 24px; border-radius: 12px; border: 2px solid var(--text);
-      font-size: 18px; font-weight: 700; outline: none; background: #fff;
+    .logos-track img {
+      height: 90px;
+      filter: brightness(0) sepia(1) hue-rotate(260deg) saturate(20) brightness(0.12);
+      opacity: 0.85;
+      object-fit: contain;
+      flex-shrink: 0;
     }
-    .btn-reg {
-      background: var(--blue); color: #fff; border: 2px solid var(--text);
-      padding: 18px 40px; border-radius: 100px; font-weight: 900; font-size: 18px; cursor: pointer;
-      box-shadow: 4px 4px 0 var(--text); transition: all 0.1s;
-      display: inline-flex; align-items: center; justify-content: center; text-decoration: none;
-    }
-    .btn-reg:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--text); }
-    .btn-reg:active { transform: translate(2px, 2px); box-shadow: 0px 0px 0 var(--text); }
 
-    /* ━━━ FAQ ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .faq-section { padding: 120px 0; border-top: 2px solid var(--text); background: var(--bg); }
-    .faq-title { font-size: 56px; font-weight: 900; letter-spacing: -0.04em; line-height: 1; text-align: center; margin-bottom: 60px; }
-    .faq-list { max-width: 760px; margin: 0 auto; }
-    .faq-item { border: 2px solid var(--text); border-radius: 12px; margin-bottom: 16px; background: #fff; overflow: hidden; }
+    @keyframes logoScroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-25%);
+      }
+    }
+
+    /* ─── SPLIT SECTION (Like Family.co "Details that matter") ─── */
+    /* Massive vertical margins mimicking the consumer fintech layout */
+    .split-section {
+      padding: 180px 0;
+    }
+
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .sec-title {
+      font-size: 62px;
+      margin-bottom: 24px;
+    }
+
+    .sec-sub {
+      max-width: 400px;
+    }
+
+    .split-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .stack-viz {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding: 0;
+    }
+
+    .stack-tile {
+      width: 100%;
+      background: #FFF8F2;
+      border: 1px solid rgba(0, 0, 0, 0.03);
+      border-radius: 40px;
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.02),
+        0 1px 2px rgba(0, 0, 0, 0.05);
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    .tile-highlight {
+      display: none;
+    }
+
+    .tile-number {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      font-size: 44px;
+      font-weight: 900;
+      color: var(--text);
+      opacity: 0.03;
+      letter-spacing: -0.05em;
+      pointer-events: none;
+    }
+
+    .tile-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 26px;
+      box-shadow: none;
+      position: relative;
+      z-index: 2;
+    }
+
+    .tile-info {
+      flex: 1;
+      position: relative;
+      z-index: 2;
+    }
+
+    .tile-label {
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .tile-name {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .stack-line {
+      width: 4px;
+      height: 32px;
+      background: linear-gradient(to bottom, var(--accent) 0%, transparent 100%);
+      margin-left: 58px;
+      border-radius: 2px;
+      opacity: 0.2;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── SPEAKERS (Clean Avatar Grids) ─── */
+    .spk-section {
+      padding: 180px 0;
+      text-align: center;
+    }
+
+    .spk-header {
+      margin-bottom: 80px;
+    }
+
+    .spk-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px;
+    }
+
+    .spk-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .spk-avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 24px;
+      border: none;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+    }
+
+    .spk-name {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      letter-spacing: -0.02em;
+    }
+
+    .spk-role {
+      font-size: 16px;
+      font-weight: 500;
+      color: #20023C;
+      margin-bottom: 16px;
+    }
+
+    .spk-topic {
+      font-size: 15px;
+      font-weight: 600;
+      padding: 10px 20px;
+      background: var(--surface);
+      border-radius: var(--r-pill);
+      color: var(--text);
+    }
+
+    /* ─── TESTIMONIALS (Minimal quote cards with tiny avatars) ─── */
+    .testi-section {
+      padding: 180px 0;
+    }
+
+    .testi-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 64px;
+    }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testi-card {
+      background: transparent;
+      border: none;
+      padding: 24px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      border-bottom: none;
+    }
+
+    .testi-card:nth-last-child(-n+3) {
+      border-bottom: none;
+    }
+
+    .testi-quote {
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 32px;
+      letter-spacing: -0.01em;
+    }
+
+    .testi-author-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testi-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--surface);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .testi-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      display: block;
+    }
+
+    .testi-handle {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    /* ─── AGENDA / FAQ STYLE (Expansive lists) ─── */
+    .agenda-section {
+      padding: 180px 0;
+    }
+
+    .agenda-wrap {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .agenda-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .agenda-row {
+      display: flex;
+      align-items: center;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .agenda-row:first-child {
+      border-top: 1px solid var(--border);
+    }
+
+    .agenda-time {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-muted);
+      width: 180px;
+      flex-shrink: 0;
+      line-height: 1.5;
+    }
+
+    .agenda-details {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .agenda-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .agenda-spk {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .agenda-btn {
+      display: flex;
+      justify-content: center;
+      margin-top: 48px;
+    }
+
+    .agenda-link {
+      font-size: 18px;
+      font-weight: 700;
+      color: #C53C01;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* ─── FAQ ─── */
+    .faq-section {
+      padding: 100px 0;
+    }
+
+    .faq-title {
+      font-size: clamp(35px, 5.5vw, 62px);
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 48px;
+      color: var(--text);
+    }
+
+    .faq-list {
+      max-width: 680px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .faq-item:first-child {
+      border-top: 1px solid var(--border);
+    }
+
     .faq-q {
-      padding: 24px 32px; font-size: 18px; font-weight: 800; cursor: pointer;
-      display: flex; justify-content: space-between; align-items: center; gap: 16px;
-      user-select: none;
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 20px 0;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      font-family: var(--font);
     }
-    .faq-q:hover { background: rgba(0,0,0,0.02); }
+
     .faq-icon {
-      width: 32px; height: 32px; flex-shrink: 0;
-      border: 2px solid var(--text); border-radius: 50%; background: var(--yellow);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 20px; font-weight: 900; line-height: 1;
-      transition: transform 0.2s;
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      transition: transform 0.25s ease;
+      transform-origin: center center;
     }
-    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(180deg);
+    }
+
     .faq-a {
-      max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
-    }
-    .faq-item.open .faq-a { max-height: 300px; }
-    .faq-a-inner {
-      padding: 0 32px 24px; font-size: 16px; font-weight: 500; line-height: 1.6; opacity: 0.75;
-    }
-
-    /* ━━━ FOOTER ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
-    .footer { background: var(--text); color: #fff; padding: 80px 0 40px; }
-    .footer .wrap { display: flex; justify-content: space-between; align-items: flex-start; gap: 60px; }
-    .footer-signup { flex: 1; max-width: 400px; }
-    .footer-signup h4 { font-size: 18px; font-weight: 900; margin-bottom: 8px; }
-    .footer-signup p { font-size: 14px; font-weight: 600; opacity: 0.6; margin-bottom: 16px; }
-    .footer-signup-form { display: flex; gap: 8px; }
-    .footer-signup-input {
-      flex: 1; padding: 12px 16px; border-radius: 8px; border: 2px solid rgba(255,255,255,0.2);
-      background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; font-weight: 600; outline: none;
-    }
-    .footer-signup-input::placeholder { color: rgba(255,255,255,0.4); }
-    .footer-signup-input:focus { border-color: rgba(255,255,255,0.5); }
-    .footer-signup-btn {
-      padding: 12px 20px; background: var(--blue); color: #fff; border: none; border-radius: 8px;
-      font-size: 14px; font-weight: 800; cursor: pointer; white-space: nowrap; transition: opacity 0.2s;
-    }
-    .footer-signup-btn:hover { opacity: 0.85; }
-    .footer-links { display: flex; gap: 40px; }
-    .footer-links a { font-size: 16px; font-weight: 700; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--yellow); }
-    .footer-copy { font-size: 14px; font-weight: 600; opacity: 0.6; margin-top: 40px; }
-
-    /* Success Message */
-    .success-msg {
-      background: var(--green); border: 2px solid var(--text); padding: 20px;
-      border-radius: 12px; font-weight: 800; font-size: 18px; box-shadow: 4px 4px 0 var(--text);
-      text-align: center; width: 100%;
+      display: none;
+      padding: 0 0 20px;
+      font-size: 16px;
+      color: var(--text);
+      line-height: 1.65;
     }
 
-    /* ━━━ RESPONSIVE ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .faq-item.open .faq-a {
+      display: block;
+    }
+
+    /* ─── BOTTOM CTA ─── */
+    .cta-section {
+      padding: 200px 0;
+      text-align: center;
+    }
+
+    .cta-title {
+      font-size: clamp(52px, 8.5vw, 88px);
+      margin-bottom: 40px;
+    }
+
+    .cta-cards {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 64px;
+    }
+
+    /* ─── FOOTER (Minimal grid) ─── */
+    .footer {
+      padding: 80px 0;
+      border-top: 1px solid var(--border);
+      background: var(--bg);
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+    }
+
+    .footer-logo {
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .footer-col-head {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    .footer-legal {
+      text-align: right;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
-      .optin-btn { padding: 18px; }
-      
-      .proof-text { display: none; }
-      .proof-logos { padding: 0 20px; justify-content: space-between; width: 100%; }
-      
-      .vp-grid { grid-template-columns: 1fr; }
-      
-      .section-header { flex-direction: column; align-items: flex-start; gap: 16px; }
-      .section-sub { text-align: left; }
-      .spk-grid { grid-template-columns: 1fr; }
-      
-      .agenda-row { grid-template-columns: auto 1fr; gap: 12px; padding: 20px 24px; }
-      .agenda-avatar { grid-column: 1; grid-row: 1 / 3; align-self: center; }
-      .agenda-time { grid-column: 2; flex-direction: row; align-items: baseline; gap: 12px; }
-      .agenda-content { grid-column: 2; }
-      
-      .reg-form { flex-direction: column; }
-      .btn-reg { padding: 20px; }
-      .faq-title { font-size: 40px; }
-      .faq-q { padding: 20px 24px; font-size: 16px; }
-      .faq-a-inner { padding: 0 24px 20px; }
-      .footer .wrap { flex-direction: column; align-items: flex-start; gap: 40px; }
+
+      .split-grid,
+      .spk-grid,
+      .testi-grid {
+        grid-template-columns: 1fr;
+        gap: 64px;
+      }
+
+      .nav-links,
+      .nav-left {
+        gap: 24px;
+      }
+
+      .agenda-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero,
+      .split-section,
+      .spk-section,
+      .testi-section,
+      .agenda-section,
+      .cta-section {
+        padding: 80px 0;
+      }
+    }
+
+    .agenda-spk-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .agenda-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      .nav-links {
+        display: none;
+      }
+
+      .btn-outline {
+        display: none;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-legal {
+        text-align: left;
+        margin-top: 40px;
+      }
+
+      .shape, .pop-shape {
+        opacity: 0.35 !important;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<nav class="nav">
-  <div class="wrap">
-  <a href="#" class="nav-logo">
-    AI PM Summit
-  </a>
-  <div class="nav-links">
-      <a href="https://lu.ma/aipmsummit" target="_blank" class="nav-cta">Register</a>
+  <!-- ANNOUNCE BAR -->
+  <div class="announce">
+    <a href="https://lu.ma/aipmsummit" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">2-for-1 Early Bird Sale</a> &nbsp;•&nbsp; Ends in <span id="ab-timer" style="font-variant-numeric: tabular-nums;"></span>
+  </div>
+
+  <!-- HEADER NAV -->
+  <div class="nav-wrap">
+    <div class="wrap nav ">
+      <div class="nav-left">
+        <a href="#top" class="nav-logo">AI PM Summit</a>
+        <div class="nav-links">
+          <a href="#agenda">Schedule</a>
+          <a href="#speakers">Speakers</a>
+          <a href="#testimonials">Reviews</a>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <a href="https://lu.ma/aipmsummit" class="btn-solid">Register</a>
+      </div>
     </div>
   </div>
-</nav>
 
-<section class="hero">
-  <div class="hero-bubble"></div>
-  <div class="hero-bubble"></div>
-  <div class="hero-bubble"></div>
-  <div class="hero-bubble"></div>
-  <div class="hero-bubble"></div>
-  <div class="wrap">
-    <div class="hero-content">
-      <div class="hero-badge">April 22 &middot; Live Virtual Event</div>
-      <h1 class="hero-title">Where <span>AI PMs</span> gather</h1>
-    <p class="hero-sub">
-        How do you write requirements for an agent? What does good AI product taste look like? How do you evaluate what you can't fully spec? Get answers directly from the people figuring it out.
-      </p>
-      
-      <div class="optin-form" style="display: block;">
-        <p style="font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; opacity:0.6; margin-bottom:6px;">Early Bird 2-for-1 ends April 10</p>
-        <div class="countdown" id="hero-countdown">
-          <div class="countdown-unit"><span class="countdown-num" id="h-days">--</span><span class="countdown-label">Days</span></div>
-          <span class="countdown-sep">:</span>
-          <div class="countdown-unit"><span class="countdown-num" id="h-hours">--</span><span class="countdown-label">Hrs</span></div>
-          <span class="countdown-sep">:</span>
-          <div class="countdown-unit"><span class="countdown-num" id="h-mins">--</span><span class="countdown-label">Min</span></div>
-          <span class="countdown-sep">:</span>
-          <div class="countdown-unit"><span class="countdown-num" id="h-secs">--</span><span class="countdown-label">Sec</span></div>
+  <!-- HERO -->
+  <section class="hero ">
+    <div class="hero-glow"></div>
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+    <div class="shape shape-4"></div>
+    <div class="wrap" style="position: relative; z-index: 1;">
+      <div class="hero-date">
+        <span>April 22, 2026</span>
+        <span class="dot">•</span>
+        <span>Online Virtual Summit</span>
+        <span class="dot">•</span>
+        <span>12:00 PM EST / 9:00 AM PST / 4:00 PM GMT</span>
+      </div>
+      <h1 class="hero-title">AI PM Summit</h1>
+      <p class="hero-sub">Real playbooks from product leaders at Google, Airbnb, Gusto, and more. The summit defining
+        the next generation of AI-native products.</p>
+
+      <div class="hero-facepile">
+        <div class="face-group">
+          <div class="face-wrap"><img src="images/speakers/pavan.jpg" alt="Pavan" class="face"><span class="face-tip">Pavan Bandarupalli<br>Principal PM<br>Gusto</span></div>
+          <div class="face-wrap"><img src="images/speakers/amy.jpg" alt="Amy" class="face"><span class="face-tip">Amy Mitchell<br>Senior PM<br>Dell</span></div>
+          <div class="face-wrap"><img src="images/speakers/rishit.jpg" alt="Rishit" class="face"><span class="face-tip">Rishit Bhatia<br>Senior PM<br>MongoDB</span></div>
+          <div class="face-wrap"><img src="images/speakers/arun.jpg" alt="Arun" class="face"><span class="face-tip">Arun Janakiraman<br>GPM<br>Zoom</span></div>
+          <div class="face-wrap"><img src="images/speakers/arpit.jpg" alt="Arpit" class="face"><span class="face-tip">Arpit Guglani<br>Senior PM<br>Google</span></div>
+          <div class="face-wrap"><img src="images/speakers/srividya.jpg" alt="Srividya" class="face"><span class="face-tip">Srividya Sridharan<br>PM<br>Airbnb</span></div>
         </div>
-        <a href="https://lu.ma/aipmsummit" target="_blank" class="optin-btn" style="flex-direction:column; gap:2px; line-height:1.2;">
-          <span>Register &rarr;</span>
-          <span style="font-size:11px; font-weight:700; opacity:0.75; text-transform:uppercase; letter-spacing:0.05em;">Early Bird: 2-for-1</span>
+        <div class="facepile-text">Join PMs from top product teams</div>
+      </div>
+
+      <div class="hero-cta">
+        <a href="https://lu.ma/aipmsummit" class="btn-solid">
+          Register
         </a>
-        <div class="optin-guarantee" style="margin-top: 16px;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-          Early bird pricing available &middot; Includes recordings
+      </div>
+    </div>
+  </section>
+
+  <!-- FLOATING LOGOS -->
+  <div class="logos ">
+    <div class="logos-label">Attendees from</div>
+    <div class="logos-marquee">
+      <div class="logos-track">
+        <img src="https://cofi.so/images/google-logo.webp" alt="Google">
+        <img src="https://cofi.so/images/airbnb-logo.webp" alt="Airbnb">
+        <img src="https://cofi.so/images/amazon-logo.webp" alt="Amazon">
+        <img src="https://cofi.so/images/meta-logo.webp" alt="Meta">
+        <img src="https://cofi.so/images/microsoft-logo.webp" alt="Microsoft">
+        <img src="https://cofi.so/images/stripe-logo.webp" alt="Stripe">
+      </div>
+      <div class="logos-track">
+        <img src="https://cofi.so/images/google-logo.webp" alt="Google">
+        <img src="https://cofi.so/images/airbnb-logo.webp" alt="Airbnb">
+        <img src="https://cofi.so/images/amazon-logo.webp" alt="Amazon">
+        <img src="https://cofi.so/images/meta-logo.webp" alt="Meta">
+        <img src="https://cofi.so/images/microsoft-logo.webp" alt="Microsoft">
+        <img src="https://cofi.so/images/stripe-logo.webp" alt="Stripe">
+      </div>
+      <div class="logos-track">
+        <img src="https://cofi.so/images/google-logo.webp" alt="Google">
+        <img src="https://cofi.so/images/airbnb-logo.webp" alt="Airbnb">
+        <img src="https://cofi.so/images/amazon-logo.webp" alt="Amazon">
+        <img src="https://cofi.so/images/meta-logo.webp" alt="Meta">
+        <img src="https://cofi.so/images/microsoft-logo.webp" alt="Microsoft">
+        <img src="https://cofi.so/images/stripe-logo.webp" alt="Stripe">
+      </div>
+      <div class="logos-track">
+        <img src="https://cofi.so/images/google-logo.webp" alt="Google">
+        <img src="https://cofi.so/images/airbnb-logo.webp" alt="Airbnb">
+        <img src="https://cofi.so/images/amazon-logo.webp" alt="Amazon">
+        <img src="https://cofi.so/images/meta-logo.webp" alt="Meta">
+        <img src="https://cofi.so/images/microsoft-logo.webp" alt="Microsoft">
+        <img src="https://cofi.so/images/stripe-logo.webp" alt="Stripe">
       </div>
     </div>
   </div>
-    <div class="hero-visual">
-      <img src="images/hero-visual.png" alt="AI PM Summit">
-    </div>
-  </div>
-</section>
 
-<!-- Social Proof Bar -->
-<div class="social-proof">
-  <p class="proof-label">trusted by</p>
-  <div class="proof-scroll-wrap">
-    <div class="proof-track">
-      <!-- Set 1 -->
-      <div class="proof-logo-item"><img src="https://cofi.so/images/google-logo.webp" alt="Google"></div>
-      <div class="proof-logo-item"><img src="https://cofi.so/images/airbnb-logo.webp" alt="Airbnb"></div>
-      <div class="proof-logo-item"><img src="https://cofi.so/images/amazon-logo.webp" alt="Amazon"></div>
-      <div class="proof-logo-item"><img src="https://cofi.so/images/disney-logo.webp" alt="Disney"></div>
-      <div class="proof-logo-item"><img src="https://cofi.so/images/meta-logo.webp" alt="Meta"></div>
-      <div class="proof-logo-item"><img src="https://cofi.so/images/microsoft-logo.webp" alt="Microsoft"></div>
-      <div class="proof-logo-item"><img src="https://cofi.so/images/spotify-logo.webp" alt="Spotify"></div>
-      <div class="proof-logo-item"><img src="https://cofi.so/images/stripe-logo.webp" alt="Stripe"></div>
-      <!-- Set 2 (duplicate for seamless loop) -->
-      <div class="proof-logo-item"><img src="https://cofi.so/images/google-logo.webp" alt="Google"></div>
-      <div class="proof-logo-item"><img src="https://cofi.so/images/airbnb-logo.webp" alt="Airbnb"></div>
-      <div class="proof-logo-item"><img src="https://cofi.so/images/amazon-logo.webp" alt="Amazon"></div>
-      <div class="proof-logo-item"><img src="https://cofi.so/images/disney-logo.webp" alt="Disney"></div>
-      <div class="proof-logo-item"><img src="https://cofi.so/images/meta-logo.webp" alt="Meta"></div>
-      <div class="proof-logo-item"><img src="https://cofi.so/images/microsoft-logo.webp" alt="Microsoft"></div>
-      <div class="proof-logo-item"><img src="https://cofi.so/images/spotify-logo.webp" alt="Spotify"></div>
-      <div class="proof-logo-item"><img src="https://cofi.so/images/stripe-logo.webp" alt="Stripe"></div>
-    </div>
-  </div>
-</div>
+  <!-- SPEAKERS -->
+  <section class="spk-section" id="speakers" style="position: relative; overflow: hidden;">
+    <div class="pop-shape ps-1"></div>
+    <div class="pop-shape ps-2"></div>
+    <div class="wrap" style="position: relative; z-index: 1;">
+      <div class="spk-header ">
+        <h2 class="sec-title">Speakers</h2>
+      </div>
 
-<section class="section" id="speakers">
-  <div class="wrap">
-    <div class="section-header">
-      <h2 class="section-title">Speakers</h2>
+      <div class="spk-grid">
+        <div class="spk-card ">
+          <img src="images/speakers/pavan.jpg" alt="Pavan" class="spk-avatar">
+          <div class="spk-name">Pavan Kumar Bandarupalli</div>
+          <div class="spk-role">Principal Product Manager, Gusto</div>
         </div>
-    
-    <div class="spk-grid">
-      <!-- Speaker 1 -->
-      <div class="spk-card">
-        <div class="spk-img-wrap"><img src="images/speakers/pavan.jpg" alt="Pavan Bandarupalli" class="spk-img"></div>
-        <div class="spk-name">Pavan Bandarupalli</div>
-        <div class="spk-role">Principal Product Manager · Gusto</div>
-      </div>
-      <!-- Speaker 2 -->
-      <div class="spk-card">
-        <div class="spk-img-wrap" style="background: var(--yellow);"><img src="images/speakers/amy.jpg" alt="Amy Mitchell" class="spk-img"></div>
-        <div class="spk-name">Amy Mitchell</div>
-        <div class="spk-role">Senior Product Manager · Dell Technologies</div>
-    </div>
-      <!-- Speaker 3 -->
-      <div class="spk-card">
-        <div class="spk-img-wrap" style="background: var(--blue);"><img src="images/speakers/rishit.jpg" alt="Rishit Bhatia" class="spk-img"></div>
-        <div class="spk-name">Rishit Bhatia</div>
-        <div class="spk-role">Senior Product Manager · MongoDB</div>
-      </div>
-      <!-- Speaker 4 -->
-      <div class="spk-card">
-        <div class="spk-img-wrap" style="background: var(--green);"><img src="images/speakers/arun.jpg" alt="Arun Janakiraman" class="spk-img"></div>
-        <div class="spk-name">Arun Janakiraman</div>
-        <div class="spk-role">GPM, Head of Zoom Apps &amp; Marketplace · Zoom</div>
-      </div>
-      <!-- Speaker 5 -->
-      <div class="spk-card">
-        <div class="spk-img-wrap" style="background: var(--red);"><img src="images/speakers/arpit.jpg" alt="Arpit Guglani" class="spk-img"></div>
-        <div class="spk-name">Arpit Guglani</div>
-        <div class="spk-role">Senior Product Manager · Google</div>
-      </div>
-      <!-- Speaker 6 -->
-      <div class="spk-card">
-        <div class="spk-img-wrap" style="background: var(--bg);"><img src="images/speakers/srividya.jpg" alt="Srividya Ramamoorthy" class="spk-img"></div>
-        <div class="spk-name">Srividya Ramamoorthy</div>
-        <div class="spk-role">Staff PM, AI/ML Systems · Airbnb</div>
+
+        <div class="spk-card ">
+          <img src="images/speakers/amy.jpg" alt="Amy" class="spk-avatar">
+          <div class="spk-name">Amy Mitchell</div>
+          <div class="spk-role">Senior Product Manager, Dell Technologies</div>
+        </div>
+
+        <div class="spk-card ">
+          <img src="images/speakers/rishit.jpg" alt="Rishit" class="spk-avatar">
+          <div class="spk-name">Rishit Bhatia</div>
+          <div class="spk-role">Senior Product Manager, MongoDB</div>
+        </div>
+
+        <div class="spk-card ">
+          <img src="images/speakers/arun.jpg" alt="Arun" class="spk-avatar">
+          <div class="spk-name">Arun Janakiraman</div>
+          <div class="spk-role">GPM, Head of Zoom Apps & Marketplace, Zoom</div>
+        </div>
+
+        <div class="spk-card ">
+          <img src="images/speakers/arpit.jpg" alt="Arpit" class="spk-avatar">
+          <div class="spk-name">Arpit Guglani</div>
+          <div class="spk-role">Senior Product Manager, Google</div>
+        </div>
+
+        <div class="spk-card ">
+          <img src="images/speakers/srividya.jpg" alt="Srividya" class="spk-avatar">
+          <div class="spk-name">Srividya Ramamoorthy</div>
+          <div class="spk-role">Staff Product Manager, AI/ML Systems, Airbnb</div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section class="testimonials">
-  <div class="wrap">
-    <h2 class="section-title" style="margin-bottom: 40px; text-align: center;">What attendees are saying</h2>
+  <!-- SPLIT SECTION -->
+  <section class="split-section" style="position: relative;">
+    <div class="split-glow"></div>
+    <div class="wrap split-grid">
+      <div class="split-text">
+        <h2 class="sec-title" style="max-width: 600px;">One day of real playbooks from PMs actively shipping AI products
+          at scale.</h2>
+      </div>
 
-    <div class="testi-grid">
-      <div class="testi-card">
-        <p class="testi-card-text">"These talks reframed my perspective from 'AI will take my job' to 'How can I use AI to improve my work?', with tangible takeaways I could share with my team immediately."</p>
-        <div>
-          <div class="testi-card-name">Andrew Haglund</div>
-          <div class="testi-card-company">John Deere</div>
+      <div class="split-cards">
+        <div class="stack-viz">
+          <!-- Tile 01 -->
+          <div class="stack-tile" style="--tile-glow: var(--accent); background: #FFF8F2;">
+            <div class="tile-highlight"></div>
+            <div class="tile-number">01</div>
+            <div class="tile-icon" style="background: rgba(62, 82, 238, 0.1); color: var(--accent);">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="6" />
+                <circle cx="12" cy="12" r="2" />
+              </svg>
+            </div>
+            <div class="tile-info">
+              <span class="tile-label">What you get</span>
+              <div class="tile-name">Practical Strategies</div>
+              <div
+                style="font-size: 15px; color: var(--text); margin-top: 6px; font-weight: 500; line-height: 1.5;">
+                Strategies and perspectives you can actually use. Every session is designed to be practical, not
+                theoretical.</div>
+            </div>
+          </div>
+
+          <div class="stack-line"></div>
+
+          <!-- Tile 02 -->
+          <div class="stack-tile" style="--tile-glow: #FF9500; background: #FFF8F2;">
+            <div class="tile-highlight"></div>
+            <div class="tile-number">02</div>
+            <div class="tile-icon" style="background: rgba(255, 149, 0, 0.1); color: #FF9500;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z" />
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                <line x1="12" y1="19" x2="12" y2="22" />
+                <line x1="8" y1="22" x2="16" y2="22" />
+              </svg>
+            </div>
+            <div class="tile-info">
+              <span class="tile-label">Who you hear from</span>
+              <div class="tile-name">Product Leaders</div>
+              <div
+                style="font-size: 15px; color: var(--text); margin-top: 6px; font-weight: 500; line-height: 1.5;">
+                Product leaders from Google, Airbnb, Gusto, and MongoDB who are solving the same problems you are and
+                building the future of AI products.</div>
+            </div>
+          </div>
+
+          <div class="stack-line"></div>
+
+          <!-- Tile 03 -->
+          <div class="stack-tile" style="--tile-glow: #34C759; background: #FFF8F2;">
+            <div class="tile-highlight"></div>
+            <div class="tile-number">03</div>
+            <div class="tile-icon" style="background: rgba(52, 199, 89, 0.1); color: #34C759;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+                <polyline points="17 6 23 6 23 12" />
+              </svg>
+            </div>
+            <div class="tile-info">
+              <span class="tile-label">Why it matters</span>
+              <div class="tile-name">Lead the Shift</div>
+              <div
+                style="font-size: 15px; color: var(--text); margin-top: 6px; font-weight: 500; line-height: 1.5;">
+                The PM role is being redefined by AI. Walk away with the vocabulary, the credibility, and the mental
+                models to lead that shift.</div>
+            </div>
           </div>
         </div>
-      <div class="testi-card">
-        <p class="testi-card-text">"The talks gave fresh ideas on how AI can shape more human-centered experiences."</p>
-        <div>
-          <div class="testi-card-name">Livia Biondino</div>
-          <div class="testi-card-company">Charlotte Tilbury</div>
-        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- TESTIMONIALS (Like "Friends of Family") -->
+  <section class="testi-section" id="testimonials" style="position: relative;">
+    <div class="testi-glow"></div>
+    <div class="pop-shape ps-1" style="top: 10%; right: 5%;"></div>
+    <div class="pop-shape ps-2" style="bottom: 10%; left: 5%;"></div>
+    <div class="wrap" style="position: relative; z-index: 1;">
+      <div class="testi-header ">
+        <h2 class="sec-title" style="margin:0;">What attendees say</h2>
+      </div>
+
+      <div class="testi-grid">
+        <div class="testi-card ">
+          <p class="testi-quote">"I felt excitement about the possibilities of AI and Design vs my former feeling of
+            existential dread."</p>
+          <div class="testi-author-row">
+            <div>
+              <span class="testi-name">Jana Kleitsch</span>
+              <span class="testi-handle">Tech Matters</span>
+            </div>
           </div>
-      <div class="testi-card">
-        <p class="testi-card-text">"I walked away with insights on designing AI products and incorporating AI tools into my workflows."</p>
-        <div>
-          <div class="testi-card-name">Thomas Tr&#7847;n</div>
-          <div class="testi-card-company">MongoDB</div>
         </div>
-        </div>
-      <div class="testi-card">
-        <p class="testi-card-text">"Each speaker brought a unique perspective and shared their practices."</p>
-        <div>
-          <div class="testi-card-name">Sofiia Kukhar</div>
-          <div class="testi-card-company">Stanford University</div>
+
+        <div class="testi-card ">
+          <p class="testi-quote">"It helped me learn practical skills and a thoughtful mindset for working with AI."</p>
+          <div class="testi-author-row">
+            <div>
+              <span class="testi-name">MiRi Park</span>
+              <span class="testi-handle">Product Leader</span>
+            </div>
           </div>
         </div>
-        </div>
-  </div>
-</section>
 
-<section class="value-props">
-  <div class="wrap">
-    <div class="vp-grid">
-      <div class="vp-card">
-        <div class="vp-icon" style="background: var(--pink);"></div>
-        <h3 class="vp-title">Questions PMs actually have</h3>
-        <p class="vp-desc">Context engineering, agentic products, AI-native thinking. Every session tackles the hard questions product teams are wrestling with right now.</p>
+        <div class="testi-card ">
+          <p class="testi-quote">"Genuinely informative and fun. I would recommend this summit to others."</p>
+          <div class="testi-author-row">
+            <div>
+              <span class="testi-name">Jessica D.</span>
+              <span class="testi-handle">ChilliPharm</span>
+            </div>
           </div>
-      <div class="vp-card">
-        <div class="vp-icon" style="background: var(--yellow);"></div>
-        <h3 class="vp-title">From people in the same seat as you</h3>
-        <p class="vp-desc">Every speaker is a working PM or product leader. They're dealing with the same trade-offs, the same stakeholder pressure, and the same half-broken AI tooling you are.</p>
         </div>
-      <div class="vp-card">
-        <div class="vp-icon" style="background: var(--green);"></div>
-        <h3 class="vp-title">Watch live or on replay</h3>
-        <p class="vp-desc">Join live from anywhere on April 22, or catch every session on replay. Your ticket includes full access to all recordings.</p>
-        </div>
-    </div>
-  </div>
-</section>
 
-<section class="section agenda-section" id="agenda">
-  <div class="wrap">
-    <h2 class="section-title" style="text-align: center; margin-bottom: 16px;">Agenda</h2>
-    <div class="agenda-list">
-      <div class="agenda-row">
-        <img src="images/speakers/rishit.jpg" alt="Rishit Bhatia" class="agenda-avatar">
-        <div class="agenda-time">
-          <span class="est">12:00 PM EST</span>
-          <span>09:00 AM PST</span>
-          <span>05:00 PM GMT</span>
+        <div class="testi-card ">
+          <p class="testi-quote">"Appreciated hearing directly from designers about how AI is changing UX in practice."
+          </p>
+          <div class="testi-author-row">
+            <div>
+              <span class="testi-name">Alyshia Perri</span>
+              <span class="testi-handle">HubSpot</span>
+            </div>
           </div>
-        <div class="agenda-content">
-          <div class="agenda-title">"From Developers to Agents: Redefining DX for a Non-Human Future"</div>
-          <div class="agenda-spk">Rishit Bhatia</div>
-          <div class="agenda-role">Senior Product Manager &middot; MongoDB</div>
         </div>
-        </div>
-      <div class="agenda-row">
-        <img src="images/speakers/arpit.jpg" alt="Arpit Guglani" class="agenda-avatar">
-        <div class="agenda-time">
-          <span class="est">12:20 PM EST</span>
-          <span>09:20 AM PST</span>
-          <span>05:20 PM GMT</span>
-        </div>
-        <div class="agenda-content">
-          <div class="agenda-title">"The AI Native PM"</div>
-          <div class="agenda-spk">Arpit Guglani</div>
-          <div class="agenda-role">Senior Product Manager &middot; Google</div>
-        </div>
-      </div>
-      <div class="agenda-row">
-        <img src="images/speakers/pavan.jpg" alt="Pavan Bandarupalli" class="agenda-avatar">
-        <div class="agenda-time">
-          <span class="est">12:40 PM EST</span>
-          <span>09:40 AM PST</span>
-          <span>05:40 PM GMT</span>
-        </div>
-        <div class="agenda-content">
-          <div class="agenda-title">"AI Ate the PM Playbook. Now What?"</div>
-          <div class="agenda-spk">Pavan Bandarupalli</div>
-          <div class="agenda-role">Principal Product Manager &middot; Gusto</div>
-        </div>
-      </div>
-      <div class="agenda-row">
-        <img src="images/speakers/amy.jpg" alt="Amy Mitchell" class="agenda-avatar">
-        <div class="agenda-time">
-          <span class="est">01:00 PM EST</span>
-          <span>10:00 AM PST</span>
-          <span>06:00 PM GMT</span>
-        </div>
-        <div class="agenda-content">
-          <div class="agenda-title">"How to Build a Context Engineering System That Scales Your Product and Your AI Capabilities"</div>
-          <div class="agenda-spk">Amy Mitchell</div>
-          <div class="agenda-role">Senior Product Manager &middot; Dell Technologies</div>
-        </div>
-      </div>
-      <div class="agenda-row">
-        <img src="images/speakers/arun.jpg" alt="Arun Janakiraman" class="agenda-avatar">
-        <div class="agenda-time">
-          <span class="est">01:20 PM EST</span>
-          <span>10:20 AM PST</span>
-          <span>06:20 PM GMT</span>
-        </div>
-        <div class="agenda-content">
-          <div class="agenda-title">"Is Design Dead When API Is the New UI?"</div>
-          <div class="agenda-spk">Arun Janakiraman</div>
-          <div class="agenda-role">GPM, Head of Zoom Apps &amp; Marketplace &middot; Zoom</div>
-        </div>
-      </div>
-      <div class="agenda-row">
-        <img src="images/speakers/srividya.jpg" alt="Srividya Ramamoorthy" class="agenda-avatar">
-        <div class="agenda-time">
-          <span class="est">01:40 PM EST</span>
-          <span>10:40 AM PST</span>
-          <span>06:40 PM GMT</span>
-        </div>
-        <div class="agenda-content">
-          <div class="agenda-title">Session TBA</div>
-          <div class="agenda-spk">Srividya Ramamoorthy</div>
-          <div class="agenda-role">Staff PM, AI/ML Systems &middot; Airbnb</div>
-        </div>
-      </div>
-      <div class="agenda-row">
-        <div class="agenda-avatar" style="display:flex;align-items:center;justify-content:center;font-size:36px;background:var(--yellow);">☕</div>
-        <div class="agenda-time">
-          <span class="est">02:00 PM EST</span>
-          <span>11:00 AM PST</span>
-          <span>07:00 PM GMT</span>
-        </div>
-        <div class="agenda-content">
-          <div class="agenda-title">Breakout Rooms</div>
-          <div class="agenda-spk">Meet other product folks</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section class="faq-section" id="faq">
-  <div class="wrap">
-    <h2 class="faq-title">Questions?</h2>
-    <div class="faq-list">
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          <span>When is the event?</span>
-          <div class="faq-icon">+</div>
+        <div class="testi-card ">
+          <p class="testi-quote">"My work has already improved since adopting tools learned from the summit!"</p>
+          <div class="testi-author-row">
+            <div>
+              <span class="testi-name">Emma M.</span>
+              <span class="testi-handle">Mighty Crow</span>
+            </div>
           </div>
-        <div class="faq-a"><div class="faq-a-inner">April 22, 2026. Sessions start at 12:00 PM EST (9:00 AM PST / 5:00 PM UK). The full schedule is listed above.</div></div>
         </div>
 
-      <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          <span>How does a virtual summit work?</span>
-          <div class="faq-icon">+</div>
+        <div class="testi-card ">
+          <p class="testi-quote">"Reframed my perspective to 'How can I use AI to improve my work?' with tangible
+            takeaways."</p>
+          <div class="testi-author-row">
+            <div>
+              <span class="testi-name">Andrew Haglund</span>
+              <span class="testi-handle">John Deere</span>
+            </div>
+          </div>
         </div>
-        <div class="faq-a"><div class="faq-a-inner">After registering, you will get access to our community where the event will be live streamed on Zoom. All sessions are broadcast online and you can watch from anywhere. No travel required.</div></div>
+
+        <div class="testi-card ">
+          <p class="testi-quote">"Fresh ideas on how AI can shape more human-centered experiences."</p>
+          <div class="testi-author-row">
+            <div>
+              <span class="testi-name">Livia Biondino</span>
+              <span class="testi-handle">Charlotte Tilbury</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card ">
+          <p class="testi-quote">"Insights on designing AI products and incorporating AI tools into my workflows."</p>
+          <div class="testi-author-row">
+            <div>
+              <span class="testi-name">Thomas Trần</span>
+              <span class="testi-handle">MongoDB</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card ">
+          <p class="testi-quote">"Each speaker brought a unique perspective."</p>
+          <div class="testi-author-row">
+            <div>
+              <span class="testi-name">Sofiia Kukhar</span>
+              <span class="testi-handle">Stanford University</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGENDA / SCHEDULE -->
+  <section class="agenda-section" id="agenda">
+    <div class="wrap">
+      <div class="agenda-header ">
+        <h2 class="sec-title">Schedule</h2>
       </div>
 
-      <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          <span>Will I get access to recordings?</span>
-          <div class="faq-icon">+</div>
-    </div>
-        <div class="faq-a"><div class="faq-a-inner">Yes. Every ticket includes full access to recordings of all sessions. If you can't attend live, you won't miss a thing.</div></div>
-  </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          <span>Who is this event for?</span>
-          <div class="faq-icon">+</div>
+      <div class="agenda-wrap">
+        <div class="agenda-row ">
+          <div class="agenda-time">12:00 PM EST<br>9:00 AM PST<br>5:00 PM GMT</div>
+          <div class="agenda-details">
+            <div class="agenda-title">From Developers to Agents: Redefining DX for a Non-Human Future</div>
+            <div class="agenda-spk-row">
+              <img src="images/speakers/rishit.jpg" alt="Rishit" class="agenda-avatar">
+              <div class="agenda-spk">Rishit Bhatia, Senior Product Manager, MongoDB</div>
+            </div>
+          </div>
         </div>
-        <div class="faq-a"><div class="faq-a-inner">Product managers, product leaders, and anyone building AI-powered products. Whether you are just starting to explore AI features or already shipping them, you will walk away with frameworks you can apply immediately.</div></div>
+
+        <div class="agenda-row ">
+          <div class="agenda-time">12:20 PM EST<br>9:20 AM PST<br>5:20 PM GMT</div>
+          <div class="agenda-details">
+            <div class="agenda-title">The AI Native PM</div>
+            <div class="agenda-spk-row">
+              <img src="images/speakers/arpit.jpg" alt="Arpit" class="agenda-avatar">
+              <div class="agenda-spk">Arpit Guglani, Senior Product Manager, Google</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="agenda-row ">
+          <div class="agenda-time">12:40 PM EST<br>9:40 AM PST<br>5:40 PM GMT</div>
+          <div class="agenda-details">
+            <div class="agenda-title">AI Ate the PM Playbook. Now What?</div>
+            <div class="agenda-spk-row">
+              <img src="images/speakers/pavan.jpg" alt="Pavan" class="agenda-avatar">
+              <div class="agenda-spk">Pavan Kumar Bandarupalli, Principal Product Manager, Gusto</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="agenda-row ">
+          <div class="agenda-time">1:00 PM EST<br>10:00 AM PST<br>6:00 PM GMT</div>
+          <div class="agenda-details">
+            <div class="agenda-title">How to build a context engineering system that scales your product and your AI
+              capabilities</div>
+            <div class="agenda-spk-row">
+              <img src="images/speakers/amy.jpg" alt="Amy" class="agenda-avatar">
+              <div class="agenda-spk">Amy Mitchell, Senior Product Manager, Dell Technologies</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="agenda-row ">
+          <div class="agenda-time">1:20 PM EST<br>10:20 AM PST<br>6:20 PM GMT</div>
+          <div class="agenda-details">
+            <div class="agenda-title">Is design dead when API is the new UI</div>
+            <div class="agenda-spk-row">
+              <img src="images/speakers/arun.jpg" alt="Arun" class="agenda-avatar">
+              <div class="agenda-spk">Arun Janakiraman, GPM, Head of Zoom Apps & Marketplace, Zoom</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="agenda-row ">
+          <div class="agenda-time">1:40 PM EST<br>10:40 AM PST<br>6:40 PM GMT</div>
+          <div class="agenda-details">
+            <div class="agenda-title">Topic TBD</div>
+            <div class="agenda-spk-row">
+              <img src="images/speakers/srividya.jpg" alt="Srividya" class="agenda-avatar">
+              <div class="agenda-spk">Srividya Ramamoorthy, Staff Product Manager, AI/ML Systems, Airbnb</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="agenda-row ">
+          <div class="agenda-time">2:00 PM EST<br>11:00 AM PST<br>7:00 PM GMT</div>
+          <div class="agenda-details">
+            <div class="agenda-title">Networking Breakouts</div>
+            <div class="agenda-spk">Connect live with peers.</div>
+          </div>
+        </div>
       </div>
 
-      <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          <span>What if I can't make it live?</span>
-          <div class="faq-icon">+</div>
+      <div class="agenda-btn ">
+        <a href="https://lu.ma/aipmsummit" class="agenda-link">
+          Register
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14" />
+            <path d="m12 5 7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section">
+    <div class="wrap">
+      <h2 class="faq-title">Questions?</h2>
+      <div class="faq-list">
+        <div class="faq-item open">
+          <button class="faq-q">When is the event? <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="faq-a">April 22, 2026. Sessions start at 12:00 PM EST (9:00 AM PST / 5:00 PM UK).</div>
         </div>
-        <div class="faq-a"><div class="faq-a-inner">No problem. Recordings are included with every ticket. Register now to lock in your access and watch the sessions on your own schedule.</div></div>
+        <div class="faq-item">
+          <button class="faq-q">How does a virtual summit work? <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="faq-a">Register, join our community, and watch live on Zoom from anywhere.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Will I get access to recordings? <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="faq-a">Yes. All sessions are recorded and included with every ticket.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Who is this event for? <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="faq-a">Product managers and product leaders building AI-powered products.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What if I can't make it live? <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="faq-a">No problem — recordings are included. Watch on your own schedule.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How much does it cost? <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="faq-a">See pricing on the registration page. Early bird pricing is available for a limited time.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I get a team or group discount? <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+          <div class="faq-a">Yes. We offer a 2-for-1 early bird option and sponsor packages with multiple passes.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM CTA -->
+  <section class="cta-section" style="position: relative;">
+    <div class="cta-glow"></div>
+    <div class="pop-shape ps-3"></div>
+    <div class="pop-shape"
+      style="width: 140px; height: 140px; background: var(--accent); top: 15%; right: 15%; animation-delay: -3s; opacity: 0.35;">
+    </div>
+    <div class="pop-shape"
+      style="width: 60px; height: 60px; background: #FF9500; bottom: 20%; right: 8%; border-radius: 14px; transform: rotate(30deg); animation-delay: -1s; opacity: 0.35;">
+    </div>
+    <div class="pop-shape"
+      style="width: 90px; height: 90px; background: #FF2D55; top: 10%; left: 20%; border-radius: 50%; animation-delay: -4s; opacity: 0.35;">
+    </div>
+    <div class="pop-shape"
+      style="width: 45px; height: 45px; background: #34C759; bottom: 15%; left: 30%; border-radius: 10px; transform: rotate(-20deg); animation-delay: -6s; opacity: 0.35;">
+    </div>
+    <div class="pop-shape"
+      style="width: 70px; height: 70px; background: #FFD60A; top: 50%; right: 5%; border-radius: 50%; animation-delay: -2s; opacity: 0.35;">
+    </div>
+    <div class="wrap " style="position: relative; z-index: 1;">
+      <h2 class="cta-title">The summit for PMs<br>building what's next.<br>April 22.</h2>
+      <a href="https://lu.ma/aipmsummit" class="btn-solid"
+        style="padding: 16px 36px; font-size: 20px;">Register</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap footer-grid">
+      <div class="footer-logo">
+        AI PM Summit
       </div>
 
-      <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          <span>How much does it cost?</span>
-          <div class="faq-icon">+</div>
+      <div>
+        <div class="footer-col-head">Attendees</div>
+        <div class="footer-links">
+          <a href="#agenda">Schedule</a>
+          <a href="#speakers">Speakers</a>
+          <a href="#testimonials">Reviews</a>
         </div>
-        <div class="faq-a"><div class="faq-a-inner">Ticket pricing and options are available on our registration page. Early bird pricing is available for a limited time.</div></div>
-    </div>
+      </div>
 
-      <div class="faq-item">
-        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">
-          <span>Can I get a team or group discount?</span>
-          <div class="faq-icon">+</div>
+      <!-- Resources column removed as all links were dead placeholders -->
+
+      <div>
+        <div class="footer-col-head">Company</div>
+        <div class="footer-links">
+          <a href="https://form.typeform.com/to/HKG5aUgq" target="_blank">Contact</a>
+          <a href="/privacy.html">Legal</a>
         </div>
-        <div class="faq-a"><div class="faq-a-inner">Yes. We offer a 2-for-1 early bird option and sponsor packages that include multiple passes. Check the registration page for details or reach out to us directly.</div></div>
       </div>
 
     </div>
+  </footer>
+  <div style="text-align: center; padding: 24px 0 32px; font-size: 12px; color: rgba(0,0,0,0.3); line-height: 1.8; background: var(--bg);">
+    © 2026 CoFi Labs Inc.<br>2482 Yonge St #1135<br>Toronto, ON M4P 2H5<br>Canada
   </div>
-</section>
 
-<section class="register" id="register">
-  <div class="wrap">
-    <h2 class="reg-title">See you April 22</h2>
-    <p class="reg-sub">Starting 12 PM EST &middot; Live online &middot; Recordings included</p>
-
-    <p style="font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; opacity:0.6; margin-top:32px; margin-bottom:6px;">Early Bird 2-for-1 ends April 10</p>
-    <div class="countdown" id="reg-countdown" style="margin: 0 auto; justify-content: center;">
-      <div class="countdown-unit"><span class="countdown-num" id="r-days">--</span><span class="countdown-label">Days</span></div>
-      <span class="countdown-sep">:</span>
-      <div class="countdown-unit"><span class="countdown-num" id="r-hours">--</span><span class="countdown-label">Hrs</span></div>
-      <span class="countdown-sep">:</span>
-      <div class="countdown-unit"><span class="countdown-num" id="r-mins">--</span><span class="countdown-label">Min</span></div>
-      <span class="countdown-sep">:</span>
-      <div class="countdown-unit"><span class="countdown-num" id="r-secs">--</span><span class="countdown-label">Sec</span></div>
-    </div>
-
-    <div style="margin-top: 24px;">
-      <a href="https://lu.ma/aipmsummit" target="_blank" class="btn-reg" style="flex-direction:column; gap:2px; line-height:1.2;">
-        <span>Register &rarr;</span>
-        <span style="font-size:11px; font-weight:700; opacity:0.75; text-transform:uppercase; letter-spacing:0.05em;">Early Bird: 2-for-1</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer-left">
-      <div class="nav-logo" style="margin-bottom: 24px; color: #fff;">
-    AI PM Summit
-  </div>
-  <div class="footer-links">
-    <a href="https://form.typeform.com/to/HKG5aUgq">Contact</a>
-        <a href="/privacy.html">Privacy</a>
-      </div>
-      <p class="footer-copy">© 2026 CoFi Labs Inc. · 2482 Yonge St #1135 · Toronto, ON M4P 2H5</p>
-    </div>
-    <div class="footer-signup">
-      <h4>Get updates</h4>
-      <p>Speaker announcements, schedule updates, and early bird deals.</p>
-      <form class="footer-signup-form" id="footer-kit-form" style="flex-direction:column;">
-        <div style="display:flex; gap:8px;">
-          <input type="text" class="footer-signup-input" placeholder="First name" id="footer-kit-name" style="flex:1;">
-          <input type="email" class="footer-signup-input" placeholder="your@email.com" required id="footer-kit-email" style="flex:2;">
-        </div>
-        <button type="submit" class="footer-signup-btn" style="margin-top:8px; width:100%;">Subscribe</button>
-      </form>
-      <p id="footer-kit-success" style="display:none; margin-top:12px; font-size:14px; font-weight:700; color: var(--green);">You're in! Check your inbox.</p>
-    </div>
-  </div>
-</footer>
-
-<script>
-
-  // Footer Kit form
-  document.getElementById('footer-kit-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const email = document.getElementById('footer-kit-email').value;
-    const firstName = document.getElementById('footer-kit-name').value;
-    try {
-      await fetch('https://api.convertkit.com/v3/forms/9201239/subscribe', {
-      method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ api_key: 'aFuHsDGfxOT6E1WkMpFxiA', email, first_name: firstName })
+  <script>
+    // --- FAQ ACCORDION ---
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        item.classList.toggle('open');
       });
-      document.getElementById('footer-kit-form').style.display = 'none';
-      document.getElementById('footer-kit-success').style.display = 'block';
-    } catch(err) {
-      alert('Something went wrong. Please try again.');
-    }
-  });
-
-  // Countdown to April 10, 2026 11:59 PM local time
-  const deadline = new Date('2026-04-10T23:59:00');
-  function updateCountdown() {
-    const now = new Date();
-    const diff = deadline - now;
-    if (diff <= 0) {
-      ['h-days','h-hours','h-mins','h-secs','r-days','r-hours','r-mins','r-secs'].forEach(id => {
-        const el = document.getElementById(id); if (el) el.textContent = '00';
-      });
-      return;
-    }
-    const days  = Math.floor(diff / 86400000);
-    const hours = Math.floor((diff % 86400000) / 3600000);
-    const mins  = Math.floor((diff % 3600000) / 60000);
-    const secs  = Math.floor((diff % 60000) / 1000);
-    const pad = n => String(n).padStart(2,'0');
-    ['h','r'].forEach(p => {
-      const d = document.getElementById(p+'-days');   if(d) d.textContent = pad(days);
-      const h = document.getElementById(p+'-hours');  if(h) h.textContent = pad(hours);
-      const m = document.getElementById(p+'-mins');   if(m) m.textContent = pad(mins);
-      const s = document.getElementById(p+'-secs');   if(s) s.textContent = pad(secs);
     });
-  }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
-</script>
 
+    // --- SIMPLE TIMER ---
+    const targetDate = new Date('2026-04-22T23:59:59').getTime();
+    function updateTimer() {
+      const now = new Date().getTime();
+      const diff = targetDate - now;
+      if (diff <= 0) return;
+
+      const pad = n => String(Math.max(0, n)).padStart(2, '0');
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+      const timerEl = document.getElementById('ab-timer');
+      if (timerEl) timerEl.innerText = `${pad(d)}d ${pad(h)}h ${pad(m)}m ${pad(s)}s`;
+    }
+    updateTimer();
+    setInterval(updateTimer, 1000);
+
+    // --- HEADER SCROLL REVEAL ---
+    const header = document.querySelector('.nav-wrap');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // --- SIMPLE REVEAL ANIMATION ---
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
 </body>
+
 </html>
