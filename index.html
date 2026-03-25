@@ -1862,14 +1862,12 @@
       </div>
 
       <div class="footer-signup">
-        <div class="footer-col-head">Stay updated</div>
-        <p class="footer-signup-desc">Speaker announcements, schedule updates, and early bird deals.</p>
+        <p class="footer-signup-desc">Get speaker and schedule updates.</p>
         <form id="footer-kit-form">
           <div class="footer-signup-row">
-            <input type="text" class="footer-signup-input" id="footer-kit-name" placeholder="First name">
             <input type="email" class="footer-signup-input" id="footer-kit-email" placeholder="your@email.com" required>
+            <button type="submit" class="footer-signup-btn">Subscribe</button>
           </div>
-          <button type="submit" class="footer-signup-btn" style="width:100%;">Subscribe</button>
         </form>
         <p id="footer-kit-success" class="footer-signup-success" style="display:none; margin-top:10px;">You're in! Check your inbox.</p>
       </div>
@@ -1952,12 +1950,11 @@
     document.getElementById('footer-kit-form').addEventListener('submit', async function(e) {
       e.preventDefault();
       const email = document.getElementById('footer-kit-email').value;
-      const firstName = document.getElementById('footer-kit-name').value;
       try {
         await fetch('https://api.convertkit.com/v3/forms/9201239/subscribe', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ api_key: 'aFuHsDGfxOT6E1WkMpFxiA', email, first_name: firstName })
+          body: JSON.stringify({ api_key: 'aFuHsDGfxOT6E1WkMpFxiA', email })
         });
         document.getElementById('footer-kit-form').style.display = 'none';
         document.getElementById('footer-kit-success').style.display = 'block';
