@@ -16,6 +16,11 @@
 
   <style>
     /* ─── FAMILY.CO AESTHETIC RESET & BASE ─── */
+    html {
+      scrollbar-gutter: stable;
+      overflow-x: hidden;
+    }
+
     *,
     *::before,
     *::after {
@@ -59,6 +64,7 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
+      overflow-y: clip;
       line-height: 1.5;
       width: 100%;
       margin: 0;
@@ -137,9 +143,16 @@
       padding: 12px 20px;
       font-size: 13px;
       font-weight: 800;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
+      letter-spacing: 0.02em;
       gap: 12px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s;
+    }
+
+    .announce.scrolled {
+      opacity: 1;
+      pointer-events: auto;
     }
 
     .announce a:hover {
@@ -163,11 +176,13 @@
       box-shadow: 0 8px 32px rgba(0,0,0,0.08);
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s;
       opacity: 0;
+      pointer-events: none;
     }
 
     .nav-wrap.scrolled {
       transform: translateX(-50%) translateY(0);
       opacity: 1;
+      pointer-events: auto;
     }
 
     .nav {
@@ -212,23 +227,8 @@
       position: relative;
     }
 
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 1.5px;
-      background: var(--accent);
-      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
     .nav-links a:hover {
-      color: var(--text);
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
+      opacity: 0.6;
     }
 
     .nav-actions {
@@ -283,58 +283,90 @@
       box-sizing: border-box;
     }
 
-    /* ─── COLORFUL SHAPES ─── */
+    /* ─── GLASS BUBBLES ─── */
     .shape {
       position: absolute;
-      border-radius: 50%;
       z-index: 0;
-      animation: float 8s ease-in-out infinite;
-      opacity: 0.35;
+      pointer-events: none;
     }
 
     .shape-1 {
-      width: 140px;
-      height: 140px;
-      background: #FFCC00;
+      width: 200px;
+      height: 200px;
+      background: rgba(255,160,0,0.12);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-radius: 62% 38% 52% 48% / 56% 48% 52% 44%;
       top: 10%;
-      left: 10%;
-      transform: rotate(15deg);
-      border-radius: 40px;
+      left: 8%;
+      animation: blob1 9s ease-in-out infinite;
     }
 
     .shape-2 {
-      width: 80px;
-      height: 80px;
-      background: #FF3B30;
-      bottom: 20%;
-      left: 20%;
-      animation-delay: -2s;
+      width: 130px;
+      height: 130px;
+      background: rgba(220,60,60,0.1);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-radius: 54% 46% 42% 58% / 48% 58% 42% 52%;
+      bottom: 18%;
+      left: 18%;
+      animation: blob2 11s ease-in-out infinite;
     }
 
     .shape-3 {
-      width: 180px;
-      height: 180px;
-      background: #34C759;
-      top: 20%;
-      right: 5%;
-      animation-delay: -4s;
+      width: 240px;
+      height: 240px;
+      background: rgba(160,80,240,0.1);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-radius: 48% 52% 60% 40% / 54% 40% 60% 46%;
+      top: 15%;
+      right: 4%;
+      animation: blob3 13s ease-in-out infinite;
     }
 
     .shape-4 {
-      width: 60px;
-      height: 60px;
-      background: var(--accent);
-      bottom: 30%;
-      right: 25%;
+      width: 110px;
+      height: 110px;
+      background: rgba(62,82,238,0.1);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-radius: 56% 44% 50% 50% / 44% 56% 46% 54%;
+      bottom: 28%;
+      right: 22%;
+      animation: blob4 10s ease-in-out infinite;
       animation-delay: -1s;
+    }
+
+    @keyframes blob1 {
+      0%, 100% { border-radius: 62% 38% 46% 54% / 58% 44% 56% 42%; transform: translateY(0) rotate(0deg); }
+      33%       { border-radius: 44% 56% 62% 38% / 52% 62% 38% 48%; transform: translateY(-14px) rotate(6deg); }
+      66%       { border-radius: 54% 46% 38% 62% / 40% 54% 46% 60%; transform: translateY(8px) rotate(-4deg); }
+    }
+    @keyframes blob2 {
+      0%, 100% { border-radius: 54% 46% 38% 62% / 46% 60% 40% 54%; transform: translateY(0) rotate(0deg); }
+      40%       { border-radius: 38% 62% 54% 46% / 62% 40% 60% 40%; transform: translateY(-10px) rotate(-8deg); }
+      70%       { border-radius: 62% 38% 46% 54% / 40% 56% 44% 60%; transform: translateY(12px) rotate(5deg); }
+    }
+    @keyframes blob3 {
+      0%, 100% { border-radius: 46% 54% 62% 38% / 52% 38% 62% 48%; transform: translateY(0) rotate(0deg); }
+      35%       { border-radius: 62% 38% 44% 56% / 44% 60% 40% 56%; transform: translateY(-18px) rotate(5deg); }
+      65%       { border-radius: 38% 62% 52% 48% / 60% 44% 56% 40%; transform: translateY(10px) rotate(-6deg); }
+    }
+    @keyframes blob4 {
+      0%, 100% { border-radius: 58% 42% 52% 48% / 42% 58% 44% 56%; transform: translateY(0) rotate(0deg); }
+      45%       { border-radius: 42% 58% 40% 60% / 56% 42% 60% 40%; transform: translateY(-12px) rotate(9deg); }
+      75%       { border-radius: 60% 40% 58% 42% / 40% 60% 42% 58%; transform: translateY(8px) rotate(-5deg); }
     }
 
     .pop-shape {
       position: absolute;
-      border-radius: 50%;
       z-index: 0;
+      pointer-events: none;
       animation: float 10s ease-in-out infinite;
-      opacity: 0.35;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
     }
 
     /* ─── HERO GLOW (Mesh Background) ─── */
@@ -405,30 +437,36 @@
     }
 
     .ps-1 {
-      width: 50px;
-      height: 50px;
-      background: #FF9500;
+      width: 70px;
+      height: 70px;
+      background: rgba(255,140,0,0.1);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-radius: 58% 42% 52% 48% / 44% 58% 42% 56%;
       top: 15%;
       right: 10%;
-      border-radius: 12px;
-      transform: rotate(20deg);
+      animation-delay: -1s;
     }
 
     .ps-2 {
-      width: 120px;
-      height: 120px;
-      background: #FF2D55;
+      width: 130px;
+      height: 130px;
+      background: rgba(220,40,70,0.1);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-radius: 52% 48% 44% 56% / 56% 44% 58% 42%;
       bottom: 10%;
       left: 10%;
-      transform: rotate(-15deg);
-      border-radius: 20%;
       animation-delay: -2s;
     }
 
     .ps-3 {
-      width: 80px;
-      height: 80px;
-      background: #5856D6;
+      width: 90px;
+      height: 90px;
+      background: rgba(88,86,214,0.1);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-radius: 46% 54% 58% 42% / 54% 46% 52% 48%;
       top: 20%;
       left: 5%;
       animation-delay: -5s;
@@ -533,6 +571,96 @@
       opacity: 0.3;
     }
 
+    .hero-timer-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-timer-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.02em;
+    }
+
+    .hero-timer-units {
+      display: flex;
+      gap: 6px;
+    }
+
+    .timer-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: rgba(0,0,0,0.06);
+      border-radius: 8px;
+      padding: 6px 10px;
+      min-width: 48px;
+    }
+
+    .timer-num {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text);
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.03em;
+      line-height: 1;
+    }
+
+    .timer-lbl {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-top: 3px;
+    }
+
+    .hero-nav {
+      position: fixed;
+      top: 52px;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 60px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      padding: 0 28px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      z-index: 999;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+      pointer-events: auto;
+      background: rgba(255, 240, 230, 0.7);
+      backdrop-filter: blur(24px) saturate(1.8);
+      -webkit-backdrop-filter: blur(24px) saturate(1.8);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      letter-spacing: -0.01em;
+    }
+
+    .hero-nav a {
+      color: var(--text);
+    }
+
+    .hero-nav a:hover {
+      opacity: 0.6;
+    }
+
+    .hero-nav-dot {
+      opacity: 0.3;
+    }
+
+    .hero-nav.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
     .hero-title {
       font-size: clamp(52px, 8.5vw, 96px);
       max-width: 900px;
@@ -555,9 +683,10 @@
 
     .hero-cta {
       display: flex;
+      flex-direction: column;
       justify-content: center;
-      gap: 16px;
       align-items: center;
+      gap: 10px;
     }
 
     .hero-cta .btn-solid {
@@ -1162,7 +1291,7 @@
 
   <!-- ANNOUNCE BAR -->
   <div class="announce">
-    <a href="https://lu.ma/aipmsummit" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">2-for-1 Early Bird Sale</a> &nbsp;•&nbsp; Ends in <span id="ab-timer" style="font-variant-numeric: tabular-nums;"></span>
+    <a href="https://lu.ma/aipmsummit" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Early Bird 2 for 1</a> &nbsp;•&nbsp; Available until April 10
   </div>
 
   <!-- HEADER NAV -->
@@ -1182,6 +1311,13 @@
     </div>
   </div>
 
+  <!-- HERO NAV OVERLAY -->
+  <div class="hero-nav" id="hero-nav">
+    <a href="#agenda">Schedule</a>
+    <a href="#speakers">Speakers</a>
+    <a href="#testimonials">Reviews</a>
+  </div>
+
   <!-- HERO -->
   <section class="hero ">
     <div class="hero-glow"></div>
@@ -1193,7 +1329,7 @@
       <div class="hero-date">
         <span>April 22, 2026</span>
         <span class="dot">•</span>
-        <span>Online Virtual Summit</span>
+        <span>Virtual Summit</span>
         <span class="dot">•</span>
         <span>12:00 PM EST / 9:00 AM PST / 4:00 PM GMT</span>
       </div>
@@ -1217,7 +1353,17 @@
         <a href="https://lu.ma/aipmsummit" class="btn-solid">
           Register
         </a>
+        <div class="hero-timer-wrap">
+          <span class="hero-timer-label">Early bird 2 for 1 · Available until April 10</span>
+          <div class="hero-timer-units" id="hero-timer">
+            <span class="timer-unit"><span class="timer-num" id="ht-d">00</span><span class="timer-lbl">days</span></span>
+            <span class="timer-unit"><span class="timer-num" id="ht-h">00</span><span class="timer-lbl">hrs</span></span>
+            <span class="timer-unit"><span class="timer-num" id="ht-m">00</span><span class="timer-lbl">min</span></span>
+            <span class="timer-unit"><span class="timer-num" id="ht-s">00</span><span class="timer-lbl">sec</span></span>
+          </div>
+        </div>
       </div>
+
     </div>
   </section>
 
@@ -1622,7 +1768,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-q">What if I can't make it live? <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
-          <div class="faq-a">No problem — recordings are included. Watch on your own schedule.</div>
+          <div class="faq-a">No problem. Recordings are included. Watch on your own schedule.</div>
         </div>
         <div class="faq-item">
           <button class="faq-q">How much does it cost? <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
@@ -1640,21 +1786,11 @@
   <section class="cta-section" style="position: relative;">
     <div class="cta-glow"></div>
     <div class="pop-shape ps-3"></div>
-    <div class="pop-shape"
-      style="width: 140px; height: 140px; background: var(--accent); top: 15%; right: 15%; animation-delay: -3s; opacity: 0.35;">
-    </div>
-    <div class="pop-shape"
-      style="width: 60px; height: 60px; background: #FF9500; bottom: 20%; right: 8%; border-radius: 14px; transform: rotate(30deg); animation-delay: -1s; opacity: 0.35;">
-    </div>
-    <div class="pop-shape"
-      style="width: 90px; height: 90px; background: #FF2D55; top: 10%; left: 20%; border-radius: 50%; animation-delay: -4s; opacity: 0.35;">
-    </div>
-    <div class="pop-shape"
-      style="width: 45px; height: 45px; background: #34C759; bottom: 15%; left: 30%; border-radius: 10px; transform: rotate(-20deg); animation-delay: -6s; opacity: 0.35;">
-    </div>
-    <div class="pop-shape"
-      style="width: 70px; height: 70px; background: #FFD60A; top: 50%; right: 5%; border-radius: 50%; animation-delay: -2s; opacity: 0.35;">
-    </div>
+    <div class="pop-shape" style="width:140px;height:140px;top:15%;right:15%;animation-delay:-3s;background:rgba(62,82,238,0.1);border-radius:54% 46% 60% 40%/48% 56% 44% 52%;"></div>
+    <div class="pop-shape" style="width:65px;height:65px;bottom:20%;right:8%;animation-delay:-1s;background:rgba(255,149,0,0.1);border-radius:60% 40% 48% 52%/44% 60% 40% 56%;"></div>
+    <div class="pop-shape" style="width:90px;height:90px;top:10%;left:20%;animation-delay:-4s;background:rgba(220,40,70,0.1);border-radius:46% 54% 56% 44%/56% 44% 52% 48%;"></div>
+    <div class="pop-shape" style="width:50px;height:50px;bottom:15%;left:30%;animation-delay:-6s;background:rgba(160,80,240,0.1);border-radius:52% 48% 44% 56%/48% 54% 46% 52%;"></div>
+    <div class="pop-shape" style="width:75px;height:75px;top:50%;right:5%;animation-delay:-2s;background:rgba(255,200,0,0.1);border-radius:58% 42% 50% 50%/42% 58% 48% 52%;"></div>
     <div class="wrap " style="position: relative; z-index: 1;">
       <h2 class="cta-title">The summit for PMs<br>building what's next.<br>April 22.</h2>
       <a href="https://lu.ma/aipmsummit" class="btn-solid"
@@ -1691,7 +1827,8 @@
     </div>
   </footer>
   <div style="text-align: center; padding: 24px 0 32px; font-size: 12px; color: rgba(0,0,0,0.3); line-height: 1.8; background: var(--bg);">
-    © 2026 CoFi Labs Inc. · 2482 Yonge St #1135, Toronto, ON M4P 2H5, Canada
+    © 2026 CoFi Labs Inc. · 2482 Yonge St #1135, Toronto, ON M4P 2H5, Canada<br>
+    Produced by <a href="https://cofi.so" target="_blank" style="color: rgba(0,0,0,0.4); font-weight: 600; text-decoration: none;">CoFi</a>
   </div>
 
   <script>
@@ -1704,7 +1841,7 @@
     });
 
     // --- SIMPLE TIMER ---
-    const targetDate = new Date('2026-04-22T23:59:59').getTime();
+    const targetDate = new Date('2026-04-10T23:59:00').getTime();
     function updateTimer() {
       const now = new Date().getTime();
       const diff = targetDate - now;
@@ -1718,17 +1855,27 @@
 
       const timerEl = document.getElementById('ab-timer');
       if (timerEl) timerEl.innerText = `${pad(d)}d ${pad(h)}h ${pad(m)}m ${pad(s)}s`;
+      const htD = document.getElementById('ht-d'); if (htD) htD.innerText = pad(d);
+      const htH = document.getElementById('ht-h'); if (htH) htH.innerText = pad(h);
+      const htM = document.getElementById('ht-m'); if (htM) htM.innerText = pad(m);
+      const htS = document.getElementById('ht-s'); if (htS) htS.innerText = pad(s);
     }
     updateTimer();
     setInterval(updateTimer, 1000);
 
     // --- HEADER SCROLL REVEAL ---
     const header = document.querySelector('.nav-wrap');
+    const announce = document.querySelector('.announce');
+    const heroNav = document.getElementById('hero-nav');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 100) {
         header.classList.add('scrolled');
+        announce.classList.add('scrolled');
+        heroNav.classList.add('hidden');
       } else {
         header.classList.remove('scrolled');
+        announce.classList.remove('scrolled');
+        heroNav.classList.remove('hidden');
       }
     });
 
