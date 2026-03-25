@@ -1219,12 +1219,12 @@
 
     .footer-signup-row {
       display: flex;
+      flex-direction: column;
       gap: 8px;
-      margin-bottom: 8px;
     }
 
     .footer-signup-input {
-      flex: 1;
+      width: 100%;
       padding: 10px 14px;
       border-radius: 10px;
       border: 1px solid var(--border);
@@ -1234,6 +1234,7 @@
       color: var(--text);
       font-family: var(--font);
       outline: none;
+      box-sizing: border-box;
     }
 
     .footer-signup-input:focus {
@@ -1242,6 +1243,7 @@
     }
 
     .footer-signup-btn {
+      width: 100%;
       padding: 10px 20px;
       background: var(--text);
       color: #fff;
@@ -1252,7 +1254,6 @@
       cursor: pointer;
       font-family: var(--font);
       transition: opacity 0.2s;
-      white-space: nowrap;
     }
 
     .footer-signup-btn:hover { opacity: 0.8; }
@@ -1874,6 +1875,7 @@
             <input type="email" class="footer-signup-input" id="footer-kit-email" placeholder="your@email.com" required>
             <button type="submit" class="footer-signup-btn">Subscribe</button>
           </div>
+
         </form>
         <p id="footer-kit-success" class="footer-signup-success" style="display:none; margin-top:10px;">You're in! Check your inbox.</p>
       </div>
