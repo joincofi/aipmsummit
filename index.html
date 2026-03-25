@@ -19,6 +19,7 @@
     html {
       scrollbar-gutter: stable;
       overflow-x: hidden;
+      overscroll-behavior: none;
     }
 
     *,
@@ -65,6 +66,7 @@
       -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
       overflow-y: clip;
+      overscroll-behavior: none;
       line-height: 1.5;
       width: 100%;
       margin: 0;
@@ -271,6 +273,7 @@
       position: relative;
       width: 100%;
       box-sizing: border-box;
+      overflow: hidden;
     }
 
     .hero .wrap {
@@ -1211,6 +1214,11 @@
       color: var(--text-muted);
     }
 
+    /* Offset anchor links below fixed nav */
+    #agenda, #speakers, #testimonials {
+      scroll-margin-top: 120px;
+    }
+
     /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
 
@@ -1233,7 +1241,7 @@
       }
 
       .footer-grid {
-        grid-template-columns: 1fr 1fr;
+        flex-wrap: wrap;
       }
 
       .hero,
@@ -1272,7 +1280,7 @@
       }
 
       .footer-grid {
-        grid-template-columns: 1fr;
+        flex-direction: column;
       }
 
       .footer-legal {
