@@ -11,8 +11,6 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet" />
 
   <style>
     /* ─── FAMILY.CO AESTHETIC RESET & BASE ─── */
@@ -43,7 +41,7 @@
 
     :root {
       /* Elegant Cream & Modern Slate Palette */
-      --bg: #FFF0E6;
+      --bg: #ffffff;
       --surface: #FFFFFF;
       --text: #20023C;
       --text-muted: #8E7C9A;
@@ -55,7 +53,7 @@
       --r-lg: 24px;
       --r-md: 16px;
 
-      --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
     }
 
     body {
@@ -70,6 +68,7 @@
       margin: 0;
       padding: 0;
     }
+
 
     /* Massive horizontal containment */
     .wrap {
@@ -168,12 +167,12 @@
       width: calc(100% - 24px);
       max-width: 1280px;
       z-index: 1000;
-      background: rgba(255, 240, 230, 0.7);
-      backdrop-filter: blur(24px) saturate(1.8);
-      -webkit-backdrop-filter: blur(24px) saturate(1.8);
-      border: 1px solid rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(32px) saturate(1.8);
+      -webkit-backdrop-filter: blur(32px) saturate(1.8);
+      border: 1px solid rgba(255, 255, 255, 0.7);
       border-radius: 20px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s;
       opacity: 0;
       pointer-events: none;
@@ -254,9 +253,9 @@
       font-size: 16px;
       font-weight: 600;
       padding: 10px 24px;
-      background: #C53C01;
+      background: #0074D4;
       color: #FFFFFF;
-      border: 1px solid #C53C01;
+      border: 1px solid #0074D4;
       border-radius: 10px;
       transition: opacity 0.2s, gap 0.2s;
       display: inline-flex;
@@ -271,6 +270,7 @@
       position: relative;
       width: 100%;
       box-sizing: border-box;
+      background: linear-gradient(180deg, #E7F7FF 0%, #ffffff 100%);
     }
 
     .hero .wrap {
@@ -281,6 +281,66 @@
       margin-right: auto;
       padding: 0 40px;
       box-sizing: border-box;
+    }
+
+    /* ─── CLOUDS ─── */
+    .cloud {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.9;
+    }
+
+    .cloud-body {
+      background: #ffffff;
+      border-radius: 50px;
+      position: relative;
+    }
+
+    .cloud-body::before,
+    .cloud-body::after {
+      content: '';
+      position: absolute;
+      background: #ffffff;
+      border-radius: 50%;
+    }
+
+    .cloud-1 .cloud-body { width: 200px; height: 50px; top: 30px; }
+    .cloud-1 .cloud-body::before { width: 90px; height: 90px; top: -44px; left: 30px; }
+    .cloud-1 .cloud-body::after  { width: 60px; height: 60px; top: -28px; left: 100px; }
+    .cloud-1  { top: 12%; left: -220px; animation: cloud-drift 70s linear infinite; }
+    .cloud-1b { top: 12%; left: -220px; animation: cloud-drift 70s linear infinite; animation-delay: -35s; }
+
+    .cloud-2 .cloud-body,
+    .cloud-2b .cloud-body { width: 140px; height: 38px; top: 22px; }
+    .cloud-2 .cloud-body::before,
+    .cloud-2b .cloud-body::before { width: 64px; height: 64px; top: -32px; left: 18px; }
+    .cloud-2 .cloud-body::after,
+    .cloud-2b .cloud-body::after  { width: 48px; height: 48px; top: -22px; left: 72px; }
+    .cloud-2  { top: 28%; left: -160px; animation: cloud-drift 95s linear infinite; animation-delay: -10s; }
+    .cloud-2b { top: 28%; left: -160px; animation: cloud-drift 95s linear infinite; animation-delay: -57s; }
+
+    .cloud-3 .cloud-body,
+    .cloud-3b .cloud-body { width: 260px; height: 60px; top: 38px; }
+    .cloud-3 .cloud-body::before,
+    .cloud-3b .cloud-body::before { width: 110px; height: 110px; top: -56px; left: 40px; }
+    .cloud-3 .cloud-body::after,
+    .cloud-3b .cloud-body::after  { width: 80px; height: 80px; top: -38px; left: 140px; }
+    .cloud-3  { top: 55%; left: -280px; animation: cloud-drift 110s linear infinite; animation-delay: -20s; }
+    .cloud-3b { top: 55%; left: -280px; animation: cloud-drift 110s linear infinite; animation-delay: -75s; }
+
+    .cloud-4 .cloud-body,
+    .cloud-4b .cloud-body { width: 110px; height: 30px; top: 18px; }
+    .cloud-4 .cloud-body::before,
+    .cloud-4b .cloud-body::before { width: 50px; height: 50px; top: -26px; left: 14px; }
+    .cloud-4 .cloud-body::after,
+    .cloud-4b .cloud-body::after  { width: 38px; height: 38px; top: -18px; left: 58px; }
+    .cloud-4  { top: 70%; left: -130px; animation: cloud-drift 80s linear infinite; animation-delay: -5s; }
+    .cloud-4b { top: 70%; left: -130px; animation: cloud-drift 80s linear infinite; animation-delay: -45s; }
+
+    @keyframes cloud-drift {
+      from { transform: translateX(0); }
+      to   { transform: translateX(calc(100vw + 400px)); }
     }
 
     /* ─── GLASS BUBBLES ─── */
@@ -369,7 +429,7 @@
       background: linear-gradient(135deg, rgba(255, 149, 0, 0.4) 0%, rgba(255, 45, 85, 0.4) 50%, rgba(88, 86, 214, 0.4) 100%);
       filter: blur(80px);
       border-radius: 50%;
-      z-index: 0;
+      z-index: 1;
       transform: translate(-50%, -50%) translateZ(0);
       will-change: transform;
       animation: glide 25s ease-in-out infinite alternate;
@@ -584,7 +644,11 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: rgba(0,0,0,0.06);
+      background: rgba(255,255,255,0.4);
+      backdrop-filter: blur(12px) saturate(1.8);
+      -webkit-backdrop-filter: blur(12px) saturate(1.8);
+      border: 1px solid rgba(255,255,255,0.7);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
       border-radius: 8px;
       padding: 6px 10px;
       min-width: 48px;
@@ -625,12 +689,12 @@
       opacity: 1;
       transition: opacity 0.3s ease;
       pointer-events: auto;
-      background: rgba(255, 240, 230, 0.7);
-      backdrop-filter: blur(24px) saturate(1.8);
-      -webkit-backdrop-filter: blur(24px) saturate(1.8);
-      border: 1px solid rgba(255, 255, 255, 0.5);
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(32px) saturate(1.8);
+      -webkit-backdrop-filter: blur(32px) saturate(1.8);
+      border: 1px solid rgba(255, 255, 255, 0.7);
       border-radius: 20px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
       letter-spacing: -0.01em;
     }
 
@@ -753,7 +817,6 @@
     /* Massive vertical margins mimicking the consumer fintech layout */
     .split-section {
       padding: 180px 0;
-      overflow: hidden;
     }
 
     .split-grid {
@@ -788,19 +851,18 @@
 
     .stack-tile {
       width: 100%;
-      background: rgba(255, 248, 242, 0.35);
-      backdrop-filter: blur(24px) saturate(2);
-      -webkit-backdrop-filter: blur(24px) saturate(2);
-      border: 1px solid rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(24px) saturate(1.8);
+      -webkit-backdrop-filter: blur(24px) saturate(1.8);
+      border: 1px solid rgba(255, 255, 255, 0.75);
       border-radius: 40px;
       padding: 32px;
       display: flex;
       align-items: center;
       gap: 28px;
       box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.1),
-        0 2px 0 rgba(255, 255, 255, 0.9) inset,
-        0 -1px 0 rgba(0, 0, 0, 0.04) inset;
+        0 8px 32px rgba(0, 0, 0, 0.07),
+        0 2px 0 rgba(255, 255, 255, 0.95) inset;
       position: relative;
       z-index: 2;
       overflow: hidden;
@@ -1075,7 +1137,7 @@
     .agenda-link {
       font-size: 18px;
       font-weight: 700;
-      color: #C53C01;
+      color: #0074D4;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -1160,6 +1222,7 @@
       padding: 200px 0;
       text-align: center;
       overflow: hidden;
+      background: linear-gradient(180deg, #ffffff 0%, #E7F7FF 100%);
     }
 
     .cta-title {
@@ -1177,8 +1240,7 @@
     /* ─── FOOTER (Minimal grid) ─── */
     .footer {
       padding: 48px 0 40px;
-      border-top: 1px solid var(--border);
-      background: var(--bg);
+      background: #E7F7FF;
     }
 
     .footer-grid {
@@ -1192,6 +1254,7 @@
       font-size: 22px;
       font-weight: 800;
       margin-bottom: 20px;
+      color: var(--text);
     }
 
     .footer-col-head {
@@ -1202,9 +1265,9 @@
     }
 
     .footer-links {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 32px;
       font-size: 15px;
       font-weight: 500;
       color: var(--text-muted);
@@ -1382,6 +1445,7 @@
           <a href="#agenda">Schedule</a>
           <a href="#speakers">Speakers</a>
           <a href="#testimonials">Reviews</a>
+          <a href="#faq">FAQ</a>
         </div>
       </div>
       <div class="nav-actions">
@@ -1395,11 +1459,20 @@
     <a href="#agenda">Schedule</a>
     <a href="#speakers">Speakers</a>
     <a href="#testimonials">Reviews</a>
+    <a href="#faq">FAQ</a>
   </div>
 
   <!-- HERO -->
   <section class="hero ">
     <div class="hero-glow"></div>
+    <div class="cloud cloud-1"><div class="cloud-body"></div></div>
+    <div class="cloud cloud-1b"><div class="cloud-body"></div></div>
+    <div class="cloud cloud-2"><div class="cloud-body"></div></div>
+    <div class="cloud cloud-2b"><div class="cloud-body"></div></div>
+    <div class="cloud cloud-3"><div class="cloud-body"></div></div>
+    <div class="cloud cloud-3b"><div class="cloud-body"></div></div>
+    <div class="cloud cloud-4"><div class="cloud-body"></div></div>
+    <div class="cloud cloud-4b"><div class="cloud-body"></div></div>
     <div class="shape shape-1"></div>
     <div class="shape shape-2"></div>
     <div class="shape shape-3"></div>
@@ -1531,6 +1604,12 @@
           <div class="spk-role">Staff Product Manager, AI/ML Systems, Airbnb</div>
         </div>
 
+        <div class="spk-card ">
+          <img src="images/speakers/shayamala.jpeg" alt="Shyamala" class="spk-avatar">
+          <div class="spk-name">Shyamala Prayaga</div>
+          <div class="spk-role">Senior Software Product Manager, AI Foundation Models</div>
+        </div>
+
         <div class="spk-card" style="grid-column: 2; align-items: center; justify-content: center; min-height: 200px;">
           <div style="text-align: center;">
             <div style="margin-bottom: 12px; color: var(--text-muted); opacity: 0.4;">
@@ -1559,7 +1638,7 @@
       <div class="split-cards">
         <div class="stack-viz">
           <!-- Tile 01 -->
-          <div class="stack-tile" style="--tile-glow: var(--accent); background: #FFF8F2;">
+          <div class="stack-tile" style="--tile-glow: var(--accent);">
             <div class="tile-highlight"></div>
             <div class="tile-number">01</div>
             <div class="tile-icon" style="background: rgba(62, 82, 238, 0.1); color: var(--accent);">
@@ -1583,7 +1662,7 @@
           <div class="stack-line"></div>
 
           <!-- Tile 02 -->
-          <div class="stack-tile" style="--tile-glow: #FF9500; background: #FFF8F2;">
+          <div class="stack-tile" style="--tile-glow: #FF9500;">
             <div class="tile-highlight"></div>
             <div class="tile-number">02</div>
             <div class="tile-icon" style="background: rgba(255, 149, 0, 0.1); color: #FF9500;">
@@ -1608,7 +1687,7 @@
           <div class="stack-line"></div>
 
           <!-- Tile 03 -->
-          <div class="stack-tile" style="--tile-glow: #34C759; background: #FFF8F2;">
+          <div class="stack-tile" style="--tile-glow: #34C759;">
             <div class="tile-highlight"></div>
             <div class="tile-number">03</div>
             <div class="tile-icon" style="background: rgba(52, 199, 89, 0.1); color: #34C759;">
@@ -1815,11 +1894,14 @@
           </div>
         </div>
 
-        <div class="agenda-row" style="opacity: 0.5;">
+        <div class="agenda-row">
           <div class="agenda-time">2:00 PM EST<br>11:00 AM PST<br>7:00 PM GMT</div>
           <div class="agenda-details">
-            <div class="agenda-title" style="color: var(--text-muted);">Speaker TBA</div>
-            <div class="agenda-spk" style="color: var(--text-muted);">Announced soon</div>
+            <div class="agenda-title">Topic TBD</div>
+            <div class="agenda-spk-row">
+              <img src="images/speakers/shayamala.jpeg" alt="Shyamala" class="agenda-avatar">
+              <div class="agenda-spk">Shyamala Prayaga, Senior Software Product Manager, AI Foundation Models</div>
+            </div>
           </div>
         </div>
 
@@ -1861,7 +1943,7 @@
   </section>
 
   <!-- FAQ -->
-  <section class="faq-section">
+  <section class="faq-section" id="faq">
     <div class="wrap">
       <h2 class="faq-title">Questions?</h2>
       <div class="faq-list">
@@ -1914,11 +1996,15 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <div class="wrap footer-grid">
+    <div class="wrap footer-grid" style="border-top: 1px solid var(--border); padding-top: 48px;">
 
       <div>
         <div class="footer-logo">AI PM Summit</div>
         <div class="footer-links">
+          <a href="#agenda">Schedule</a>
+          <a href="#speakers">Speakers</a>
+          <a href="#testimonials">Reviews</a>
+          <a href="#faq">FAQ</a>
           <a href="https://form.typeform.com/to/HKG5aUgq" target="_blank">Contact</a>
           <a href="/privacy.html">Privacy Policy</a>
         </div>
@@ -1938,7 +2024,7 @@
       </div>
 
     </div>
-    <div class="wrap" style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-muted);">
+    <div class="wrap" style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-muted); text-align: center;">
       © 2026 CoFi Labs Inc. · 2482 Yonge St #1135, Toronto, ON M4P 2H5, Canada &nbsp;·&nbsp;
       Produced by <a href="https://cofi.so" target="_blank" style="color: var(--text-muted); font-weight: 600;">CoFi</a>
     </div>
