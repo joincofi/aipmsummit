@@ -1949,20 +1949,17 @@
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
     // --- KIT SUBSCRIBE FORM ---
-    document.getElementById('footer-kit-form').addEventListener('submit', async function(e) {
+    document.getElementById('footer-kit-form').addEventListener('submit', function(e) {
       e.preventDefault();
       const email = document.getElementById('footer-kit-email').value;
-      try {
-        await fetch('https://api.convertkit.com/v3/forms/9201239/subscribe', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ api_key: 'aFuHsDGfxOT6E1WkMpFxiA', email, first_name: document.getElementById('footer-kit-name').value })
-        });
-        document.getElementById('footer-kit-form').style.display = 'none';
-        document.getElementById('footer-kit-success').style.display = 'block';
-      } catch(err) {
-        alert('Something went wrong. Please try again.');
-      }
+      const firstName = document.getElementById('footer-kit-name').value;
+      fetch('https://api.convertkit.com/v3/forms/9201239/subscribe', {
+        method: 'POST',
+        mode: 'no-cors',
+        body: new URLSearchParams({ api_key: 'aFuHsDGfxOT6E1WkMpFxiA', email, first_name: firstName })
+      });
+      document.getElementById('footer-kit-form').style.display = 'none';
+      document.getElementById('footer-kit-success').style.display = 'block';
     });
   </script>
 </body>
