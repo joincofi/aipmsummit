@@ -170,10 +170,10 @@
       background: rgba(255, 255, 255, 0.55);
       backdrop-filter: blur(32px) saturate(1.8);
       -webkit-backdrop-filter: blur(32px) saturate(1.8);
-      border: 1px solid rgba(255, 255, 255, 0.7);
+      border: none;
       border-radius: 20px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s;
+      box-shadow: none;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       opacity: 0;
       pointer-events: none;
     }
@@ -186,16 +186,15 @@
 
     .nav {
       height: 60px;
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      justify-content: space-between;
       padding: 0 20px;
     }
 
     .nav-left {
       display: flex;
       align-items: center;
-      gap: 40px;
     }
 
     .nav-logo {
@@ -233,6 +232,7 @@
     .nav-actions {
       display: flex;
       align-items: center;
+      justify-content: flex-end;
       gap: 16px;
     }
 
@@ -288,7 +288,7 @@
       position: absolute;
       pointer-events: none;
       z-index: 0;
-      opacity: 0.9;
+      opacity: 1;
     }
 
     .cloud-body {
@@ -348,6 +348,7 @@
       position: absolute;
       z-index: 0;
       pointer-events: none;
+      opacity: 0.35;
     }
 
     .shape-1 {
@@ -416,6 +417,7 @@
       position: absolute;
       z-index: 0;
       pointer-events: none;
+      opacity: 0.35;
       animation: float 10s ease-in-out infinite;
     }
 
@@ -647,8 +649,8 @@
       background: rgba(255,255,255,0.4);
       backdrop-filter: blur(12px) saturate(1.8);
       -webkit-backdrop-filter: blur(12px) saturate(1.8);
-      border: 1px solid rgba(255,255,255,0.7);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      border: none;
+      box-shadow: none;
       border-radius: 8px;
       padding: 6px 10px;
       min-width: 48px;
@@ -676,25 +678,25 @@
       position: fixed;
       top: 52px;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translateX(-50%) translateY(0);
       height: 60px;
       display: flex;
       align-items: center;
-      gap: 32px;
-      padding: 0 28px;
+      gap: 24px;
+      padding: 0 20px;
       font-size: 16px;
       font-weight: 600;
       color: var(--text);
       z-index: 999;
       opacity: 1;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
       pointer-events: auto;
       background: rgba(255, 255, 255, 0.55);
       backdrop-filter: blur(32px) saturate(1.8);
       -webkit-backdrop-filter: blur(32px) saturate(1.8);
-      border: 1px solid rgba(255, 255, 255, 0.7);
+      border: none;
       border-radius: 20px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      box-shadow: none;
       letter-spacing: -0.01em;
     }
 
@@ -713,6 +715,7 @@
     .hero-nav.hidden {
       opacity: 0;
       pointer-events: none;
+      transform: translateX(-50%) translateY(-16px) scale(0.97);
     }
 
     .hero-title {
@@ -1123,9 +1126,16 @@
     }
 
     .agenda-spk {
-      font-size: 16px;
-      font-weight: 500;
+      font-size: 15px;
+      font-weight: 700;
       color: var(--text);
+    }
+
+    .agenda-spk-role {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      margin-top: 2px;
     }
 
     .agenda-btn {
@@ -1344,6 +1354,9 @@
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
+      .hero-nav {
+        display: none !important;
+      }
 
       .split-grid,
       .spk-grid,
@@ -1403,7 +1416,7 @@
       }
 
       .hero-nav {
-        display: none;
+        display: none !important;
       }
 
       .hero-date {
@@ -1425,6 +1438,9 @@
       .shape, .pop-shape {
         opacity: 0.35 !important;
       }
+      .cloud {
+        opacity: 1 !important;
+      }
     }
   </style>
 </head>
@@ -1433,7 +1449,7 @@
 
   <!-- ANNOUNCE BAR -->
   <div class="announce">
-    <a href="https://lu.ma/aipmsummit" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Early bird 2 for 1</a> &nbsp;•&nbsp; Available until April 10
+    <a href="https://lu.ma/aipmsummit" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Early bird 2 for 1</a> <span style="opacity:0.75; vertical-align:middle; display:inline-flex; align-items:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span> Available until April 10
   </div>
 
   <!-- HEADER NAV -->
@@ -1441,12 +1457,12 @@
     <div class="wrap nav ">
       <div class="nav-left">
         <a href="#top" class="nav-logo">AI PM Summit</a>
-        <div class="nav-links">
-          <a href="#agenda">Schedule</a>
-          <a href="#speakers">Speakers</a>
-          <a href="#testimonials">Reviews</a>
-          <a href="#faq">FAQ</a>
-        </div>
+      </div>
+      <div class="nav-links">
+        <a href="#agenda">Schedule</a>
+        <a href="#speakers">Speakers</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#faq">FAQ</a>
       </div>
       <div class="nav-actions">
         <a href="https://lu.ma/aipmsummit" class="btn-solid">Register</a>
@@ -1607,7 +1623,7 @@
         <div class="spk-card ">
           <img src="images/speakers/shayamala.jpeg" alt="Shyamala" class="spk-avatar">
           <div class="spk-name">Shyamala Prayaga</div>
-          <div class="spk-role">Senior Software Product Manager, AI Foundation Models</div>
+          <div class="spk-role">Senior Software Product Manager, AI Foundation Models, NVIDIA</div>
         </div>
 
         <div class="spk-card" style="grid-column: 2; align-items: center; justify-content: center; min-height: 200px;">
@@ -1636,75 +1652,30 @@
       </div>
 
       <div class="split-cards">
-        <div class="stack-viz">
-          <!-- Tile 01 -->
-          <div class="stack-tile" style="--tile-glow: var(--accent);">
-            <div class="tile-highlight"></div>
-            <div class="tile-number">01</div>
-            <div class="tile-icon" style="background: rgba(62, 82, 238, 0.1); color: var(--accent);">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <circle cx="12" cy="12" r="6" />
-                <circle cx="12" cy="12" r="2" />
-              </svg>
+        <div style="display: flex; flex-direction: column; gap: 40px;">
+          <div>
+            <div style="width: 40px; height: 40px; background: rgba(0,116,212,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0074D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
             </div>
-            <div class="tile-info">
-              <span class="tile-label">What you get</span>
-              <div class="tile-name">Practical Strategies</div>
-              <div
-                style="font-size: 15px; color: var(--text); margin-top: 6px; font-weight: 500; line-height: 1.5;">
-                Strategies and perspectives you can actually use. Every session is designed to be practical, not
-                theoretical.</div>
-            </div>
+            <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 8px;">What you get</div>
+            <div style="font-size: 22px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; margin-bottom: 8px;">Practical Strategies</div>
+            <p style="font-size: 16px;">Strategies and perspectives you can actually use. Every session is designed to be practical, not theoretical.</p>
           </div>
-
-          <div class="stack-line"></div>
-
-          <!-- Tile 02 -->
-          <div class="stack-tile" style="--tile-glow: #FF9500;">
-            <div class="tile-highlight"></div>
-            <div class="tile-number">02</div>
-            <div class="tile-icon" style="background: rgba(255, 149, 0, 0.1); color: #FF9500;">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z" />
-                <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-                <line x1="12" y1="19" x2="12" y2="22" />
-                <line x1="8" y1="22" x2="16" y2="22" />
-              </svg>
+          <div>
+            <div style="width: 40px; height: 40px; background: rgba(0,116,212,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0074D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
-            <div class="tile-info">
-              <span class="tile-label">Who you hear from</span>
-              <div class="tile-name">Product Leaders</div>
-              <div
-                style="font-size: 15px; color: var(--text); margin-top: 6px; font-weight: 500; line-height: 1.5;">
-                Product leaders from Google, Airbnb, Gusto, and MongoDB who are solving the same problems you are and
-                building the future of AI products.</div>
-            </div>
+            <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 8px;">Who you hear from</div>
+            <div style="font-size: 22px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; margin-bottom: 8px;">Product Leaders</div>
+            <p style="font-size: 16px;">Product leaders from Google, Airbnb, Gusto, and MongoDB who are solving the same problems you are and building the future of AI products.</p>
           </div>
-
-          <div class="stack-line"></div>
-
-          <!-- Tile 03 -->
-          <div class="stack-tile" style="--tile-glow: #34C759;">
-            <div class="tile-highlight"></div>
-            <div class="tile-number">03</div>
-            <div class="tile-icon" style="background: rgba(52, 199, 89, 0.1); color: #34C759;">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-                stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
-                <polyline points="17 6 23 6 23 12" />
-              </svg>
+          <div>
+            <div style="width: 40px; height: 40px; background: rgba(0,116,212,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0074D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
             </div>
-            <div class="tile-info">
-              <span class="tile-label">Why it matters</span>
-              <div class="tile-name">Lead the Shift</div>
-              <div
-                style="font-size: 15px; color: var(--text); margin-top: 6px; font-weight: 500; line-height: 1.5;">
-                The PM role is being redefined by AI. Walk away with the vocabulary, the credibility, and the mental
-                models to lead that shift.</div>
-            </div>
+            <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 8px;">Why it matters</div>
+            <div style="font-size: 22px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; margin-bottom: 8px;">Lead the Shift</div>
+            <p style="font-size: 16px;">The PM role is being redefined by AI. Walk away with the vocabulary, the credibility, and the mental models to lead that shift.</p>
           </div>
         </div>
       </div>
@@ -1833,7 +1804,7 @@
             <div class="agenda-title">From Developers to Agents: Redefining DX for a Non-Human Future</div>
             <div class="agenda-spk-row">
               <img src="images/speakers/rishit.jpg" alt="Rishit" class="agenda-avatar">
-              <div class="agenda-spk">Rishit Bhatia, Senior Product Manager, MongoDB</div>
+              <div><div class="agenda-spk">Rishit Bhatia</div><div class="agenda-spk-role">Senior Product Manager, MongoDB</div></div>
             </div>
           </div>
         </div>
@@ -1844,7 +1815,7 @@
             <div class="agenda-title">The AI Native PM</div>
             <div class="agenda-spk-row">
               <img src="images/speakers/arpit.jpg" alt="Arpit" class="agenda-avatar">
-              <div class="agenda-spk">Arpit Guglani, Senior Product Manager, Google</div>
+              <div><div class="agenda-spk">Arpit Guglani</div><div class="agenda-spk-role">Senior Product Manager, Google</div></div>
             </div>
           </div>
         </div>
@@ -1855,7 +1826,7 @@
             <div class="agenda-title">AI Ate the PM Playbook. Now What?</div>
             <div class="agenda-spk-row">
               <img src="images/speakers/pavan.jpg" alt="Pavan" class="agenda-avatar">
-              <div class="agenda-spk">Pavan Kumar Bandarupalli, Principal Product Manager, Gusto</div>
+              <div><div class="agenda-spk">Pavan Kumar Bandarupalli</div><div class="agenda-spk-role">Principal Product Manager, Gusto</div></div>
             </div>
           </div>
         </div>
@@ -1867,7 +1838,7 @@
               capabilities</div>
             <div class="agenda-spk-row">
               <img src="images/speakers/amy.jpg" alt="Amy" class="agenda-avatar">
-              <div class="agenda-spk">Amy Mitchell, Senior Product Manager, Dell Technologies</div>
+              <div><div class="agenda-spk">Amy Mitchell</div><div class="agenda-spk-role">Senior Product Manager, Dell Technologies</div></div>
             </div>
           </div>
         </div>
@@ -1878,7 +1849,7 @@
             <div class="agenda-title">Is design dead when API is the new UI</div>
             <div class="agenda-spk-row">
               <img src="images/speakers/arun.jpg" alt="Arun" class="agenda-avatar">
-              <div class="agenda-spk">Arun Janakiraman, GPM, Head of Zoom Apps & Marketplace, Zoom</div>
+              <div><div class="agenda-spk">Arun Janakiraman</div><div class="agenda-spk-role">GPM, Head of Zoom Apps & Marketplace, Zoom</div></div>
             </div>
           </div>
         </div>
@@ -1889,7 +1860,7 @@
             <div class="agenda-title">Topic TBD</div>
             <div class="agenda-spk-row">
               <img src="images/speakers/srividya.jpg" alt="Srividya" class="agenda-avatar">
-              <div class="agenda-spk">Srividya Ramamoorthy, Staff Product Manager, AI/ML Systems, Airbnb</div>
+              <div><div class="agenda-spk">Srividya Ramamoorthy</div><div class="agenda-spk-role">Staff Product Manager, AI/ML Systems, Airbnb</div></div>
             </div>
           </div>
         </div>
@@ -1900,7 +1871,7 @@
             <div class="agenda-title">Topic TBD</div>
             <div class="agenda-spk-row">
               <img src="images/speakers/shayamala.jpeg" alt="Shyamala" class="agenda-avatar">
-              <div class="agenda-spk">Shyamala Prayaga, Senior Software Product Manager, AI Foundation Models</div>
+              <div><div class="agenda-spk">Shyamala Prayaga</div><div class="agenda-spk-role">Senior Software Product Manager, AI Foundation Models, NVIDIA</div></div>
             </div>
           </div>
         </div>
