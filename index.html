@@ -569,20 +569,22 @@
       width: 38px;
       height: 38px;
       border-radius: 50%;
-      border: 3px solid var(--bg);
+      border: none;
       margin-left: -12px;
       background: var(--surface);
       object-fit: cover;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      display: block;
+    }
+    .face-wrap {
+      position: relative;
+      margin-left: -12px;
+      padding: 2px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #FF9500, #FF2D55, #5856D6);
     }
 
     .face:first-child {
       margin-left: 0;
-    }
-
-    .face-wrap {
-      position: relative;
-      margin-left: -12px;
     }
 
     .face-wrap:first-child {
@@ -977,7 +979,7 @@
 
     .spk-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 40px;
     }
 
@@ -994,9 +996,19 @@
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 24px;
-      border: none;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      padding: 5px;
+      background: linear-gradient(135deg, #FF9500, #FF2D55, #5856D6);
+      outline: none;
     }
+    .spk-card:nth-child(1) .spk-avatar { background: linear-gradient(135deg, #FF9500, #FF2D55, #BF5AF2); }
+    .spk-card:nth-child(2) .spk-avatar { background: linear-gradient(135deg, #FF2D55, #FF6B00, #FFD60A); }
+    .spk-card:nth-child(3) .spk-avatar { background: linear-gradient(135deg, #5856D6, #BF5AF2, #FF2D55); }
+    .spk-card:nth-child(4) .spk-avatar { background: linear-gradient(135deg, #0074D4, #5856D6, #BF5AF2); }
+    .spk-card:nth-child(5) .spk-avatar { background: linear-gradient(135deg, #34C759, #0074D4, #5856D6); }
+    .spk-card:nth-child(6) .spk-avatar { background: linear-gradient(135deg, #FF9500, #FF2D55, #5856D6); }
+    .spk-card:nth-child(7) .spk-avatar { background: linear-gradient(135deg, #BF5AF2, #FF2D55, #FF9500); }
+    .spk-card:nth-child(8) .spk-avatar { background: linear-gradient(135deg, #0074D4, #34C759, #FFD60A); }
 
     .spk-name {
       font-size: 22px;
@@ -1376,10 +1388,14 @@
       }
 
       .split-grid,
-      .spk-grid,
       .testi-grid {
         grid-template-columns: 1fr;
         gap: 64px;
+      }
+
+      .spk-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
       }
 
       .nav-links,
@@ -1420,7 +1436,8 @@
       border-radius: 50%;
       object-fit: cover;
       flex-shrink: 0;
-      border: 1px solid var(--border);
+      padding: 2px;
+      background: linear-gradient(135deg, #FF9500, #FF2D55, #5856D6);
     }
 
     @media (max-width: 600px) {
@@ -1532,6 +1549,7 @@
           <div class="face-wrap"><img src="images/speakers/arun.jpg" alt="Arun" class="face"><span class="face-tip">Arun Janakiraman · GPM · Zoom</span></div>
           <div class="face-wrap"><img src="images/speakers/arpit.jpg" alt="Arpit" class="face"><span class="face-tip">Arpit Guglani · Senior PM · Google</span></div>
           <div class="face-wrap"><img src="images/speakers/srividya.jpg" alt="Srividya" class="face"><span class="face-tip">Srividya Sridharan · PM · Airbnb</span></div>
+          <div class="face-wrap"><img src="images/speakers/Manjeet.png" alt="Manjeet" class="face"><span class="face-tip">Manjeet Singh · Sr Director AI Agents · Salesforce</span></div>
         </div>
         <div class="facepile-text">Join PMs from top product teams</div>
       </div>
@@ -1645,20 +1663,14 @@
           <div class="spk-role">Senior Software Product Manager, AI Foundation Models, NVIDIA</div>
         </div>
 
-        <div class="spk-card" style="grid-column: 2; align-items: center; justify-content: center; min-height: 200px;">
-          <div style="text-align: center;">
-            <div style="margin-bottom: 12px; color: var(--text-muted); opacity: 0.4;">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 3c.3 3.5 2.5 5.7 6 6-3.5.3-5.7 2.5-6 6-.3-3.5-2.5-5.7-6-6 3.5-.3 5.7-2.5 6-6z"/>
-                <path d="M5 3c.15 1.5 1.1 2.4 2.5 2.5C6.1 5.65 5.15 6.6 5 8 4.85 6.5 3.9 5.6 2.5 5.5 3.9 5.35 4.85 4.4 5 3z"/>
-                <path d="M19 14c.15 1.5 1.1 2.4 2.5 2.5-1.4.15-2.35 1.1-2.5 2.5-.15-1.4-1.1-2.35-2.5-2.5 1.4-.1 2.35-1 2.5-2.5z"/>
-              </svg>
-            </div>
-            <div class="spk-name" style="font-size: 18px;">More speakers</div>
-            <div class="spk-role" style="color: var(--text-muted); margin-top: 4px;">Announced soon</div>
-          </div>
+        <div class="spk-card ">
+          <img src="images/speakers/Manjeet.png" alt="Manjeet" class="spk-avatar">
+          <div class="spk-name">Manjeet Singh</div>
+          <div class="spk-role">Sr Director AI Agents, Salesforce</div>
         </div>
       </div>
+
+      <p style="text-align: center; margin-top: 40px; font-size: 15px; color: var(--text-muted); font-weight: 500;">More speakers to be announced soon.</p>
     </div>
   </section>
 
@@ -1889,8 +1901,19 @@
           </div>
         </div>
 
-        <div class="agenda-row" style="opacity: 0.5;">
+        <div class="agenda-row">
           <div class="agenda-time">2:20 PM EST<br>11:20 AM PST<br>7:20 PM GMT</div>
+          <div class="agenda-details">
+            <div class="agenda-title">AI Agent Evals & Observability: How to Build Trusted AI For Scale?</div>
+            <div class="agenda-spk-row">
+              <img src="images/speakers/Manjeet.png" alt="Manjeet" class="agenda-avatar">
+              <div><div class="agenda-spk">Manjeet Singh</div><div class="agenda-spk-role">Sr Director AI Agents, Salesforce</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="agenda-row" style="opacity: 0.5;">
+          <div class="agenda-time">2:40 PM EST<br>11:40 AM PST<br>7:40 PM GMT</div>
           <div class="agenda-details">
             <div class="agenda-title" style="color: var(--text-muted);">Speaker TBA</div>
             <div class="agenda-spk" style="color: var(--text-muted);">Announced soon</div>
@@ -1898,7 +1921,7 @@
         </div>
 
         <div class="agenda-row" style="opacity: 0.5;">
-          <div class="agenda-time">2:40 PM EST<br>11:40 AM PST<br>7:40 PM GMT</div>
+          <div class="agenda-time">2:55 PM EST<br>11:55 AM PST<br>7:55 PM GMT</div>
           <div class="agenda-details">
             <div class="agenda-title" style="color: var(--text-muted);">Speaker TBA</div>
             <div class="agenda-spk" style="color: var(--text-muted);">Announced soon</div>
@@ -1933,7 +1956,7 @@
       <div class="faq-list">
         <div class="faq-item">
           <button class="faq-q">When is the event? <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
-          <div class="faq-a">April 22, 2026. Sessions start at 12:00 PM EST (9:00 AM PST / 5:00 PM UK).</div>
+          <div class="faq-a">April 22, 2026. Sessions start at 12:00 PM EST (9:00 AM PST / 5:00 PM GMT).</div>
         </div>
         <div class="faq-item">
           <button class="faq-q">How does a virtual summit work? <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
