@@ -243,8 +243,25 @@
       padding: 10px 24px;
       border: 1px solid var(--border);
       border-radius: 10px;
-      transition: opacity 0.2s;
+      transition: opacity 0.2s, gap 0.2s;
       background: transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 0px;
+    }
+    .btn-outline::after, .btn-solid::after {
+      content: '→';
+      display: inline-block;
+      max-width: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-width 0.2s ease, opacity 0.2s ease, margin-left 0.2s ease;
+      margin-left: 0;
+    }
+    .btn-outline:hover::after, .btn-solid:hover::after {
+      max-width: 20px;
+      opacity: 1;
+      margin-left: 6px;
     }
 
     .btn-outline:hover { opacity: 0.75; }
@@ -1449,7 +1466,9 @@
 
   <!-- ANNOUNCE BAR -->
   <div class="announce">
-    <a href="https://lu.ma/aipmsummit" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Early bird 2 for 1</a> <span style="opacity:0.75; vertical-align:middle; display:inline-flex; align-items:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span> Available until April 10
+    <a href="https://lu.ma/aipmsummit" style="color:inherit;text-decoration:underline;text-underline-offset:3px;">Early bird 2 for 1</a>
+    <span style="opacity:0.6;">·</span>
+    Available until April 10 · <span id="ab-timer" style="font-variant-numeric: tabular-nums;">--d --h --m --s</span>
   </div>
 
   <!-- HEADER NAV -->
@@ -1507,12 +1526,12 @@
 
       <div class="hero-facepile">
         <div class="face-group">
-          <div class="face-wrap"><img src="images/speakers/pavan.jpg" alt="Pavan" class="face"><span class="face-tip">Pavan Bandarupalli<br>Principal PM<br>Gusto</span></div>
-          <div class="face-wrap"><img src="images/speakers/amy.jpg" alt="Amy" class="face"><span class="face-tip">Amy Mitchell<br>Senior PM<br>Dell</span></div>
-          <div class="face-wrap"><img src="images/speakers/rishit.jpg" alt="Rishit" class="face"><span class="face-tip">Rishit Bhatia<br>Senior PM<br>MongoDB</span></div>
-          <div class="face-wrap"><img src="images/speakers/arun.jpg" alt="Arun" class="face"><span class="face-tip">Arun Janakiraman<br>GPM<br>Zoom</span></div>
-          <div class="face-wrap"><img src="images/speakers/arpit.jpg" alt="Arpit" class="face"><span class="face-tip">Arpit Guglani<br>Senior PM<br>Google</span></div>
-          <div class="face-wrap"><img src="images/speakers/srividya.jpg" alt="Srividya" class="face"><span class="face-tip">Srividya Sridharan<br>PM<br>Airbnb</span></div>
+          <div class="face-wrap"><img src="images/speakers/pavan.jpg" alt="Pavan" class="face"><span class="face-tip">Pavan Bandarupalli · Principal PM · Gusto</span></div>
+          <div class="face-wrap"><img src="images/speakers/amy.jpg" alt="Amy" class="face"><span class="face-tip">Amy Mitchell · Senior PM · Dell</span></div>
+          <div class="face-wrap"><img src="images/speakers/rishit.jpg" alt="Rishit" class="face"><span class="face-tip">Rishit Bhatia · Senior PM · MongoDB</span></div>
+          <div class="face-wrap"><img src="images/speakers/arun.jpg" alt="Arun" class="face"><span class="face-tip">Arun Janakiraman · GPM · Zoom</span></div>
+          <div class="face-wrap"><img src="images/speakers/arpit.jpg" alt="Arpit" class="face"><span class="face-tip">Arpit Guglani · Senior PM · Google</span></div>
+          <div class="face-wrap"><img src="images/speakers/srividya.jpg" alt="Srividya" class="face"><span class="face-tip">Srividya Sridharan · PM · Airbnb</span></div>
         </div>
         <div class="facepile-text">Join PMs from top product teams</div>
       </div>
@@ -1654,26 +1673,20 @@
       <div class="split-cards">
         <div style="display: flex; flex-direction: column; gap: 40px;">
           <div>
-            <div style="width: 40px; height: 40px; background: rgba(0,116,212,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0074D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-            </div>
-            <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 8px;">What you get</div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#20023C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 12px; display: block;"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.01em; color: var(--text-muted); margin-bottom: 8px;">What you get</div>
             <div style="font-size: 22px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; margin-bottom: 8px;">Practical Strategies</div>
             <p style="font-size: 16px;">Strategies and perspectives you can actually use. Every session is designed to be practical, not theoretical.</p>
           </div>
           <div>
-            <div style="width: 40px; height: 40px; background: rgba(0,116,212,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0074D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            </div>
-            <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 8px;">Who you hear from</div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#20023C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 12px; display: block;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.01em; color: var(--text-muted); margin-bottom: 8px;">Who you hear from</div>
             <div style="font-size: 22px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; margin-bottom: 8px;">Product Leaders</div>
             <p style="font-size: 16px;">Product leaders from Google, Airbnb, Gusto, and MongoDB who are solving the same problems you are and building the future of AI products.</p>
           </div>
           <div>
-            <div style="width: 40px; height: 40px; background: rgba(0,116,212,0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0074D4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-            </div>
-            <div style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 8px;">Why it matters</div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#20023C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 12px; display: block;"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.01em; color: var(--text-muted); margin-bottom: 8px;">Why it matters</div>
             <div style="font-size: 22px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; margin-bottom: 8px;">Lead the Shift</div>
             <p style="font-size: 16px;">The PM role is being redefined by AI. Walk away with the vocabulary, the credibility, and the mental models to lead that shift.</p>
           </div>
@@ -2003,7 +2016,7 @@
       </div>
 
     </div>
-    <div class="wrap" style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-muted); text-align: center;">
+    <div class="wrap" style="margin-top: 32px; padding-top: 24px; font-size: 12px; color: var(--text-muted); text-align: center;">
       © 2026 CoFi Labs Inc. · 2482 Yonge St #1135, Toronto, ON M4P 2H5, Canada &nbsp;·&nbsp;
       Produced by <a href="https://cofi.so" target="_blank" style="color: var(--text-muted); font-weight: 600;">CoFi</a>
     </div>
