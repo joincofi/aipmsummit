@@ -140,7 +140,7 @@
       display: flex;
       justify-content: center;
       padding: 12px 20px;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 800;
       letter-spacing: 0.02em;
       gap: 12px;
@@ -282,7 +282,7 @@
     .btn-solid:hover { opacity: 0.88; }
 
     .hero {
-      padding: 160px 0 100px;
+      padding: 180px 0 120px;
       text-align: center;
       position: relative;
       width: 100%;
@@ -558,7 +558,7 @@
       align-items: center;
       justify-content: center;
       gap: 12px;
-      margin: 0 auto 32px;
+      margin: 0 auto 40px;
     }
 
     .face-group {
@@ -580,7 +580,7 @@
       margin-left: -12px;
       padding: 2px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #FFD4A3, #FFB3C1, #C5B8F8);
+      background: #ffffff;
     }
 
     .face:first-child {
@@ -620,7 +620,7 @@
     }
 
     .facepile-text {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 600;
       color: #20023C;
       letter-spacing: -0.01em;
@@ -685,7 +685,7 @@
     }
 
     .timer-lbl {
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 600;
       color: var(--text);
       text-transform: uppercase;
@@ -740,7 +740,7 @@
     .hero-title {
       font-size: clamp(52px, 8.5vw, 96px);
       max-width: 900px;
-      margin: 0 auto 24px;
+      margin: 0 auto 28px;
       color: #20023C;
       background: none;
       -webkit-text-fill-color: #20023C;
@@ -749,7 +749,7 @@
     .hero-sub {
       font-size: clamp(20px, 3.2vw, 24px);
       max-width: 800px;
-      margin: 0 auto 40px;
+      margin: 0 auto 48px;
       font-weight: 500;
       color: #20023C;
       line-height: 1.5;
@@ -783,7 +783,7 @@
 
     /* ─── FLOATING LOGOS (Seamless infinite scroll) ─── */
     .logos {
-      padding: 24px 0;
+      padding: 40px 0;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -797,7 +797,7 @@
     }
 
     .logos-label {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 600;
       color: #20023C;
       margin-bottom: 24px;
@@ -838,7 +838,7 @@
     /* ─── SPLIT SECTION (Like Family.co "Details that matter") ─── */
     /* Massive vertical margins mimicking the consumer fintech layout */
     .split-section {
-      padding: 120px 0;
+      padding: 140px 0;
     }
 
     .split-grid {
@@ -939,7 +939,7 @@
     }
 
     .tile-label {
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 600;
       text-transform: none;
       letter-spacing: 0;
@@ -969,18 +969,18 @@
 
     /* ─── SPEAKERS (Clean Avatar Grids) ─── */
     .spk-section {
-      padding: 120px 0;
+      padding: 140px 0;
       text-align: center;
     }
 
     .spk-header {
-      margin-bottom: 56px;
+      margin-bottom: 72px;
     }
 
     .spk-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 40px;
+      gap: 56px 48px;
     }
 
     .spk-card {
@@ -991,24 +991,14 @@
     }
 
     .spk-avatar {
-      width: 110px;
-      height: 110px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-      padding: 5px;
-      background: linear-gradient(135deg, #FFD4A3, #FFB3C1, #C5B8F8);
       outline: none;
     }
-    .spk-card:nth-child(1) .spk-avatar { background: linear-gradient(135deg, #FFD4A3, #FFB3C1, #D4B8F8); }
-    .spk-card:nth-child(2) .spk-avatar { background: linear-gradient(135deg, #FFB3C1, #FFCBA3, #FFF3A3); }
-    .spk-card:nth-child(3) .spk-avatar { background: linear-gradient(135deg, #C5B8F8, #D4B8F8, #FFB3C1); }
-    .spk-card:nth-child(4) .spk-avatar { background: linear-gradient(135deg, #B3D4FF, #C5B8F8, #D4B8F8); }
-    .spk-card:nth-child(5) .spk-avatar { background: linear-gradient(135deg, #B3EAC5, #B3D4FF, #C5B8F8); }
-    .spk-card:nth-child(6) .spk-avatar { background: linear-gradient(135deg, #FFD4A3, #FFB3C1, #C5B8F8); }
-    .spk-card:nth-child(7) .spk-avatar { background: linear-gradient(135deg, #E0B3FF, #FFB3C1, #FFD4A3); }
-    .spk-card:nth-child(8) .spk-avatar { background: linear-gradient(135deg, #B3D4FF, #B3EAC5, #FFF3A3); }
 
     .spk-name {
       font-size: 22px;
@@ -1025,7 +1015,7 @@
     }
 
     .spk-topic {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 600;
       padding: 10px 20px;
       background: var(--surface);
@@ -1035,7 +1025,7 @@
 
     /* ─── TESTIMONIALS (Minimal quote cards with tiny avatars) ─── */
     .testi-section {
-      padding: 120px 0;
+      padding: 140px 0;
       overflow: hidden;
     }
 
@@ -1043,19 +1033,19 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      margin-bottom: 48px;
+      margin-bottom: 64px;
     }
 
     .testi-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: 32px;
     }
 
     .testi-card {
       background: transparent;
       border: none;
-      padding: 24px 0;
+      padding: 32px 0;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -1094,20 +1084,20 @@
     }
 
     .testi-name {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 700;
       color: var(--text);
       display: block;
     }
 
     .testi-handle {
-      font-size: 14px;
+      font-size: 15px;
       color: var(--text-muted);
     }
 
     /* ─── AGENDA / FAQ STYLE (Expansive lists) ─── */
     .agenda-section {
-      padding: 120px 0;
+      padding: 140px 0;
     }
 
     .agenda-wrap {
@@ -1117,13 +1107,13 @@
 
     .agenda-header {
       text-align: center;
-      margin-bottom: 56px;
+      margin-bottom: 72px;
     }
 
     .agenda-row {
       display: flex;
       align-items: center;
-      padding: 24px 0;
+      padding: 32px 0;
       border-bottom: 1px solid var(--border);
     }
 
@@ -1132,7 +1122,7 @@
     }
 
     .agenda-time {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 600;
       color: var(--text-muted);
       width: 180px;
@@ -1142,6 +1132,13 @@
 
     .agenda-details {
       flex-grow: 1;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .agenda-details-text {
       display: flex;
       flex-direction: column;
       gap: 4px;
@@ -1155,13 +1152,13 @@
     }
 
     .agenda-spk {
-      font-size: 15px;
+      font-size: 18px;
       font-weight: 700;
       color: var(--text);
     }
 
     .agenda-spk-role {
-      font-size: 13px;
+      font-size: 16px;
       font-weight: 500;
       color: var(--text-muted);
       margin-top: 2px;
@@ -1184,14 +1181,14 @@
 
     /* ─── FAQ ─── */
     .faq-section {
-      padding: 100px 0;
+      padding: 120px 0;
     }
 
     .faq-title {
       font-size: clamp(35px, 5.5vw, 62px);
       font-weight: 800;
       text-align: center;
-      margin-bottom: 48px;
+      margin-bottom: 64px;
       color: var(--text);
     }
 
@@ -1216,7 +1213,7 @@
       background: none;
       border: none;
       text-align: left;
-      padding: 20px 0;
+      padding: 28px 0;
       font-size: 18px;
       font-weight: 600;
       color: var(--text);
@@ -1246,7 +1243,7 @@
 
     .faq-a {
       display: none;
-      padding: 0 0 20px;
+      padding: 0 0 28px;
       font-size: 16px;
       color: var(--text);
       line-height: 1.65;
@@ -1258,7 +1255,7 @@
 
     /* ─── BOTTOM CTA ─── */
     .cta-section {
-      padding: 140px 0;
+      padding: 160px 0;
       text-align: center;
       overflow: hidden;
       background: linear-gradient(180deg, #ffffff 0%, #E7F7FF 100%);
@@ -1266,19 +1263,19 @@
 
     .cta-title {
       font-size: clamp(52px, 8.5vw, 88px);
-      margin-bottom: 40px;
+      margin-bottom: 48px;
     }
 
     .cta-cards {
       display: flex;
       justify-content: center;
-      gap: 24px;
-      margin-bottom: 48px;
+      gap: 32px;
+      margin-bottom: 56px;
     }
 
     /* ─── FOOTER (Minimal grid) ─── */
     .footer {
-      padding: 48px 0 40px;
+      padding: 64px 0 56px;
       background: #E7F7FF;
     }
 
@@ -1297,7 +1294,7 @@
     }
 
     .footer-col-head {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 700;
       margin-bottom: 16px;
       color: var(--text);
@@ -1307,7 +1304,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px 32px;
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 500;
       color: var(--text-muted);
     }
@@ -1318,7 +1315,7 @@
 
     .footer-legal {
       text-align: right;
-      font-size: 13px;
+      font-size: 14px;
       color: var(--text-muted);
     }
 
@@ -1327,7 +1324,7 @@
     }
 
     .footer-signup-desc {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 500;
       color: var(--text-muted);
       margin-bottom: 14px;
@@ -1346,7 +1343,7 @@
       border-radius: 10px;
       border: 1px solid var(--border);
       background: rgba(0,0,0,0.05);
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 500;
       color: var(--text);
       font-family: var(--font);
@@ -1366,7 +1363,7 @@
       color: var(--text-muted);
       border: 1px solid var(--border);
       border-radius: 10px;
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 600;
       cursor: pointer;
       font-family: var(--font);
@@ -1419,7 +1416,7 @@
       .testi-section,
       .agenda-section,
       .cta-section {
-        padding: 60px 0;
+        padding: 80px 0;
       }
     }
 
@@ -1431,13 +1428,11 @@
     }
 
     .agenda-avatar {
-      width: 32px;
-      height: 32px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
       object-fit: cover;
       flex-shrink: 0;
-      padding: 2px;
-      background: linear-gradient(135deg, #FFD4A3, #FFB3C1, #C5B8F8);
     }
 
     @media (max-width: 600px) {
@@ -1832,10 +1827,11 @@
         <div class="agenda-row ">
           <div class="agenda-time">12:00 PM EST<br>9:00 AM PST<br>5:00 PM GMT</div>
           <div class="agenda-details">
-            <div class="agenda-title">From Developers to Agents: Redefining DX for a Non-Human Future</div>
-            <div class="agenda-spk-row">
-              <img src="images/speakers/rishit.jpg" alt="Rishit" class="agenda-avatar">
-              <div><div class="agenda-spk">Rishit Bhatia</div><div class="agenda-spk-role">Senior Product Manager, MongoDB</div></div>
+            <img src="images/speakers/rishit.jpg" alt="Rishit" class="agenda-avatar">
+            <div class="agenda-details-text">
+              <div class="agenda-title">From Developers to Agents: Redefining DX for a Non-Human Future</div>
+              <div class="agenda-spk">Rishit Bhatia</div>
+              <div class="agenda-spk-role">Senior Product Manager, MongoDB</div>
             </div>
           </div>
         </div>
@@ -1843,10 +1839,11 @@
         <div class="agenda-row ">
           <div class="agenda-time">12:20 PM EST<br>9:20 AM PST<br>5:20 PM GMT</div>
           <div class="agenda-details">
-            <div class="agenda-title">The AI Native PM</div>
-            <div class="agenda-spk-row">
-              <img src="images/speakers/arpit.jpg" alt="Arpit" class="agenda-avatar">
-              <div><div class="agenda-spk">Arpit Guglani</div><div class="agenda-spk-role">Senior Product Manager, Google</div></div>
+            <img src="images/speakers/arpit.jpg" alt="Arpit" class="agenda-avatar">
+            <div class="agenda-details-text">
+              <div class="agenda-title">The AI Native PM</div>
+              <div class="agenda-spk">Arpit Guglani</div>
+              <div class="agenda-spk-role">Senior Product Manager, Google</div>
             </div>
           </div>
         </div>
@@ -1854,10 +1851,11 @@
         <div class="agenda-row ">
           <div class="agenda-time">12:40 PM EST<br>9:40 AM PST<br>5:40 PM GMT</div>
           <div class="agenda-details">
-            <div class="agenda-title">AI Ate the PM Playbook. Now What?</div>
-            <div class="agenda-spk-row">
-              <img src="images/speakers/pavan.jpg" alt="Pavan" class="agenda-avatar">
-              <div><div class="agenda-spk">Pavan Kumar Bandarupalli</div><div class="agenda-spk-role">Principal Product Manager, Gusto</div></div>
+            <img src="images/speakers/pavan.jpg" alt="Pavan" class="agenda-avatar">
+            <div class="agenda-details-text">
+              <div class="agenda-title">AI Ate the PM Playbook. Now What?</div>
+              <div class="agenda-spk">Pavan Kumar Bandarupalli</div>
+              <div class="agenda-spk-role">Principal Product Manager, Gusto</div>
             </div>
           </div>
         </div>
@@ -1865,11 +1863,11 @@
         <div class="agenda-row ">
           <div class="agenda-time">1:00 PM EST<br>10:00 AM PST<br>6:00 PM GMT</div>
           <div class="agenda-details">
-            <div class="agenda-title">How to build a context engineering system that scales your product and your AI
-              capabilities</div>
-            <div class="agenda-spk-row">
-              <img src="images/speakers/amy.jpg" alt="Amy" class="agenda-avatar">
-              <div><div class="agenda-spk">Amy Mitchell</div><div class="agenda-spk-role">Senior Product Manager, Dell Technologies</div></div>
+            <img src="images/speakers/amy.jpg" alt="Amy" class="agenda-avatar">
+            <div class="agenda-details-text">
+              <div class="agenda-title">How to Build a Context Engineering System That Scales Your Product and Your AI Capabilities</div>
+              <div class="agenda-spk">Amy Mitchell</div>
+              <div class="agenda-spk-role">Senior Product Manager, Dell Technologies</div>
             </div>
           </div>
         </div>
@@ -1877,10 +1875,11 @@
         <div class="agenda-row ">
           <div class="agenda-time">1:20 PM EST<br>10:20 AM PST<br>6:20 PM GMT</div>
           <div class="agenda-details">
-            <div class="agenda-title">Is design dead when API is the new UI</div>
-            <div class="agenda-spk-row">
-              <img src="images/speakers/arun.jpg" alt="Arun" class="agenda-avatar">
-              <div><div class="agenda-spk">Arun Janakiraman</div><div class="agenda-spk-role">GPM, Head of Zoom Apps & Marketplace, Zoom</div></div>
+            <img src="images/speakers/arun.jpg" alt="Arun" class="agenda-avatar">
+            <div class="agenda-details-text">
+              <div class="agenda-title">Is Design Dead When API Is the New UI?</div>
+              <div class="agenda-spk">Arun Janakiraman</div>
+              <div class="agenda-spk-role">GPM, Head of Zoom Apps & Marketplace, Zoom</div>
             </div>
           </div>
         </div>
@@ -1888,10 +1887,11 @@
         <div class="agenda-row ">
           <div class="agenda-time">1:40 PM EST<br>10:40 AM PST<br>6:40 PM GMT</div>
           <div class="agenda-details">
-            <div class="agenda-title">Topic TBD</div>
-            <div class="agenda-spk-row">
-              <img src="images/speakers/srividya.jpg" alt="Srividya" class="agenda-avatar">
-              <div><div class="agenda-spk">Srividya Ramamoorthy</div><div class="agenda-spk-role">Staff Product Manager, AI/ML Systems, Airbnb</div></div>
+            <img src="images/speakers/srividya.jpg" alt="Srividya" class="agenda-avatar">
+            <div class="agenda-details-text">
+              <div class="agenda-title">Speaker TBA</div>
+              <div class="agenda-spk">Srividya Ramamoorthy</div>
+              <div class="agenda-spk-role">Staff Product Manager, AI/ML Systems, Airbnb</div>
             </div>
           </div>
         </div>
@@ -1899,10 +1899,11 @@
         <div class="agenda-row">
           <div class="agenda-time">2:00 PM EST<br>11:00 AM PST<br>7:00 PM GMT</div>
           <div class="agenda-details">
-            <div class="agenda-title">The New AI Stack: What PMs Must Understand</div>
-            <div class="agenda-spk-row">
-              <img src="images/speakers/shayamala.jpeg" alt="Shyamala" class="agenda-avatar">
-              <div><div class="agenda-spk">Shyamala Prayaga</div><div class="agenda-spk-role">Senior Software Product Manager, AI Foundation Models, NVIDIA</div></div>
+            <img src="images/speakers/shayamala.jpeg" alt="Shyamala" class="agenda-avatar">
+            <div class="agenda-details-text">
+              <div class="agenda-title">The New AI Stack: What PMs Must Understand</div>
+              <div class="agenda-spk">Shyamala Prayaga</div>
+              <div class="agenda-spk-role">Senior Software Product Manager, AI Foundation Models, NVIDIA</div>
             </div>
           </div>
         </div>
@@ -1910,10 +1911,11 @@
         <div class="agenda-row">
           <div class="agenda-time">2:20 PM EST<br>11:20 AM PST<br>7:20 PM GMT</div>
           <div class="agenda-details">
-            <div class="agenda-title">AI Agent Evals & Observability: How to Build Trusted AI For Scale?</div>
-            <div class="agenda-spk-row">
-              <img src="images/speakers/Manjeet.png" alt="Manjeet" class="agenda-avatar">
-              <div><div class="agenda-spk">Manjeet Singh</div><div class="agenda-spk-role">Sr Director AI Agents, Salesforce</div></div>
+            <img src="images/speakers/Manjeet.png" alt="Manjeet" class="agenda-avatar">
+            <div class="agenda-details-text">
+              <div class="agenda-title">AI Agent Evals & Observability: How to Build Trusted AI For Scale?</div>
+              <div class="agenda-spk">Manjeet Singh</div>
+              <div class="agenda-spk-role">Sr Director AI Agents, Salesforce</div>
             </div>
           </div>
         </div>
@@ -1937,8 +1939,19 @@
         <div class="agenda-row ">
           <div class="agenda-time">3:00 PM EST<br>12:00 PM PST<br>8:00 PM GMT</div>
           <div class="agenda-details">
-            <div class="agenda-title">Networking Breakouts</div>
-            <div class="agenda-spk">Connect live with peers.</div>
+            <span style="width:64px; height:64px; border-radius:50%; background:#f5f5f7; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#20023C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 8h1a4 4 0 0 1 0 8h-1"/>
+                <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/>
+                <line x1="6" y1="2" x2="6" y2="4"/>
+                <line x1="10" y1="2" x2="10" y2="4"/>
+                <line x1="14" y1="2" x2="14" y2="4"/>
+              </svg>
+            </span>
+            <div class="agenda-details-text">
+              <div class="agenda-title">Networking Breakouts</div>
+              <div class="agenda-spk">Connect live with peers.</div>
+            </div>
           </div>
         </div>
       </div>
