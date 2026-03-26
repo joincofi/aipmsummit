@@ -6,9 +6,24 @@
   <title>Privacy Policy · AI PM Summit</title>
 
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Meta Pixel Code -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '2510275819404036');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=2510275819404036&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -16,13 +31,12 @@
     a { text-decoration: none; color: inherit; }
 
     :root {
-      --bg: #FFF0E6;
-      --surface: #FFFFFF;
+      --bg: #ffffff;
       --text: #20023C;
-      --text-muted: #8E7C9A;
+      --text-muted: #5C4D70;
       --accent: #3E52EE;
       --border: rgba(0,0,0,0.1);
-      --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
     }
 
     body {
@@ -44,29 +58,29 @@
     }
     .nav .wrap { max-width: 1280px; display: flex; align-items: center; justify-content: space-between; }
     .nav-logo { font-size: 18px; font-weight: 800; color: var(--text); letter-spacing: -0.03em; }
-    .nav-back { font-size: 14px; font-weight: 600; color: var(--text-muted); }
+    .nav-back { font-size: 15px; font-weight: 600; color: var(--text-muted); }
     .nav-back:hover { color: var(--text); }
 
     /* CONTENT */
     .content { padding: 80px 0 120px; }
-    .content h1 { font-size: 48px; font-weight: 800; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 10px; color: var(--text); }
-    .content .updated { font-size: 15px; color: var(--text-muted); font-weight: 500; margin-bottom: 60px; }
-    .content h2 { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; margin: 48px 0 12px; color: var(--text); }
-    .content p { font-size: 16px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.7; }
+    .content h1 { font-size: clamp(36px, 6vw, 56px); font-weight: 800; letter-spacing: -0.04em; line-height: 1.05; margin-bottom: 12px; color: var(--text); }
+    .content .updated { font-size: 16px; color: var(--text-muted); font-weight: 500; margin-bottom: 64px; }
+    .content h2 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin: 52px 0 14px; color: var(--text); }
+    .content p { font-size: 17px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.75; }
     .content ul { padding-left: 24px; margin-bottom: 16px; }
-    .content ul li { font-size: 16px; color: var(--text-muted); margin-bottom: 8px; line-height: 1.7; }
+    .content ul li { font-size: 17px; color: var(--text-muted); margin-bottom: 8px; line-height: 1.75; }
     .content a { color: var(--accent); font-weight: 600; }
     .content strong { color: var(--text); font-weight: 700; }
 
     /* FOOTER */
     .footer { border-top: 1px solid var(--border); padding: 40px 0; }
     .footer .wrap { max-width: 1280px; display: flex; justify-content: space-between; align-items: center; }
-    .footer-copy { font-size: 14px; color: var(--text-muted); font-weight: 500; }
-    .footer a { font-size: 14px; font-weight: 600; color: var(--text-muted); }
+    .footer-copy { font-size: 15px; color: var(--text-muted); font-weight: 500; }
+    .footer a { font-size: 15px; font-weight: 600; color: var(--text-muted); }
     .footer a:hover { color: var(--text); }
 
     @media (max-width: 600px) {
-      .content h1 { font-size: 36px; }
+      .wrap { padding: 0 20px; }
       .footer .wrap { flex-direction: column; gap: 12px; text-align: center; }
     }
   </style>
