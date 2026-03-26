@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <circle cx="32" cy="32" r="32" fill="#3E52EE"/>
-  <!-- Cloud body (rect with rounded ends) -->
-  <rect x="6" y="40" width="52" height="16" rx="8" fill="white"/>
+  <!-- Cloud body -->
+  <rect x="6" y="34" width="52" height="16" rx="8" fill="white"/>
   <!-- Left bump -->
-  <circle cx="22" cy="37" r="11" fill="white"/>
+  <circle cx="22" cy="31" r="11" fill="white"/>
   <!-- Right bump -->
-  <circle cx="38" cy="40" r="8" fill="white"/>
+  <circle cx="38" cy="34" r="8" fill="white"/>
 </svg>
