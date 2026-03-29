@@ -27,8 +27,17 @@
   src="https://www.facebook.com/tr?id=2510275819404036&ev=PageView&noscript=1"
   /></noscript>
   <!-- End Meta Pixel Code -->
+  <!-- Anti-FOUC: apply saved theme before paint -->
+  <script>
+    (function(){
+      var t = localStorage.getItem('theme');
+      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
 
   <style>
     /* ─── FAMILY.CO AESTHETIC RESET & BASE ─── */
@@ -59,19 +68,20 @@
 
     :root {
       /* Elegant Cream & Modern Slate Palette */
-      --bg: #FFF8F2;
+      --bg: #FAF9F5;
       --surface: #FFFFFF;
-      --text: #20023C;
-      --text-muted: #5C4D70;
-      --accent: #3E52EE;
+      --text: #141413;
+      --text-muted: #6B6868;
+      --accent: #0000EE;
       --accent-danger: #D0021B;
-      --border: rgba(0,0,0,0.1);
+      --border: rgba(31, 30, 29, 0.15);
 
       --r-pill: 999px;
       --r-lg: 24px;
       --r-md: 16px;
 
-      --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      --font: "DM Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      --font-serif: "Lora", Georgia, serif;
     }
 
     body {
@@ -113,24 +123,25 @@
     h2,
     h3,
     h4 {
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1.05;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      font-family: var(--font-serif);
     }
 
     p {
-      font-size: 20px;
+      font-size: 16px;
       color: var(--text-muted);
-      font-weight: 500;
-      letter-spacing: -0.015em;
+      font-weight: 400;
+      letter-spacing: 0;
+      line-height: 1.6;
     }
 
     /* ─── ANIMATIONS ─── */
     .reveal {
       opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-      /* NOTE: centering MUST NOT depend on .active class — layout is always CSS-driven */
+      transform: translateY(10px);
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .reveal.active {
@@ -138,13 +149,12 @@
       transform: translateY(0);
     }
 
-    .delay-1 {
-      transition-delay: 0.1s;
-    }
-
-    .delay-2 {
-      transition-delay: 0.2s;
-    }
+    .delay-1 { transition-delay: 0.06s; }
+    .delay-2 { transition-delay: 0.12s; }
+    .delay-3 { transition-delay: 0.18s; }
+    .delay-4 { transition-delay: 0.24s; }
+    .delay-5 { transition-delay: 0.30s; }
+    .delay-6 { transition-delay: 0.36s; }
 
     /* ─── TOP ANNOUNCEMENT (Sticky & Minimal) ─── */
     .announce {
@@ -159,7 +169,7 @@
       justify-content: center;
       padding: 12px 20px;
       font-size: 14px;
-      font-weight: 800;
+      font-weight: 400;
       letter-spacing: 0.02em;
       gap: 12px;
       opacity: 0;
@@ -217,7 +227,7 @@
 
     .nav-logo {
       font-size: 22px;
-      font-weight: 800;
+      font-weight: 400;
       letter-spacing: -0.03em;
       display: flex;
       align-items: center;
@@ -236,7 +246,7 @@
 
     .nav-links a {
       font-size: 16px;
-      font-weight: 600;
+      font-weight: 400;
       color: var(--text);
       letter-spacing: -0.01em;
       transition: color .2s;
@@ -256,56 +266,95 @@
 
     /* Classic Family.co Pill Buttons */
     .btn-outline {
-      font-size: 16px;
-      font-weight: 600;
-      padding: 10px 24px;
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      transition: opacity 0.2s, gap 0.2s;
+      font-size: 14px;
+      font-weight: 400;
+      padding: 10px 20px;
+      border: 0.5px solid rgba(31, 30, 29, 0.4);
+      border-radius: 14px;
+      transition: opacity 0.2s;
       background: transparent;
       display: inline-flex;
       align-items: center;
       gap: 0px;
+      color: var(--text);
     }
-    .btn-outline::after, .btn-solid::after {
-      content: '→';
-      display: inline-block;
-      max-width: 0;
-      overflow: hidden;
-      opacity: 0;
-      transition: max-width 0.2s ease, opacity 0.2s ease, margin-left 0.2s ease;
-      margin-left: 0;
-    }
-    .btn-outline:hover::after, .btn-solid:hover::after {
-      max-width: 20px;
-      opacity: 1;
-      margin-left: 6px;
-    }
-
-    .btn-outline:hover { opacity: 0.75; }
+    .btn-outline:hover { opacity: 0.6; }
 
     .btn-solid {
-      font-size: 16px;
-      font-weight: 600;
-      padding: 10px 24px;
+      font-size: 14px;
+      font-weight: 400;
+      padding: 10px 20px;
       background: #0074D4;
       color: #FFFFFF;
-      border: 1px solid #0074D4;
-      border-radius: 10px;
-      transition: opacity 0.2s, gap 0.2s;
+      border: none;
+      border-radius: 14px;
+      transition: opacity 0.2s;
       display: inline-flex;
       align-items: center;
       gap: 0px;
     }
-    .btn-solid:hover { opacity: 0.88; }
+    .btn-solid:hover { opacity: 0.8; }
 
     .hero {
-      padding: 180px 0 120px;
+      padding: 100px 0 120px;
       text-align: center;
       position: relative;
       width: 100%;
       box-sizing: border-box;
-      background: linear-gradient(180deg, #E7F7FF 0%, #FFF8F2 100%);
+      background: #FAF9F5;
+    }
+
+    .hero-spiral {
+      display: none;
+    }
+
+    .hero-spiral-unused {
+      position: absolute;
+      top: 50%;
+      right: -5%;
+      transform: translateY(-50%);
+      width: clamp(300px, 45vw, 650px);
+      height: auto;
+      z-index: 0;
+      pointer-events: none;
+      border-radius: 0;
+      opacity: 0.85;
+    }
+
+    .hero-split {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero-right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-keys-top {
+      display: flex;
+      justify-content: center;
+      padding-top: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-keys-img {
+      width: clamp(100px, 12vw, 180px);
+      height: auto;
+      border-radius: 0;
+      display: block;
+      mix-blend-mode: multiply;
     }
 
     .hero .wrap {
@@ -320,14 +369,11 @@
 
     /* ─── CLOUDS ─── */
     .cloud {
-      position: absolute;
-      pointer-events: none;
-      z-index: 0;
-      opacity: 1;
+      display: none;
     }
 
     .cloud-body {
-      background: #ffffff;
+      background: rgba(255,255,255,0.07);
       border-radius: 50px;
       position: relative;
     }
@@ -336,7 +382,7 @@
     .cloud-body::after {
       content: '';
       position: absolute;
-      background: #ffffff;
+      background: rgba(255,255,255,0.07);
       border-radius: 50%;
     }
 
@@ -380,16 +426,14 @@
 
     /* ─── GLASS BUBBLES ─── */
     .shape {
-      position: absolute;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.35;
+      display: none;
     }
 
     .shape-1 {
       width: 200px;
       height: 200px;
-      background: rgba(255,160,0,0.55);
+      background: transparent;
+      border: 4px solid rgba(255,160,0,0.8);
       border-radius: 50%;
       top: 10%;
       left: 8%;
@@ -399,7 +443,8 @@
     .shape-2 {
       width: 130px;
       height: 130px;
-      background: rgba(220,60,60,0.5);
+      background: transparent;
+      border: 4px solid rgba(220,60,60,0.8);
       border-radius: 28px;
       bottom: 18%;
       left: 18%;
@@ -409,7 +454,8 @@
     .shape-3 {
       width: 240px;
       height: 240px;
-      background: rgba(160,80,240,0.5);
+      background: transparent;
+      border: 4px solid rgba(160,80,240,0.8);
       border-radius: 36px;
       top: 15%;
       right: 4%;
@@ -419,7 +465,8 @@
     .shape-4 {
       width: 110px;
       height: 110px;
-      background: rgba(62,82,238,0.5);
+      background: transparent;
+      border: 4px solid rgba(62,82,238,0.8);
       border-radius: 50%;
       bottom: 28%;
       right: 22%;
@@ -449,11 +496,7 @@
     }
 
     .pop-shape {
-      position: absolute;
-      z-index: 0;
-      pointer-events: none;
-      opacity: 0.35;
-      animation: float 10s ease-in-out infinite;
+      display: none;
     }
 
     /* ─── HERO GLOW (Mesh Background) ─── */
@@ -463,7 +506,7 @@
       left: 50%;
       width: clamp(400px, 60vw, 800px);
       height: clamp(400px, 60vw, 800px);
-      background: linear-gradient(135deg, rgba(255, 149, 0, 0.4) 0%, rgba(255, 45, 85, 0.4) 50%, rgba(88, 86, 214, 0.4) 100%);
+      background: linear-gradient(135deg, rgba(255, 149, 0, 0.15) 0%, rgba(255, 45, 85, 0.15) 50%, rgba(88, 86, 214, 0.15) 100%);
       filter: blur(80px);
       border-radius: 50%;
       z-index: 1;
@@ -532,7 +575,8 @@
     .ps-1 {
       width: 70px;
       height: 70px;
-      background: rgba(255,140,0,0.55);
+      background: transparent;
+      border: 4px solid rgba(255,140,0,0.8);
       border-radius: 50%;
       top: 15%;
       right: 10%;
@@ -542,7 +586,8 @@
     .ps-2 {
       width: 130px;
       height: 130px;
-      background: rgba(220,40,70,0.5);
+      background: transparent;
+      border: 4px solid rgba(220,40,70,0.8);
       border-radius: 28px;
       bottom: 10%;
       left: 10%;
@@ -552,7 +597,8 @@
     .ps-3 {
       width: 90px;
       height: 90px;
-      background: rgba(88,86,214,0.5);
+      background: transparent;
+      border: 4px solid rgba(88,86,214,0.8);
       border-radius: 20px;
       top: 20%;
       left: 5%;
@@ -598,7 +644,7 @@
       margin-left: -12px;
       padding: 2px;
       border-radius: 50%;
-      background: #ffffff;
+      background: #FFFFFF;
     }
 
     .face:first-child {
@@ -618,12 +664,12 @@
       bottom: calc(100% + 8px);
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(32, 2, 60, 0.92);
-      color: #fff;
+      background: var(--text);
+      color: var(--bg);
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 400;
       white-space: nowrap;
-      padding: 5px 10px;
+      padding: 6px 11px;
       border-radius: 8px;
       pointer-events: none;
       opacity: 0;
@@ -639,14 +685,14 @@
 
     .facepile-text {
       font-size: 16px;
-      font-weight: 600;
-      color: #20023C;
+      font-weight: 400;
+      color: #141413;
       letter-spacing: -0.01em;
     }
 
     .hero-date {
       font-size: 18px;
-      font-weight: 700;
+      font-weight: 400;
       letter-spacing: -0.01em;
       margin: 0 auto 24px;
       display: inline-flex;
@@ -669,7 +715,7 @@
 
     .hero-timer-label {
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 400;
       color: var(--text);
       letter-spacing: 0.02em;
     }
@@ -683,9 +729,10 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background: rgba(255,255,255,0.4);
-      backdrop-filter: blur(12px) saturate(1.8);
-      -webkit-backdrop-filter: blur(12px) saturate(1.8);
+      background: #FFFFFF;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border: 0.5px solid rgba(31, 30, 29, 0.15);
       border: none;
       box-shadow: none;
       border-radius: 8px;
@@ -695,7 +742,7 @@
 
     .timer-num {
       font-size: 20px;
-      font-weight: 800;
+      font-weight: 400;
       color: var(--text);
       font-variant-numeric: tabular-nums;
       letter-spacing: -0.03em;
@@ -704,7 +751,7 @@
 
     .timer-lbl {
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 400;
       color: var(--text);
       text-transform: uppercase;
       letter-spacing: 0.04em;
@@ -722,7 +769,7 @@
       gap: 24px;
       padding: 0 20px;
       font-size: 16px;
-      font-weight: 600;
+      font-weight: 400;
       color: var(--text);
       z-index: 999;
       opacity: 1;
@@ -759,17 +806,21 @@
       font-size: clamp(52px, 8.5vw, 96px);
       max-width: 900px;
       margin: 0 auto 28px;
-      color: #20023C;
+      color: #141413;
       background: none;
-      -webkit-text-fill-color: #20023C;
+      -webkit-text-fill-color: #141413;
+      text-align: center;
+      font-family: var(--font-serif);
+      font-weight: 500;
     }
 
     .hero-sub {
       font-size: clamp(20px, 3.2vw, 24px);
       max-width: 800px;
       margin: 0 auto 48px;
-      font-weight: 500;
-      color: #20023C;
+      text-align: center;
+      font-weight: 400;
+      color: #141413;
       line-height: 1.5;
     }
 
@@ -793,7 +844,7 @@
 
     .hero-link {
       font-size: 18px;
-      font-weight: 600;
+      font-weight: 400;
       color: var(--text);
       text-decoration: underline;
       text-underline-offset: 4px;
@@ -816,8 +867,8 @@
 
     .logos-label {
       font-size: 16px;
-      font-weight: 600;
-      color: #20023C;
+      font-weight: 400;
+      color: #141413;
       margin-bottom: 24px;
       text-align: center;
     }
@@ -837,8 +888,7 @@
 
     .logos-track img {
       height: 90px;
-      filter: brightness(0) sepia(1) hue-rotate(260deg) saturate(20) brightness(0.12);
-      opacity: 0.85;
+      filter: brightness(0) opacity(0.92);
       object-fit: contain;
       flex-shrink: 0;
     }
@@ -891,10 +941,10 @@
 
     .stack-tile {
       width: 100%;
-      background: rgba(255, 255, 255, 0.45);
-      backdrop-filter: blur(24px) saturate(1.8);
-      -webkit-backdrop-filter: blur(24px) saturate(1.8);
-      border: 1px solid rgba(255, 255, 255, 0.75);
+      background: #FFFFFF;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border: 0.5px solid rgba(31, 30, 29, 0.15);
       border-radius: 40px;
       padding: 32px;
       display: flex;
@@ -958,7 +1008,7 @@
 
     .tile-label {
       font-size: 15px;
-      font-weight: 600;
+      font-weight: 400;
       text-transform: none;
       letter-spacing: 0;
       color: var(--text-muted);
@@ -968,7 +1018,7 @@
 
     .tile-name {
       font-size: 22px;
-      font-weight: 800;
+      font-weight: 400;
       color: var(--text);
       line-height: 1.2;
       letter-spacing: -0.02em;
@@ -1014,27 +1064,27 @@
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      box-shadow: none;
       outline: none;
     }
 
     .spk-name {
       font-size: 22px;
-      font-weight: 700;
+      font-weight: 400;
       margin-bottom: 4px;
       letter-spacing: -0.02em;
     }
 
     .spk-role {
       font-size: 16px;
-      font-weight: 500;
+      font-weight: 400;
       color: var(--text-muted);
       margin-bottom: 16px;
     }
 
     .spk-topic {
       font-size: 16px;
-      font-weight: 600;
+      font-weight: 400;
       padding: 10px 20px;
       background: var(--surface);
       border-radius: var(--r-pill);
@@ -1076,7 +1126,7 @@
 
     .testi-quote {
       font-size: 18px;
-      font-weight: 500;
+      font-weight: 400;
       color: var(--text);
       line-height: 1.6;
       margin-bottom: 32px;
@@ -1098,12 +1148,12 @@
       align-items: center;
       justify-content: center;
       font-size: 11px;
-      font-weight: 800;
+      font-weight: 400;
     }
 
     .testi-name {
       font-size: 16px;
-      font-weight: 700;
+      font-weight: 400;
       color: var(--text);
       display: block;
     }
@@ -1131,17 +1181,21 @@
     .agenda-row {
       display: flex;
       align-items: center;
-      padding: 32px 0;
-      border-bottom: 1px solid var(--border);
+      padding: 24px 28px;
+      border: 0.5px solid rgba(31, 30, 29, 0.12);
+      border-radius: 16px;
+      background: #F5F2EC;
+      margin-bottom: 8px;
     }
 
+
     .agenda-row:first-child {
-      border-top: 1px solid var(--border);
+      border-top: 0.5px solid rgba(31, 30, 29, 0.12);
     }
 
     .agenda-time {
       font-size: 15px;
-      font-weight: 600;
+      font-weight: 400;
       color: var(--text-muted);
       width: 180px;
       flex-shrink: 0;
@@ -1164,20 +1218,20 @@
 
     .agenda-title {
       font-size: 22px;
-      font-weight: 700;
+      font-weight: 400;
       color: var(--text);
       letter-spacing: -0.02em;
     }
 
     .agenda-spk {
       font-size: 18px;
-      font-weight: 700;
+      font-weight: 400;
       color: var(--text);
     }
 
     .agenda-spk-role {
       font-size: 16px;
-      font-weight: 500;
+      font-weight: 400;
       color: var(--text-muted);
       margin-top: 2px;
     }
@@ -1190,7 +1244,7 @@
 
     .agenda-link {
       font-size: 18px;
-      font-weight: 700;
+      font-weight: 400;
       color: #0074D4;
       display: flex;
       align-items: center;
@@ -1204,7 +1258,7 @@
 
     .faq-title {
       font-size: clamp(35px, 5.5vw, 62px);
-      font-weight: 800;
+      font-weight: 400;
       text-align: center;
       margin-bottom: 64px;
       color: var(--text);
@@ -1233,7 +1287,7 @@
       text-align: left;
       padding: 28px 0;
       font-size: 18px;
-      font-weight: 600;
+      font-weight: 400;
       color: var(--text);
       cursor: pointer;
       display: flex;
@@ -1276,7 +1330,7 @@
       padding: 160px 0;
       text-align: center;
       overflow: hidden;
-      background: linear-gradient(180deg, #FFF8F2 0%, #E7F7FF 100%);
+      background: #FAF9F5;
     }
 
     .cta-title {
@@ -1294,7 +1348,7 @@
     /* ─── FOOTER (Minimal grid) ─── */
     .footer {
       padding: 64px 0 56px;
-      background: #E7F7FF;
+      background: #FAF9F5;
     }
 
     .footer-grid {
@@ -1306,14 +1360,14 @@
 
     .footer-logo {
       font-size: 22px;
-      font-weight: 800;
+      font-weight: 400;
       margin-bottom: 20px;
       color: var(--text);
     }
 
     .footer-col-head {
       font-size: 16px;
-      font-weight: 700;
+      font-weight: 400;
       margin-bottom: 16px;
       color: var(--text);
     }
@@ -1323,7 +1377,7 @@
       grid-template-columns: 1fr 1fr;
       gap: 10px 32px;
       font-size: 16px;
-      font-weight: 500;
+      font-weight: 400;
       color: var(--text-muted);
     }
 
@@ -1343,7 +1397,7 @@
 
     .footer-signup-desc {
       font-size: 15px;
-      font-weight: 500;
+      font-weight: 400;
       color: var(--text-muted);
       margin-bottom: 14px;
       line-height: 1.5;
@@ -1360,9 +1414,9 @@
       padding: 10px 14px;
       border-radius: 10px;
       border: 1px solid var(--border);
-      background: rgba(0,0,0,0.05);
+      background: rgba(31, 30, 29, 0.05);
       font-size: 15px;
-      font-weight: 500;
+      font-weight: 400;
       color: var(--text);
       font-family: var(--font);
       outline: none;
@@ -1370,8 +1424,8 @@
     }
 
     .footer-signup-input:focus {
-      border-color: rgba(0,0,0,0.2);
-      background: rgba(0,0,0,0.07);
+      border-color: rgba(31, 30, 29, 0.3);
+      background: rgba(31, 30, 29, 0.07);
     }
 
     .footer-signup-btn {
@@ -1382,17 +1436,17 @@
       border: 1px solid var(--border);
       border-radius: 10px;
       font-size: 15px;
-      font-weight: 600;
+      font-weight: 400;
       cursor: pointer;
       font-family: var(--font);
       transition: color 0.2s, border-color 0.2s;
     }
 
-    .footer-signup-btn:hover { color: var(--text); border-color: rgba(0,0,0,0.25); }
+    .footer-signup-btn:hover { color: var(--text); border-color: rgba(31, 30, 29, 0.35); }
 
     .footer-signup-success {
       font-size: 14px;
-      font-weight: 600;
+      font-weight: 400;
       color: #16a34a;
     }
 
@@ -1555,6 +1609,68 @@
         opacity: 1 !important;
       }
     }
+
+    /* ─── DARK MODE ─── */
+    [data-theme="dark"] {
+      --bg: #111110;
+      --surface: #1C1C1B;
+      --text: #F0EDE8;
+      --text-muted: #8A8785;
+      --accent: #4D9DE0;
+      --border: rgba(240, 237, 232, 0.1);
+    }
+
+    [data-theme="dark"] body { background: var(--bg); }
+
+    [data-theme="dark"] .hero { background: var(--bg) !important; }
+    [data-theme="dark"] .hero-title { color: var(--text) !important; -webkit-text-fill-color: var(--text) !important; }
+    [data-theme="dark"] .hero-sub { color: var(--text-muted) !important; }
+    [data-theme="dark"] .logos-label { color: var(--text) !important; }
+    [data-theme="dark"] .facepile-text { color: var(--text) !important; }
+    [data-theme="dark"] .logos-track img { filter: brightness(0) invert(1) opacity(0.75) !important; }
+
+    [data-theme="dark"] .nav-wrap {
+      background: rgba(17, 17, 16, 0.75) !important;
+      border: 1px solid rgba(240, 237, 232, 0.08) !important;
+    }
+    [data-theme="dark"] .hero-nav {
+      background: rgba(17, 17, 16, 0.75) !important;
+      border: 1px solid rgba(240, 237, 232, 0.08) !important;
+    }
+
+    [data-theme="dark"] .timer-unit { background: var(--surface) !important; }
+    [data-theme="dark"] .face-wrap { background: var(--surface) !important; }
+    [data-theme="dark"] .agenda-row { background: var(--surface) !important; }
+    [data-theme="dark"] .stack-tile { background: var(--surface) !important; box-shadow: 0 8px 32px rgba(0,0,0,0.4) !important; }
+    [data-theme="dark"] .cta-section { background: var(--bg) !important; }
+    [data-theme="dark"] .footer { background: var(--bg) !important; }
+    [data-theme="dark"] .spk-topic { background: var(--surface) !important; }
+    [data-theme="dark"] .footer-signup-input { background: rgba(240, 237, 232, 0.06) !important; }
+    [data-theme="dark"] .announce { background: var(--surface) !important; }
+
+    [data-theme="dark"] .hero-keys-img { mix-blend-mode: screen !important; opacity: 0.85; }
+    [data-theme="dark"] .split-cards svg { stroke: var(--text) !important; }
+
+    /* Theme toggle button */
+    .theme-toggle {
+      width: 34px;
+      height: 34px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      transition: opacity 0.2s;
+      padding: 0;
+      flex-shrink: 0;
+    }
+    .theme-toggle:hover { opacity: 0.5; }
+    .theme-toggle .icon-moon { display: none; }
+    [data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+    [data-theme="dark"] .theme-toggle .icon-moon { display: flex; }
   </style>
 </head>
 
@@ -1580,6 +1696,10 @@
         <a href="#faq">FAQ</a>
       </div>
       <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle-nav" aria-label="Toggle dark mode">
+          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
         <a href="https://lu.ma/aipmsummit" class="btn-solid">Register</a>
       </div>
     </div>
@@ -1591,11 +1711,15 @@
     <a href="#speakers">Speakers</a>
     <a href="#testimonials">Testimonials</a>
     <a href="#faq">FAQ</a>
+    <span class="hero-nav-dot">·</span>
+    <button class="theme-toggle" id="theme-toggle-hero" aria-label="Toggle dark mode">
+      <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
   </div>
 
   <!-- HERO -->
   <section class="hero ">
-    <div class="hero-glow"></div>
     <div class="cloud cloud-1"><div class="cloud-body"></div></div>
     <div class="cloud cloud-1b"><div class="cloud-body"></div></div>
     <div class="cloud cloud-2"><div class="cloud-body"></div></div>
@@ -1608,7 +1732,11 @@
     <div class="shape shape-2"></div>
     <div class="shape shape-3"></div>
     <div class="shape shape-4"></div>
-    <div class="wrap" style="position: relative; z-index: 1;">
+    <div class="hero-keys-top">
+      <img src="images/aipm-keys.png" alt="AI PM Summit" class="hero-keys-img">
+    </div>
+    <div class="wrap hero-split" style="position: relative; z-index: 1;">
+      <div class="hero-left">
       <div class="hero-date">
         <span>April 22, 2026</span>
         <span>Virtual Summit</span>
@@ -1646,7 +1774,7 @@
           </div>
         </div>
       </div>
-
+      </div><!-- end hero-left -->
     </div>
   </section>
 
@@ -1694,74 +1822,74 @@
     <div class="pop-shape ps-1"></div>
     <div class="pop-shape ps-2"></div>
     <div class="wrap" style="position: relative; z-index: 1;">
-      <div class="spk-header ">
+      <div class="spk-header reveal">
         <h2 class="sec-title">Speakers</h2>
       </div>
 
       <div class="spk-grid">
-        <div class="spk-card ">
+        <div class="spk-card reveal">
           <img src="images/speakers/arpit.jpg" alt="Arpit" class="spk-avatar">
           <div class="spk-name">Arpit Guglani</div>
           <div class="spk-role">Senior Product Manager, Google</div>
         </div>
 
-        <div class="spk-card ">
+        <div class="spk-card reveal delay-1">
           <img src="images/speakers/shayamala.jpeg" alt="Shyamala" class="spk-avatar">
           <div class="spk-name">Shyamala Prayaga</div>
           <div class="spk-role">Senior Software Product Manager, AI Foundation Models, NVIDIA</div>
         </div>
 
-        <div class="spk-card ">
+        <div class="spk-card reveal delay-2">
           <img src="images/speakers/Manjeet.png" alt="Manjeet" class="spk-avatar">
           <div class="spk-name">Manjeet Singh</div>
           <div class="spk-role">Sr Director AI Agents, Salesforce</div>
         </div>
 
-        <div class="spk-card ">
+        <div class="spk-card reveal">
           <img src="images/speakers/srividya.jpg" alt="Srividya" class="spk-avatar">
           <div class="spk-name">Srividya Ramamoorthy</div>
           <div class="spk-role">Staff Product Manager, AI/ML Systems, Airbnb</div>
         </div>
 
-        <div class="spk-card ">
+        <div class="spk-card reveal delay-1">
           <img src="images/speakers/arun.jpg" alt="Arun" class="spk-avatar">
           <div class="spk-name">Arun Janakiraman</div>
           <div class="spk-role">GPM, Head of Zoom Apps & Marketplace, Zoom</div>
         </div>
 
-        <div class="spk-card ">
+        <div class="spk-card reveal delay-2">
           <img src="images/speakers/archana.jpeg" alt="Archana" class="spk-avatar">
           <div class="spk-name">Archana Bansal</div>
           <div class="spk-role">Product Leader, Workday</div>
         </div>
 
-        <div class="spk-card ">
+        <div class="spk-card reveal">
           <img src="images/speakers/pavan.jpg" alt="Pavan" class="spk-avatar">
           <div class="spk-name">Pavan Kumar Bandarupalli</div>
           <div class="spk-role">Principal Product Manager, Gusto</div>
         </div>
 
-        <div class="spk-card ">
+        <div class="spk-card reveal delay-1">
           <img src="images/speakers/rishit.jpg" alt="Rishit" class="spk-avatar">
           <div class="spk-name">Rishit Bhatia</div>
           <div class="spk-role">Senior Product Manager, MongoDB</div>
         </div>
 
-        <div class="spk-card ">
+        <div class="spk-card reveal delay-2">
           <img src="images/speakers/amy.jpg" alt="Amy" class="spk-avatar">
           <div class="spk-name">Amy Mitchell</div>
           <div class="spk-role">Senior Product Manager, Dell Technologies</div>
         </div>
       </div>
 
-      <p style="text-align: center; margin-top: 40px; font-size: 15px; color: var(--text-muted); font-weight: 500;">More speakers to be announced soon.</p>
+      <p class="reveal" style="text-align: center; margin-top: 40px; font-size: 15px; color: var(--text-muted); font-weight: 400;">More speakers to be announced soon.</p>
     </div>
   </section>
 
   <!-- SPLIT SECTION -->
   <section class="split-section" style="position: relative;">
     <div class="wrap split-grid">
-      <div class="split-text">
+      <div class="split-text reveal">
         <h2 class="sec-title" style="max-width: 600px;">One day of real playbooks from PMs actively shipping AI products
           at scale.</h2>
       </div>
@@ -1769,21 +1897,21 @@
       <div class="split-cards">
         <div style="display: flex; flex-direction: column; gap: 40px;">
           <div>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#20023C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 12px; display: block;"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-            <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.01em; color: var(--text-muted); margin-bottom: 8px;">What you get</div>
-            <div style="font-size: 22px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; margin-bottom: 8px;">Practical Strategies</div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#141413" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 12px; display: block;"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            <div style="font-size: 13px; font-weight: 400; letter-spacing: 0.01em; color: var(--text-muted); margin-bottom: 8px;">What you get</div>
+            <div style="font-size: 22px; font-weight: 400; color: var(--text); letter-spacing: -0.02em; margin-bottom: 8px;">Practical Strategies</div>
             <p style="font-size: 16px;">Strategies and perspectives you can actually use. Every session is designed to be practical, not theoretical.</p>
           </div>
           <div>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#20023C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 12px; display: block;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.01em; color: var(--text-muted); margin-bottom: 8px;">Who you hear from</div>
-            <div style="font-size: 22px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; margin-bottom: 8px;">Product Leaders</div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#141413" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 12px; display: block;"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <div style="font-size: 13px; font-weight: 400; letter-spacing: 0.01em; color: var(--text-muted); margin-bottom: 8px;">Who you hear from</div>
+            <div style="font-size: 22px; font-weight: 400; color: var(--text); letter-spacing: -0.02em; margin-bottom: 8px;">Product Leaders</div>
             <p style="font-size: 16px;">Product leaders from top product teams who are solving the same problems you are and building the future of AI products.</p>
           </div>
           <div>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#20023C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 12px; display: block;"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
-            <div style="font-size: 13px; font-weight: 500; letter-spacing: 0.01em; color: var(--text-muted); margin-bottom: 8px;">Why it matters</div>
-            <div style="font-size: 22px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; margin-bottom: 8px;">Lead the Shift</div>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#141413" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 12px; display: block;"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            <div style="font-size: 13px; font-weight: 400; letter-spacing: 0.01em; color: var(--text-muted); margin-bottom: 8px;">Why it matters</div>
+            <div style="font-size: 22px; font-weight: 400; color: var(--text); letter-spacing: -0.02em; margin-bottom: 8px;">Lead the Shift</div>
             <p style="font-size: 16px;">The PM role is being redefined by AI. Walk away with the vocabulary, the credibility, and the mental models to lead that shift.</p>
           </div>
         </div>
@@ -1798,12 +1926,12 @@
     <div class="pop-shape ps-1" style="top: 10%; right: 5%;"></div>
     <div class="pop-shape ps-2" style="bottom: 10%; left: 5%;"></div>
     <div class="wrap" style="position: relative; z-index: 1;">
-      <div class="testi-header ">
+      <div class="testi-header reveal">
         <h2 class="sec-title" style="margin:0;">Testimonials</h2>
       </div>
 
       <div class="testi-grid">
-        <div class="testi-card ">
+        <div class="testi-card reveal">
           <p class="testi-quote">"I felt excitement about the possibilities of AI and Design vs my former feeling of
             existential dread."</p>
           <div class="testi-author-row">
@@ -1814,7 +1942,7 @@
           </div>
         </div>
 
-        <div class="testi-card ">
+        <div class="testi-card reveal delay-1">
           <p class="testi-quote">"It helped me learn practical skills and a thoughtful mindset for working with AI."</p>
           <div class="testi-author-row">
             <div>
@@ -1824,7 +1952,7 @@
           </div>
         </div>
 
-        <div class="testi-card ">
+        <div class="testi-card reveal delay-1">
           <p class="testi-quote">"Genuinely informative and fun. I would recommend this summit to others."</p>
           <div class="testi-author-row">
             <div>
@@ -1834,7 +1962,7 @@
           </div>
         </div>
 
-        <div class="testi-card ">
+        <div class="testi-card reveal delay-1">
           <p class="testi-quote">"Appreciated hearing directly from designers about how AI is changing UX in practice."
           </p>
           <div class="testi-author-row">
@@ -1845,7 +1973,7 @@
           </div>
         </div>
 
-        <div class="testi-card ">
+        <div class="testi-card reveal delay-1">
           <p class="testi-quote">"My work has already improved since adopting tools learned from the summit!"</p>
           <div class="testi-author-row">
             <div>
@@ -1855,7 +1983,7 @@
           </div>
         </div>
 
-        <div class="testi-card ">
+        <div class="testi-card reveal delay-1">
           <p class="testi-quote">"Reframed my perspective to 'How can I use AI to improve my work?' with tangible
             takeaways."</p>
           <div class="testi-author-row">
@@ -1866,7 +1994,7 @@
           </div>
         </div>
 
-        <div class="testi-card ">
+        <div class="testi-card reveal delay-1">
           <p class="testi-quote">"Fresh ideas on how AI can shape more human-centered experiences."</p>
           <div class="testi-author-row">
             <div>
@@ -1876,7 +2004,7 @@
           </div>
         </div>
 
-        <div class="testi-card ">
+        <div class="testi-card reveal delay-1">
           <p class="testi-quote">"Insights on designing AI products and incorporating AI tools into my workflows."</p>
           <div class="testi-author-row">
             <div>
@@ -1886,7 +2014,7 @@
           </div>
         </div>
 
-        <div class="testi-card ">
+        <div class="testi-card reveal delay-1">
           <p class="testi-quote">"Each speaker brought a unique perspective."</p>
           <div class="testi-author-row">
             <div>
@@ -1902,12 +2030,12 @@
   <!-- AGENDA / SCHEDULE -->
   <section class="agenda-section" id="agenda">
     <div class="wrap">
-      <div class="agenda-header ">
+      <div class="agenda-header reveal">
         <h2 class="sec-title">Schedule</h2>
       </div>
 
       <div class="agenda-wrap">
-        <div class="agenda-row ">
+        <div class="agenda-row reveal">
           <div class="agenda-time">12:00 PM EST<br>9:00 AM PST<br>5:00 PM GMT</div>
           <div class="agenda-details">
             <img src="images/speakers/rishit.jpg" alt="Rishit" class="agenda-avatar">
@@ -1919,7 +2047,7 @@
           </div>
         </div>
 
-        <div class="agenda-row ">
+        <div class="agenda-row reveal">
           <div class="agenda-time">12:20 PM EST<br>9:20 AM PST<br>5:20 PM GMT</div>
           <div class="agenda-details">
             <img src="images/speakers/arpit.jpg" alt="Arpit" class="agenda-avatar">
@@ -1931,7 +2059,7 @@
           </div>
         </div>
 
-        <div class="agenda-row ">
+        <div class="agenda-row reveal">
           <div class="agenda-time">12:40 PM EST<br>9:40 AM PST<br>5:40 PM GMT</div>
           <div class="agenda-details">
             <img src="images/speakers/pavan.jpg" alt="Pavan" class="agenda-avatar">
@@ -1943,7 +2071,7 @@
           </div>
         </div>
 
-        <div class="agenda-row ">
+        <div class="agenda-row reveal">
           <div class="agenda-time">1:00 PM EST<br>10:00 AM PST<br>6:00 PM GMT</div>
           <div class="agenda-details">
             <img src="images/speakers/amy.jpg" alt="Amy" class="agenda-avatar">
@@ -1955,7 +2083,7 @@
           </div>
         </div>
 
-        <div class="agenda-row ">
+        <div class="agenda-row reveal">
           <div class="agenda-time">1:20 PM EST<br>10:20 AM PST<br>6:20 PM GMT</div>
           <div class="agenda-details">
             <img src="images/speakers/arun.jpg" alt="Arun" class="agenda-avatar">
@@ -1967,7 +2095,7 @@
           </div>
         </div>
 
-        <div class="agenda-row ">
+        <div class="agenda-row reveal">
           <div class="agenda-time">1:40 PM EST<br>10:40 AM PST<br>6:40 PM GMT</div>
           <div class="agenda-details">
             <img src="images/speakers/srividya.jpg" alt="Srividya" class="agenda-avatar">
@@ -2022,11 +2150,11 @@
           </div>
         </div>
 
-        <div class="agenda-row ">
+        <div class="agenda-row reveal">
           <div class="agenda-time">3:20 PM EST<br>12:20 PM PST<br>8:20 PM GMT</div>
           <div class="agenda-details">
             <span style="width:64px; height:64px; border-radius:50%; background:#f5f5f7; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#20023C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#141413" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M17 8h1a4 4 0 0 1 0 8h-1"/>
                 <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/>
                 <line x1="6" y1="2" x2="6" y2="4"/>
@@ -2057,33 +2185,33 @@
   <!-- FAQ -->
   <section class="faq-section" id="faq">
     <div class="wrap">
-      <h2 class="faq-title">Questions?</h2>
+      <h2 class="faq-title reveal">Questions?</h2>
       <div class="faq-list">
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-q">When is the event? <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
           <div class="faq-a">April 22, 2026. Sessions start at 12:00 PM EST (9:00 AM PST / 5:00 PM GMT).</div>
         </div>
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-q">How does a virtual summit work? <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
           <div class="faq-a">Register, join our community, and watch live on Zoom from anywhere.</div>
         </div>
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-q">Will I get access to recordings? <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
           <div class="faq-a">Yes. All sessions are recorded and included with every ticket.</div>
         </div>
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-q">Who is this event for? <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
           <div class="faq-a">Product managers and product leaders building AI-powered products.</div>
         </div>
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-q">What if I can't make it live? <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
           <div class="faq-a">No problem. Recordings are included. Watch on your own schedule.</div>
         </div>
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-q">How much does it cost? <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
           <div class="faq-a">See pricing on the registration page. Early bird pricing is available for a limited time.</div>
         </div>
-        <div class="faq-item">
+        <div class="faq-item reveal">
           <button class="faq-q">Can I get a team or group discount? <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
           <div class="faq-a">Yes. We offer a 2-for-1 early bird option and team passes are available for groups.</div>
         </div>
@@ -2108,7 +2236,7 @@
     <div class="pop-shape" style="width:50px;height:50px;bottom:15%;left:30%;animation-delay:-6s;background:rgba(160,80,240,0.5);border-radius:50%;"></div>
     <div class="pop-shape" style="width:75px;height:75px;top:50%;right:5%;animation-delay:-2s;background:rgba(255,200,0,0.55);border-radius:16px;"></div>
     <div class="wrap " style="position: relative; z-index: 1;">
-      <h2 class="cta-title">The summit for PMs<br>building what's next.<br>April 22.</h2>
+      <h2 class="cta-title reveal">The summit for PMs<br>building what's next.<br>April 22.</h2>
       <a href="https://lu.ma/aipmsummit" class="btn-solid"
         style="padding: 16px 36px; font-size: 20px;">Register</a>
     </div>
@@ -2146,7 +2274,7 @@
     </div>
     <div class="wrap" style="margin-top: 32px; padding-top: 24px; font-size: 12px; color: var(--text-muted); text-align: center;">
       © 2026 CoFi Labs Inc. · 2482 Yonge St #1135, Toronto, ON M4P 2H5, Canada &nbsp;·&nbsp;
-      Produced by <a href="https://cofi.so" target="_blank" style="color: var(--text-muted); font-weight: 600;">CoFi</a>
+      Produced by <a href="https://cofi.so" target="_blank" style="color: var(--text-muted); font-weight: 400;">CoFi</a>
     </div>
   </footer>
 
@@ -2216,6 +2344,18 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // --- DARK MODE TOGGLE ---
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+    }
+    document.querySelectorAll('.theme-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        setTheme(current === 'dark' ? 'light' : 'dark');
+      });
+    });
 
     // --- KIT SUBSCRIBE FORM ---
     document.getElementById('footer-kit-form').addEventListener('submit', function(e) {
