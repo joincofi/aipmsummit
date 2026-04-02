@@ -27,15 +27,7 @@
   src="https://www.facebook.com/tr?id=2510275819404036&ev=PageView&noscript=1"
   /></noscript>
   <!-- End Meta Pixel Code -->
-  <!-- Anti-FOUC: apply saved theme before paint -->
-  <script>
-    (function(){
-      var t = localStorage.getItem('theme');
-      if (!t) t = 'light';
-      document.documentElement.setAttribute('data-theme', t);
-    })();
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
 
@@ -1618,67 +1610,6 @@
       }
     }
 
-    /* ─── DARK MODE ─── */
-    [data-theme="dark"] {
-      --bg: #111110;
-      --surface: #1C1C1B;
-      --text: #F0EDE8;
-      --text-muted: #8A8785;
-      --accent: #4D9DE0;
-      --border: rgba(240, 237, 232, 0.1);
-    }
-
-    [data-theme="dark"] body { background: var(--bg); }
-
-    [data-theme="dark"] .hero { background: var(--bg) !important; }
-    [data-theme="dark"] .hero-title { color: var(--text) !important; -webkit-text-fill-color: var(--text) !important; }
-    [data-theme="dark"] .hero-sub { color: var(--text-muted) !important; }
-    [data-theme="dark"] .logos-label { color: var(--text) !important; }
-    [data-theme="dark"] .facepile-text { color: var(--text) !important; }
-    [data-theme="dark"] .logos-track img { filter: brightness(0) invert(1) opacity(0.75) !important; }
-
-    [data-theme="dark"] .nav-wrap {
-      background: rgba(17, 17, 16, 0.75) !important;
-      border: 1px solid rgba(240, 237, 232, 0.08) !important;
-    }
-    [data-theme="dark"] .hero-nav {
-      background: rgba(17, 17, 16, 0.75) !important;
-      border: 1px solid rgba(240, 237, 232, 0.08) !important;
-    }
-
-    [data-theme="dark"] .timer-unit { background: var(--surface) !important; }
-    [data-theme="dark"] .face-wrap { background: var(--surface) !important; }
-    [data-theme="dark"] .agenda-row { background: #1A1815 !important; }
-    [data-theme="dark"] .stack-tile { background: var(--surface) !important; box-shadow: 0 8px 32px rgba(0,0,0,0.4) !important; }
-    [data-theme="dark"] .cta-section { background: var(--bg) !important; }
-    [data-theme="dark"] .footer { background: var(--bg) !important; }
-    [data-theme="dark"] .spk-topic { background: var(--surface) !important; }
-    [data-theme="dark"] .footer-signup-input { background: rgba(240, 237, 232, 0.06) !important; }
-    [data-theme="dark"] .announce { background: var(--surface) !important; }
-
-    [data-theme="dark"] .hero-keys-img { mix-blend-mode: screen !important; opacity: 0.85; }
-    [data-theme="dark"] .split-cards svg { stroke: var(--text) !important; }
-
-    /* Theme toggle button */
-    .theme-toggle {
-      width: 34px;
-      height: 34px;
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text);
-      transition: opacity 0.2s;
-      padding: 0;
-      flex-shrink: 0;
-    }
-    .theme-toggle:hover { opacity: 0.5; }
-    .theme-toggle .icon-moon { display: none; }
-    [data-theme="dark"] .theme-toggle .icon-sun { display: none; }
-    [data-theme="dark"] .theme-toggle .icon-moon { display: flex; }
   </style>
 </head>
 
@@ -1702,10 +1633,6 @@
         <a href="#speakers">Speakers</a>
         <a href="#testimonials">Testimonials</a>
         <a href="#faq">FAQ</a>
-        <button class="theme-toggle" id="theme-toggle-nav" aria-label="Toggle dark mode">
-          <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-          <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
       </div>
       <div class="nav-actions">
         <a href="https://lu.ma/aipmsummit" class="btn-solid">Register</a>
@@ -1719,10 +1646,6 @@
     <a href="#speakers">Speakers</a>
     <a href="#testimonials">Testimonials</a>
     <a href="#faq">FAQ</a>
-    <button class="theme-toggle" id="theme-toggle-hero" aria-label="Toggle dark mode">
-      <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-      <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
   </div>
 
   <!-- HERO -->
@@ -2364,17 +2287,6 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // --- DARK MODE TOGGLE ---
-    function setTheme(theme) {
-      document.documentElement.setAttribute('data-theme', theme);
-      localStorage.setItem('theme', theme);
-    }
-    document.querySelectorAll('.theme-toggle').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const current = document.documentElement.getAttribute('data-theme');
-        setTheme(current === 'dark' ? 'light' : 'dark');
-      });
-    });
 
     // --- KIT SUBSCRIBE FORM ---
     document.getElementById('footer-kit-form').addEventListener('submit', function(e) {
