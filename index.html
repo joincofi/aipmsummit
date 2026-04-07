@@ -8,7 +8,7 @@
   <meta name="description"
     content="One focused day. Actionable frameworks. Learn how Product Managers from Google, Airbnb, and Gusto are actually shipping AI products right now." />
 
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="icon" type="image/png" href="images/aipm-keys.png" />
 
   <!-- Meta Pixel Code -->
   <script>
@@ -29,7 +29,7 @@
   <!-- End Meta Pixel Code -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet" />
 
   <style>
     /* ─── FAMILY.CO AESTHETIC RESET & BASE ─── */
@@ -63,7 +63,7 @@
       --bg: #FAF9F5;
       --surface: #FFFFFF;
       --text: #141413;
-      --text-muted: #6B6868;
+      --text-muted: #141413;
       --accent: #0000EE;
       --accent-danger: #D0021B;
       --border: rgba(31, 30, 29, 0.15);
@@ -72,8 +72,8 @@
       --r-lg: 24px;
       --r-md: 16px;
 
-      --font: "DM Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-      --font-serif: "Lora", Georgia, serif;
+      --font: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      --font-serif: "Playfair Display", Georgia, serif;
     }
 
     body {
@@ -219,7 +219,7 @@
 
     .nav-logo {
       font-size: 22px;
-      font-weight: 400;
+      font-weight: 500;
       letter-spacing: -0.03em;
       font-family: var(--font-serif);
       display: flex;
@@ -1034,60 +1034,6 @@
     }
 
     /* ─── SPEAKERS (Clean Avatar Grids) ─── */
-    .spk-section {
-      padding: 140px 0;
-      text-align: center;
-    }
-
-    .spk-header {
-      margin-bottom: 72px;
-    }
-
-    .spk-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 56px 32px;
-    }
-
-    .spk-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    .spk-avatar {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 16px;
-      box-shadow: none;
-      outline: none;
-    }
-
-    .spk-name {
-      font-size: 22px;
-      font-weight: 400;
-      margin-bottom: 4px;
-      letter-spacing: -0.02em;
-    }
-
-    .spk-role {
-      font-size: 16px;
-      font-weight: 400;
-      color: var(--text-muted);
-      margin-bottom: 16px;
-    }
-
-    .spk-topic {
-      font-size: 16px;
-      font-weight: 400;
-      padding: 10px 20px;
-      background: var(--surface);
-      border-radius: var(--r-pill);
-      color: var(--text);
-    }
 
     /* ─── TESTIMONIALS (Minimal quote cards with tiny avatars) ─── */
     .testi-section {
@@ -1188,7 +1134,6 @@
       transition: background 0.2s ease;
     }
 
-
     .agenda-row:first-child {
       border-top: none;
     }
@@ -1196,7 +1141,7 @@
     .agenda-time {
       font-size: 15px;
       font-weight: 400;
-      color: var(--text-muted);
+      color: var(--text);
       width: 180px;
       flex-shrink: 0;
       line-height: 1.5;
@@ -1232,7 +1177,7 @@
     .agenda-spk-role {
       font-size: 16px;
       font-weight: 400;
-      color: var(--text-muted);
+      color: var(--text);
       margin-top: 2px;
     }
 
@@ -1360,9 +1305,11 @@
 
     .footer-logo {
       font-size: 22px;
-      font-weight: 400;
+      font-weight: 500;
       margin-bottom: 20px;
       color: var(--text);
+      font-family: var(--font-serif);
+      letter-spacing: -0.03em;
     }
 
     .footer-col-head {
@@ -1465,10 +1412,6 @@
         gap: 64px;
       }
 
-      .spk-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 40px;
-      }
 
       .nav-links,
       .nav-left {
@@ -1490,7 +1433,7 @@
 
       .hero,
       .split-section,
-      .spk-section,
+
       .testi-section,
       .agenda-section,
       .cta-section {
@@ -1506,8 +1449,8 @@
     }
 
     .agenda-avatar {
-      width: 64px;
-      height: 64px;
+      width: 96px;
+      height: 96px;
       border-radius: 50%;
       object-fit: cover;
       flex-shrink: 0;
@@ -1562,28 +1505,10 @@
       }
 
       .agenda-avatar {
-        width: 48px;
-        height: 48px;
+        width: 72px;
+        height: 72px;
       }
 
-      /* Speakers */
-      .spk-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 32px 24px;
-      }
-
-      .spk-avatar {
-        width: 100px;
-        height: 100px;
-      }
-
-      .spk-name {
-        font-size: 16px;
-      }
-
-      .spk-role {
-        font-size: 13px;
-      }
 
       /* CTA */
       .cta-cards {
@@ -1632,8 +1557,8 @@
         <a href="#top" class="nav-logo">AI PM Summit</a>
       </div>
       <div class="nav-links">
-        <a href="#agenda">Schedule</a>
         <a href="#speakers">Speakers</a>
+        <a href="#agenda">Talks</a>
         <a href="#testimonials">Testimonials</a>
         <a href="#faq">FAQ</a>
       </div>
@@ -1645,8 +1570,8 @@
 
   <!-- HERO NAV OVERLAY -->
   <div class="hero-nav" id="hero-nav">
-    <a href="#agenda">Schedule</a>
     <a href="#speakers">Speakers</a>
+    <a href="#agenda">Talks</a>
     <a href="#testimonials">Testimonials</a>
     <a href="#faq">FAQ</a>
   </div>
@@ -1693,6 +1618,7 @@
           <div class="face-wrap"><img src="images/speakers/mike.jpeg" alt="Mike" class="face"><span class="face-tip">Mike Kelley · Lead PM · Nike</span></div>
           <div class="face-wrap"><img src="images/speakers/Noorain.jpeg" alt="Noorain" class="face"><span class="face-tip">Noorain Noorani · Staff PM · Dropbox</span></div>
           <div class="face-wrap"><img src="images/speakers/Janvi.jpeg" alt="Janvi" class="face"><span class="face-tip">Janvi Doshi · VP Product · Bank of America</span></div>
+          <div class="face-wrap"><img src="images/speakers/anirudh.jpeg" alt="Anirudh" class="face"><span class="face-tip">Anirudh Bajaj · Senior PM · Microsoft</span></div>
         </div>
       </div>
 
@@ -1754,88 +1680,91 @@
   </div>
 
   <!-- SPEAKERS -->
-  <section class="spk-section" id="speakers" style="position: relative; overflow: hidden;">
-    <div class="pop-shape ps-1"></div>
-    <div class="pop-shape ps-2"></div>
+  <section id="speakers" style="padding: 140px 0; position: relative; overflow: hidden;">
     <div class="wrap" style="position: relative; z-index: 1;">
-      <div class="spk-header reveal">
+      <div class="reveal" style="margin-bottom: 72px; text-align: center;">
         <h2 class="sec-title">Speakers</h2>
       </div>
-
-      <div class="spk-grid">
-        <div class="spk-card reveal">
-          <img src="images/speakers/Janvi.jpeg" alt="Janvi" class="spk-avatar">
-          <div class="spk-name">Janvi Doshi</div>
-          <div class="spk-role">VP Product, Agentic AI & Risk Transformation, Bank of America</div>
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 56px 32px;">
+        <div class="reveal" style="flex: 0 0 calc(25% - 24px); display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <img src="images/speakers/Janvi.jpeg" alt="Janvi" style="width:140px;height:140px;border-radius:50%;object-fit:cover;margin-bottom:16px;">
+          <div style="font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-bottom:4px;">Janvi Doshi</div>
+          <div style="font-size:16px;">VP Product, Agentic AI & Risk Transformation</div>
+          <div style="font-size:16px;font-weight:600;">Bank of America</div>
         </div>
-
-        <div class="spk-card reveal delay-1">
-          <img src="images/speakers/Manjeet.png" alt="Manjeet" class="spk-avatar">
-          <div class="spk-name">Manjeet Singh</div>
-          <div class="spk-role">Sr Director AI Agents, Salesforce</div>
+        <div class="reveal delay-1" style="flex: 0 0 calc(25% - 24px); display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <img src="images/speakers/Manjeet.png" alt="Manjeet" style="width:140px;height:140px;border-radius:50%;object-fit:cover;margin-bottom:16px;">
+          <div style="font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-bottom:4px;">Manjeet Singh</div>
+          <div style="font-size:16px;">Sr Director AI Agents</div>
+          <div style="font-size:16px;font-weight:600;">Salesforce</div>
         </div>
-
-        <div class="spk-card reveal delay-2">
-          <img src="images/speakers/shayamala.jpeg" alt="Shyamala" class="spk-avatar">
-          <div class="spk-name">Shyamala Prayaga</div>
-          <div class="spk-role">Senior Software Product Manager, AI Foundation Models, NVIDIA</div>
+        <div class="reveal delay-2" style="flex: 0 0 calc(25% - 24px); display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <img src="images/speakers/shayamala.jpeg" alt="Shyamala" style="width:140px;height:140px;border-radius:50%;object-fit:cover;margin-bottom:16px;">
+          <div style="font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-bottom:4px;">Shyamala Prayaga</div>
+          <div style="font-size:16px;">Senior Software PM, AI Foundation Models</div>
+          <div style="font-size:16px;font-weight:600;">NVIDIA</div>
         </div>
-
-        <div class="spk-card reveal">
-          <img src="images/speakers/arpit.jpg" alt="Arpit" class="spk-avatar">
-          <div class="spk-name">Arpit Guglani</div>
-          <div class="spk-role">Senior Product Manager, Google</div>
+        <div class="reveal" style="flex: 0 0 calc(25% - 24px); display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <img src="images/speakers/arpit.jpg" alt="Arpit" style="width:140px;height:140px;border-radius:50%;object-fit:cover;margin-bottom:16px;">
+          <div style="font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-bottom:4px;">Arpit Guglani</div>
+          <div style="font-size:16px;">Senior Product Manager</div>
+          <div style="font-size:16px;font-weight:600;">Google</div>
         </div>
-
-        <div class="spk-card reveal delay-1">
-          <img src="images/speakers/amy.jpg" alt="Amy" class="spk-avatar">
-          <div class="spk-name">Amy Mitchell</div>
-          <div class="spk-role">Senior Product Manager, Dell Technologies</div>
+        <div class="reveal delay-1" style="flex: 0 0 calc(20% - 26px); display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <img src="images/speakers/amy.jpg" alt="Amy" style="width:140px;height:140px;border-radius:50%;object-fit:cover;margin-bottom:16px;">
+          <div style="font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-bottom:4px;">Amy Mitchell</div>
+          <div style="font-size:16px;">Senior Product Manager</div>
+          <div style="font-size:16px;font-weight:600;">Dell Technologies</div>
         </div>
-
-        <div class="spk-card reveal delay-2">
-          <img src="images/speakers/Noorain.jpeg" alt="Noorain" class="spk-avatar">
-          <div class="spk-name">Noorain Noorani</div>
-          <div class="spk-role">Staff Product Manager, Dropbox</div>
+        <div class="reveal delay-2" style="flex: 0 0 calc(20% - 26px); display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <img src="images/speakers/Noorain.jpeg" alt="Noorain" style="width:140px;height:140px;border-radius:50%;object-fit:cover;margin-bottom:16px;">
+          <div style="font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-bottom:4px;">Noorain Noorani</div>
+          <div style="font-size:16px;">Staff Product Manager</div>
+          <div style="font-size:16px;font-weight:600;">Dropbox</div>
         </div>
-
-        <div class="spk-card reveal">
-          <img src="images/speakers/arun.jpg" alt="Arun" class="spk-avatar">
-          <div class="spk-name">Arun Janakiraman</div>
-          <div class="spk-role">GPM, Head of Zoom Apps & Marketplace, Zoom</div>
+        <div class="reveal" style="flex: 0 0 calc(20% - 26px); display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <img src="images/speakers/arun.jpg" alt="Arun" style="width:140px;height:140px;border-radius:50%;object-fit:cover;margin-bottom:16px;">
+          <div style="font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-bottom:4px;">Arun Janakiraman</div>
+          <div style="font-size:16px;">GPM, Head of Zoom Apps & Marketplace</div>
+          <div style="font-size:16px;font-weight:600;">Zoom</div>
         </div>
-
-        <div class="spk-card reveal delay-1">
-          <img src="images/speakers/archana.jpeg" alt="Archana" class="spk-avatar">
-          <div class="spk-name">Archana Bansal</div>
-          <div class="spk-role">Product Leader, Workday</div>
+        <div class="reveal delay-1" style="flex: 0 0 calc(20% - 26px); display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <img src="images/speakers/archana.jpeg" alt="Archana" style="width:140px;height:140px;border-radius:50%;object-fit:cover;margin-bottom:16px;">
+          <div style="font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-bottom:4px;">Archana Bansal</div>
+          <div style="font-size:16px;">Product Leader</div>
+          <div style="font-size:16px;font-weight:600;">Workday</div>
         </div>
-
-        <div class="spk-card reveal delay-2">
-          <img src="images/speakers/srividya.jpg" alt="Srividya" class="spk-avatar">
-          <div class="spk-name">Srividya Ramamoorthy</div>
-          <div class="spk-role">Staff Product Manager, AI/ML Systems, Airbnb</div>
+        <div class="reveal delay-2" style="flex: 0 0 calc(20% - 26px); display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <img src="images/speakers/srividya.jpg" alt="Srividya" style="width:140px;height:140px;border-radius:50%;object-fit:cover;margin-bottom:16px;">
+          <div style="font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-bottom:4px;">Srividya Ramamoorthy</div>
+          <div style="font-size:16px;">Staff PM, AI/ML Systems</div>
+          <div style="font-size:16px;font-weight:600;">Airbnb</div>
         </div>
-
-        <div class="spk-card reveal">
-          <img src="images/speakers/pavan.jpg" alt="Pavan" class="spk-avatar">
-          <div class="spk-name">Pavan Kumar Bandarupalli</div>
-          <div class="spk-role">Principal Product Manager, Gusto</div>
+        <div class="reveal" style="flex: 0 0 calc(25% - 24px); display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <img src="images/speakers/pavan.jpg" alt="Pavan" style="width:140px;height:140px;border-radius:50%;object-fit:cover;margin-bottom:16px;">
+          <div style="font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-bottom:4px;">Pavan Kumar Bandarupalli</div>
+          <div style="font-size:16px;">Principal Product Manager</div>
+          <div style="font-size:16px;font-weight:600;">Gusto</div>
         </div>
-
-        <div class="spk-card reveal delay-1">
-          <img src="images/speakers/mike.jpeg" alt="Mike" class="spk-avatar">
-          <div class="spk-name">Mike Kelley</div>
-          <div class="spk-role">Lead Product Manager, Nike</div>
+        <div class="reveal delay-1" style="flex: 0 0 calc(25% - 24px); display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <img src="images/speakers/mike.jpeg" alt="Mike" style="width:140px;height:140px;border-radius:50%;object-fit:cover;margin-bottom:16px;">
+          <div style="font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-bottom:4px;">Mike Kelley</div>
+          <div style="font-size:16px;">Lead Product Manager</div>
+          <div style="font-size:16px;font-weight:600;">Nike</div>
         </div>
-
-        <div class="spk-card reveal delay-2">
-          <img src="images/speakers/rishit.jpg" alt="Rishit" class="spk-avatar">
-          <div class="spk-name">Rishit Bhatia</div>
-          <div class="spk-role">Senior Product Manager, MongoDB</div>
+        <div class="reveal delay-2" style="flex: 0 0 calc(25% - 24px); display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <img src="images/speakers/rishit.jpg" alt="Rishit" style="width:140px;height:140px;border-radius:50%;object-fit:cover;margin-bottom:16px;">
+          <div style="font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-bottom:4px;">Rishit Bhatia</div>
+          <div style="font-size:16px;">Senior Product Manager</div>
+          <div style="font-size:16px;font-weight:600;">MongoDB</div>
+        </div>
+        <div class="reveal" style="flex: 0 0 calc(25% - 24px); display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <img src="images/speakers/anirudh.jpeg" alt="Anirudh" style="width:140px;height:140px;border-radius:50%;object-fit:cover;margin-bottom:16px;">
+          <div style="font-size:22px;font-weight:600;letter-spacing:-0.02em;margin-bottom:4px;">Anirudh Bajaj</div>
+          <div style="font-size:16px;">Senior Product Manager</div>
+          <div style="font-size:16px;font-weight:600;">Microsoft</div>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -1872,119 +1801,11 @@
     </div>
   </section>
 
-
-
-  <!-- TESTIMONIALS (Like "Friends of Family") -->
-  <section class="testi-section" id="testimonials" style="position: relative;">
-    <div class="pop-shape ps-1" style="top: 10%; right: 5%;"></div>
-    <div class="pop-shape ps-2" style="bottom: 10%; left: 5%;"></div>
-    <div class="wrap" style="position: relative; z-index: 1;">
-      <div class="testi-header reveal">
-        <h2 class="sec-title" style="margin:0;">Testimonials</h2>
-      </div>
-
-      <div class="testi-grid">
-        <div class="testi-card reveal">
-          <p class="testi-quote">"I felt excitement about the possibilities of AI and Design vs my former feeling of
-            existential dread."</p>
-          <div class="testi-author-row">
-            <div>
-              <span class="testi-name">Jana Kleitsch</span>
-              <span class="testi-handle">Tech Matters</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testi-card reveal delay-1">
-          <p class="testi-quote">"It helped me learn practical skills and a thoughtful mindset for working with AI."</p>
-          <div class="testi-author-row">
-            <div>
-              <span class="testi-name">MiRi Park</span>
-              <span class="testi-handle">Product Leader</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testi-card reveal delay-1">
-          <p class="testi-quote">"Genuinely informative and fun. I would recommend this summit to others."</p>
-          <div class="testi-author-row">
-            <div>
-              <span class="testi-name">Jessica D.</span>
-              <span class="testi-handle">ChilliPharm</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testi-card reveal delay-1">
-          <p class="testi-quote">"Appreciated hearing directly from designers about how AI is changing UX in practice."
-          </p>
-          <div class="testi-author-row">
-            <div>
-              <span class="testi-name">Alyshia Perri</span>
-              <span class="testi-handle">HubSpot</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testi-card reveal delay-1">
-          <p class="testi-quote">"My work has already improved since adopting tools learned from the summit!"</p>
-          <div class="testi-author-row">
-            <div>
-              <span class="testi-name">Emma M.</span>
-              <span class="testi-handle">Mighty Crow</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testi-card reveal delay-1">
-          <p class="testi-quote">"Reframed my perspective to 'How can I use AI to improve my work?' with tangible
-            takeaways."</p>
-          <div class="testi-author-row">
-            <div>
-              <span class="testi-name">Andrew Haglund</span>
-              <span class="testi-handle">John Deere</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testi-card reveal delay-1">
-          <p class="testi-quote">"Fresh ideas on how AI can shape more human-centered experiences."</p>
-          <div class="testi-author-row">
-            <div>
-              <span class="testi-name">Livia Biondino</span>
-              <span class="testi-handle">Charlotte Tilbury</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testi-card reveal delay-1">
-          <p class="testi-quote">"Insights on designing AI products and incorporating AI tools into my workflows."</p>
-          <div class="testi-author-row">
-            <div>
-              <span class="testi-name">Thomas Trần</span>
-              <span class="testi-handle">MongoDB</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="testi-card reveal delay-1">
-          <p class="testi-quote">"Each speaker brought a unique perspective."</p>
-          <div class="testi-author-row">
-            <div>
-              <span class="testi-name">Sofiia Kukhar</span>
-              <span class="testi-handle">Stanford University</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- AGENDA / SCHEDULE -->
   <section class="agenda-section" id="agenda">
     <div class="wrap">
       <div class="agenda-header reveal">
-        <h2 class="sec-title">Schedule</h2>
+        <h2 class="sec-title">Talks</h2>
       </div>
 
       <div class="agenda-wrap">
@@ -2135,6 +1956,18 @@
         <div class="agenda-row reveal">
           <div class="agenda-time">4:00 PM EST<br>1:00 PM PST<br>9:00 PM GMT</div>
           <div class="agenda-details">
+            <img src="images/speakers/anirudh.jpeg" alt="Anirudh" class="agenda-avatar">
+            <div class="agenda-details-text">
+              <div class="agenda-title">How to be Indispensable in the age of AI</div>
+              <div class="agenda-spk">Anirudh Bajaj</div>
+              <div class="agenda-spk-role">Senior Product Manager, Microsoft</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="agenda-row reveal">
+          <div class="agenda-time">4:20 PM EST<br>1:20 PM PST<br>9:20 PM GMT</div>
+          <div class="agenda-details">
             <span style="width:64px; height:64px; border-radius:50%; background:#f5f5f7; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#141413" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M17 8h1a4 4 0 0 1 0 8h-1"/>
@@ -2161,6 +1994,112 @@
             <path d="m12 5 7 7-7 7" />
           </svg>
         </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS (Like "Friends of Family") -->
+  <section class="testi-section" id="testimonials" style="position: relative;">
+    <div class="pop-shape ps-1" style="top: 10%; right: 5%;"></div>
+    <div class="pop-shape ps-2" style="bottom: 10%; left: 5%;"></div>
+    <div class="wrap" style="position: relative; z-index: 1;">
+      <div class="testi-header reveal">
+        <h2 class="sec-title" style="margin:0;">Testimonials</h2>
+      </div>
+
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <p class="testi-quote">"I felt excitement about the possibilities of AI and Design vs my former feeling of
+            existential dread."</p>
+          <div class="testi-author-row">
+            <div>
+              <span class="testi-name">Jana Kleitsch</span>
+              <span class="testi-handle">Tech Matters</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal delay-1">
+          <p class="testi-quote">"It helped me learn practical skills and a thoughtful mindset for working with AI."</p>
+          <div class="testi-author-row">
+            <div>
+              <span class="testi-name">MiRi Park</span>
+              <span class="testi-handle">Product Leader</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal delay-1">
+          <p class="testi-quote">"Genuinely informative and fun. I would recommend this summit to others."</p>
+          <div class="testi-author-row">
+            <div>
+              <span class="testi-name">Jessica D.</span>
+              <span class="testi-handle">ChilliPharm</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal delay-1">
+          <p class="testi-quote">"Appreciated hearing directly from designers about how AI is changing UX in practice."
+          </p>
+          <div class="testi-author-row">
+            <div>
+              <span class="testi-name">Alyshia Perri</span>
+              <span class="testi-handle">HubSpot</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal delay-1">
+          <p class="testi-quote">"My work has already improved since adopting tools learned from the summit!"</p>
+          <div class="testi-author-row">
+            <div>
+              <span class="testi-name">Emma M.</span>
+              <span class="testi-handle">Mighty Crow</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal delay-1">
+          <p class="testi-quote">"Reframed my perspective to 'How can I use AI to improve my work?' with tangible
+            takeaways."</p>
+          <div class="testi-author-row">
+            <div>
+              <span class="testi-name">Andrew Haglund</span>
+              <span class="testi-handle">John Deere</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal delay-1">
+          <p class="testi-quote">"Fresh ideas on how AI can shape more human-centered experiences."</p>
+          <div class="testi-author-row">
+            <div>
+              <span class="testi-name">Livia Biondino</span>
+              <span class="testi-handle">Charlotte Tilbury</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal delay-1">
+          <p class="testi-quote">"Insights on designing AI products and incorporating AI tools into my workflows."</p>
+          <div class="testi-author-row">
+            <div>
+              <span class="testi-name">Thomas Trần</span>
+              <span class="testi-handle">MongoDB</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card reveal delay-1">
+          <p class="testi-quote">"Each speaker brought a unique perspective."</p>
+          <div class="testi-author-row">
+            <div>
+              <span class="testi-name">Sofiia Kukhar</span>
+              <span class="testi-handle">Stanford University</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -2232,8 +2171,8 @@
       <div>
         <div class="footer-logo">AI PM Summit</div>
         <div class="footer-links">
-          <a href="#agenda">Schedule</a>
           <a href="#speakers">Speakers</a>
+          <a href="#agenda">Talks</a>
           <a href="#testimonials">Testimonials</a>
           <a href="#faq">FAQ</a>
           <a href="https://form.typeform.com/to/HKG5aUgq" target="_blank">Contact</a>
