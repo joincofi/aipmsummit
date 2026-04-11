@@ -163,40 +163,11 @@
     .delay-5 { transition-delay: 0.30s; }
     .delay-6 { transition-delay: 0.36s; }
 
-    /* ─── TOP ANNOUNCEMENT (Sticky & Minimal) ─── */
-    .announce {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1100;
-      background: var(--text);
-      color: #FFFFFF;
-      display: flex;
-      justify-content: center;
-      padding: 12px 20px;
-      font-size: 14px;
-      font-weight: 400;
-      letter-spacing: 0.02em;
-      gap: 12px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.4s;
-    }
-
-    .announce.scrolled {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .announce a:hover {
-      opacity: 0.8;
-    }
 
     /* ─── HEADER NAV ─── */
     .nav-wrap {
       position: fixed;
-      top: 52px;
+      top: 12px;
       left: 50%;
       transform: translateX(-50%) translateY(-20px);
       width: calc(100% - 24px);
@@ -847,56 +818,6 @@
       opacity: 0.3;
     }
 
-    .hero-timer-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .hero-timer-label {
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--text);
-      letter-spacing: 0.02em;
-    }
-
-    .hero-timer-units {
-      display: flex;
-      gap: 6px;
-    }
-
-    .timer-unit {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      background: #FFFFFF;
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-      border: none;
-      box-shadow: none;
-      border-radius: 8px;
-      padding: 6px 10px;
-      min-width: 48px;
-    }
-
-    .timer-num {
-      font-size: 20px;
-      font-weight: 400;
-      color: var(--text);
-      font-variant-numeric: tabular-nums;
-      letter-spacing: -0.03em;
-      line-height: 1;
-    }
-
-    .timer-lbl {
-      font-size: 12px;
-      font-weight: 400;
-      color: var(--text);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      margin-top: 3px;
-    }
 
     .hero-nav {
       position: static;
@@ -1716,13 +1637,6 @@
 
 <body>
 
-  <!-- ANNOUNCE BAR -->
-  <a href="https://lu.ma/aipmsummit" class="announce" style="cursor:pointer;">
-    Early bird 2 for 1
-    <span style="opacity:0.6;">·</span>
-    Available until April 10 <span style="opacity:0.6;">·</span> <span id="ab-timer" style="font-variant-numeric: tabular-nums;">--d --h --m --s</span>
-  </a>
-
   <!-- HEADER NAV -->
   <div class="nav-wrap">
     <div class="wrap nav ">
@@ -1807,15 +1721,6 @@
         <a href="https://lu.ma/aipmsummit" class="btn-solid">
           Register →
         </a>
-        <div class="hero-timer-wrap">
-          <span class="hero-timer-label">Early bird 2 for 1 · Available until April 10</span>
-          <div class="hero-timer-units" id="hero-timer">
-            <span class="timer-unit"><span class="timer-num" id="ht-d">00</span><span class="timer-lbl">days</span></span>
-            <span class="timer-unit"><span class="timer-num" id="ht-h">00</span><span class="timer-lbl">hrs</span></span>
-            <span class="timer-unit"><span class="timer-num" id="ht-m">00</span><span class="timer-lbl">min</span></span>
-            <span class="timer-unit"><span class="timer-num" id="ht-s">00</span><span class="timer-lbl">sec</span></span>
-          </div>
-        </div>
       </div>
       </div><!-- end hero-left -->
     </div>
@@ -2321,11 +2226,11 @@
         </div>
         <div class="faq-item reveal">
           <button class="faq-q">How much does it cost? <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
-          <div class="faq-a">See pricing on the registration page. Early bird pricing is available for a limited time.</div>
+          <div class="faq-a">See pricing on the registration page.</div>
         </div>
         <div class="faq-item reveal">
           <button class="faq-q">Can I get a team or group discount? <span class="faq-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
-          <div class="faq-a">Yes. We offer a 2-for-1 early bird option and team passes are available for groups.</div>
+          <div class="faq-a">Yes. Team passes are available for groups.</div>
         </div>
       </div>
     </div>
@@ -2399,32 +2304,8 @@
       });
     });
 
-    // --- SIMPLE TIMER ---
-    const targetDate = new Date('2026-04-10T23:59:00').getTime();
-    function updateTimer() {
-      const now = new Date().getTime();
-      const diff = targetDate - now;
-      if (diff <= 0) return;
-
-      const pad = n => String(Math.max(0, n)).padStart(2, '0');
-      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const s = Math.floor((diff % (1000 * 60)) / 1000);
-
-      const timerEl = document.getElementById('ab-timer');
-      if (timerEl) timerEl.innerText = `${pad(d)}d ${pad(h)}h ${pad(m)}m ${pad(s)}s`;
-      const htD = document.getElementById('ht-d'); if (htD) htD.innerText = pad(d);
-      const htH = document.getElementById('ht-h'); if (htH) htH.innerText = pad(h);
-      const htM = document.getElementById('ht-m'); if (htM) htM.innerText = pad(m);
-      const htS = document.getElementById('ht-s'); if (htS) htS.innerText = pad(s);
-    }
-    updateTimer();
-    setInterval(updateTimer, 1000);
-
     // --- HEADER SCROLL REVEAL ---
     const header = document.querySelector('.nav-wrap');
-    const announce = document.querySelector('.announce');
     const heroNav = document.getElementById('hero-nav');
     let ticking = false;
     window.addEventListener('scroll', () => {
@@ -2432,11 +2313,9 @@
         requestAnimationFrame(() => {
           if (window.scrollY > 100) {
             header.classList.add('scrolled');
-            announce.classList.add('scrolled');
             heroNav.classList.add('hidden');
           } else {
             header.classList.remove('scrolled');
-            announce.classList.remove('scrolled');
             heroNav.classList.remove('hidden');
           }
           ticking = false;
